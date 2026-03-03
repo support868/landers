@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quit Smoking Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  /* ─── SHELL ─────────────────────────────────────────────── */
+  .quiz-shell {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────────── */
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #D8DDD5;
+    background: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #3A7D44;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    padding: 0;
+  }
+  .back-btn svg { width: 16px; height: 16px; }
+  .back-btn:disabled { opacity: 0; pointer-events: none; }
+
+  .progress-label {
+    font-size: 13px;
+    color: #2D4A3E;
+    font-weight: 600;
+  }
+
+  .progress-bar { height: 3px; background: #D8DDD5; flex-shrink: 0; }
+  .progress-bar-fill {
+    height: 100%;
+    background: #3A7D44;
+    transition: width 0.4s ease;
+  }
+
+  /* ─── SCREENS ────────────────────────────────────────────── */
+  .screen {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+    animation: fadeIn 0.25s ease;
+  }
+  .screen.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .screen-body {
+    flex: 1;
+    padding: 32px 24px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+  .q-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .q-subtitle {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #2D4A3E;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  /* ─── OPTION TILES ───────────────────────────────────────── */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid #D8DDD5;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .option:hover { border-color: #3A7D44; background: #F0F7F1; }
+  .option.selected { background: #D4EDCE; border-color: #3A7D44; }
+
+  /* centered single-select tiles (no icon/checkbox) */
+  .option.center { justify-content: center; }
+  .option.center .option-label { text-align: center; }
+
+  .option-icon-wrap {
+    width: 40px; height: 40px;
+    background: #D4EDCE;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    transition: background 0.15s;
+  }
+  .option.selected .option-icon-wrap { background: #b8dfc0; }
+
+  .option-label {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+  }
+  .option.selected .option-label { color: #2D4A3E; }
+
+  /* checkbox */
+  .checkbox {
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    border: 2px solid #D8DDD5;
+    background: #ffffff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+  .option.selected .checkbox { background: #3A7D44; border-color: #3A7D44; }
+  .checkbox svg { width: 12px; height: 12px; color: #fff; opacity: 0; transition: opacity 0.15s; }
+  .option.selected .checkbox svg { opacity: 1; }
+
+  /* ─── GENDER TILES (S1) ──────────────────────────────────── */
+  .gender-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .gender-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 28px 16px;
+    border: 1.5px solid #D8DDD5;
+    border-radius: 16px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .gender-tile:hover { border-color: #3A7D44; background: #F0F7F1; }
+  .gender-tile.selected { background: #D4EDCE; border-color: #3A7D44; }
+  .gender-tile .g-icon { font-size: 40px; }
+  .gender-tile .g-label { font-size: 17px; font-weight: 800; color: #111111; }
+
+  /* ─── SPLASH SCREEN (S1) ──────────────────────────────────── */
+  .splash-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #2D4A3E 0%, #1e3329 50%, #111 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .splash-image-placeholder {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #2D4A3E 0%, #3A7D44 60%, #1e3329 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 60px;
+    letter-spacing: 8px;
+  }
+  .splash-hook {
+    font-size: 22px;
+    font-weight: 900;
+    color: #111111;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .splash-hook span { color: #2D4A3E; }
+  .splash-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+  .splash-prompt {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #2D4A3E;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* ─── INFO SLIDES ────────────────────────────────────────── */
+  .info-card {
+    background: #F7FBF7;
+    border: 1.5px solid #D4EDCE;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+  }
+  .info-card .info-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .stat-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #D4EDCE;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .x { font-size: 16px; flex-shrink: 0; }
+
+  .highlight-box {
+    background: #2D4A3E;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .highlight-box span { color: #8FD4A0; }
+
+  .info-image-placeholder {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #111 0%, #2D4A3E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    flex-shrink: 0;
+  }
+
+  .truth-block {
+    background: #F7FBF7;
+    border: 1.5px solid #D4EDCE;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #222;
+    line-height: 1.7;
+    font-weight: 600;
+  }
+  .truth-block p { margin-bottom: 12px; }
+  .truth-block p:last-child { margin-bottom: 0; }
+  .truth-block strong { color: #2D4A3E; font-weight: 800; }
+
+  /* ─── CONTINUE BUTTON ────────────────────────────────────── */
+  .continue-btn {
+    width: 100%;
+    background: #2D4A3E;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+    letter-spacing: 0.3px;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+  .continue-btn:hover { background: #1e3329; }
+  .continue-btn svg { width: 20px; height: 20px; }
+
+  .footer-pad { padding: 0 24px 32px; }
+
+  /* ─── SLIDER (S13) ───────────────────────────────────────── */
+  .slider-wrap { padding: 20px 0 32px; }
+  .slider-value-display {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 900;
+    color: #2D4A3E;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .slider-value-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3A7D44;
+    margin-bottom: 24px;
+    min-height: 20px;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #3A7D44 0%, #3A7D44 50%, #D8DDD5 50%, #D8DDD5 100%);
+    outline: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2D4A3E;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(45,74,62,0.4);
+    border: 3px solid #fff;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2D4A3E;
+    cursor: pointer;
+    border: 3px solid #fff;
+  }
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+  }
+
+  .slider-cta-btn {
+    margin-top: 32px;
+  }
+
+  /* ─── LOADING SCREEN (S14) ───────────────────────────────── */
+  .loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 24px 32px;
+    flex: 1;
+  }
+  .loading-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #111;
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.3;
+  }
+
+  /* spinner ring */
+  .spinner-wrap { position: relative; width: 120px; height: 120px; margin-bottom: 32px; }
+  .spinner-ring {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 6px solid #D4EDCE;
+    border-top-color: #3A7D44;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner-pct {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: #2D4A3E;
+  }
+
+  .analysis-steps { width: 100%; margin-bottom: 32px; }
+  .analysis-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #999;
+    transition: color 0.4s;
+  }
+  .analysis-step:last-child { border-bottom: none; }
+  .analysis-step.done { color: #2D4A3E; }
+  .step-icon { font-size: 18px; width: 24px; text-align: center; }
+
+  .social-proof-box {
+    background: #F7FBF7;
+    border: 1.5px solid #D4EDCE;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+  }
+  .social-proof-box .sp-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #2D4A3E;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .social-proof-box .sp-stat {
+    font-size: 28px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 4px;
+  }
+  .social-proof-box .sp-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  .social-proof-box .sp-rating {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2D4A3E;
+  }
+
+  /* scrollable body on long screens */
+  .screen-body.scrollable { overflow-y: auto; }
+</style>
+<div class="quiz-shell">
+
+  <!-- HEADER -->
+  <div class="quiz-header">
+    <button class="back-btn" id="backBtn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="progress-label" id="progressLabel">1 of 14</div>
+  </div>
+  <div class="progress-bar"><div class="progress-bar-fill" id="progressFill" style="width:7.14%"></div></div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 1 — SPLASH + GENDER -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen active" id="screen-1">
+    <div class="screen-body scrollable">
+      <!-- Replace with <img src="your-image.jpg"> -->
+      <div class="splash-image-placeholder">🚬💨🚭</div>
+
+      <p class="splash-hook"><span>93% of smokers fail to QUIT</span> because they're focusing on the wrong thing.</p>
+      <p class="splash-sub">Take this 60-second quiz to find your addiction type and learn how you can actually quit for good.</p>
+
+      <p class="splash-prompt">Select your gender to start the quiz:</p>
+      <div class="gender-grid">
+        <div class="gender-tile" onclick="selectGender(this, 'Male')">
+          <span class="g-icon">🚹</span>
+          <span class="g-label">Male</span>
+        </div>
+        <div class="gender-tile" onclick="selectGender(this, 'Female')">
+          <span class="g-icon">🚺</span>
+          <span class="g-label">Female</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 2 — AGE RANGE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-2">
+    <div class="screen-body">
+      <h1 class="q-title">What's your age range?</h1>
+      <p class="q-subtitle">Select one</p>
+      <div class="options">
+        <div class="option center" onclick="selectSingle(this, 'age', '25–34')"><span class="option-label">25–34</span></div>
+        <div class="option center" onclick="selectSingle(this, 'age', '35–44')"><span class="option-label">35–44</span></div>
+        <div class="option center" onclick="selectSingle(this, 'age', '45–54')"><span class="option-label">45–54</span></div>
+        <div class="option center" onclick="selectSingle(this, 'age', '55–64')"><span class="option-label">55–64</span></div>
+        <div class="option center" onclick="selectSingle(this, 'age', '65+')"><span class="option-label">65+</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 3 — GOALS / DREAM OUTCOME (multi-select) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-3">
+    <div class="screen-body scrollable">
+      <h1 class="q-title">What motivates you most to quit smoking?</h1>
+      <p class="q-subtitle">Select all that apply</p>
+      <div class="options">
+        <div class="option" onclick="toggleMulti(this, 'goals', 'breathe')">
+          <div class="option-icon-wrap">🫁</div>
+          <span class="option-label">Breathe better and stop coughing</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'family')">
+          <div class="option-icon-wrap">👨‍👩‍👧</div>
+          <span class="option-label">Be around longer for my family</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'money')">
+          <div class="option-icon-wrap">💰</div>
+          <span class="option-label">Stop wasting money on cigarettes</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'freedom')">
+          <div class="option-icon-wrap">🔓</div>
+          <span class="option-label">Break free from addiction</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'smell')">
+          <div class="option-icon-wrap">🌬️</div>
+          <span class="option-label">Stop smelling like smoke</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'fitness')">
+          <div class="option-icon-wrap">🏃</div>
+          <span class="option-label">Get my energy and fitness back</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'goals', 'prove')">
+          <div class="option-icon-wrap">🧠</div>
+          <span class="option-label">Prove to myself I can actually do this</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="requireMultiThenAdvance('goals', 4)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 4 — SMOKING HISTORY -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-4">
+    <div class="screen-body">
+      <h1 class="q-title">How long have you been smoking?</h1>
+      <p class="q-subtitle">Select one</p>
+      <div class="options">
+        <div class="option center" onclick="selectSingle(this, 'smokingHistory', 'Less than 5 years')"><span class="option-label">Less than 5 years</span></div>
+        <div class="option center" onclick="selectSingle(this, 'smokingHistory', '5–10 years')"><span class="option-label">5–10 years</span></div>
+        <div class="option center" onclick="selectSingle(this, 'smokingHistory', '10–20 years')"><span class="option-label">10–20 years</span></div>
+        <div class="option center" onclick="selectSingle(this, 'smokingHistory', '20+ years')"><span class="option-label">20+ years</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 5 — QUIT ATTEMPTS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-5">
+    <div class="screen-body">
+      <h1 class="q-title">How many times have you tried to quit?</h1>
+      <p class="q-subtitle">Select one</p>
+      <div class="options">
+        <div class="option center" onclick="selectSingle(this, 'quitAttempts', 'Never seriously tried')"><span class="option-label">Never seriously tried</span></div>
+        <div class="option center" onclick="selectSingle(this, 'quitAttempts', '1–2 times')"><span class="option-label">1–2 times</span></div>
+        <div class="option center" onclick="selectSingle(this, 'quitAttempts', '3–5 times')"><span class="option-label">3–5 times</span></div>
+        <div class="option center" onclick="selectSingle(this, 'quitAttempts', '6–10 times')"><span class="option-label">6–10 times</span></div>
+        <div class="option center" onclick="selectSingle(this, 'quitAttempts', "I've lost count")"><span class="option-label">I've lost count</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 6 — METHODS TRIED (multi-select) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-6">
+    <div class="screen-body scrollable">
+      <h1 class="q-title">Which of these have you tried?</h1>
+      <p class="q-subtitle">Select all that apply</p>
+      <div class="options">
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'patches')">
+          <div class="option-icon-wrap">🩹</div>
+          <span class="option-label">Nicotine patches</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'gum')">
+          <div class="option-icon-wrap">🫧</div>
+          <span class="option-label">Nicotine gum</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'chantix')">
+          <div class="option-icon-wrap">💊</div>
+          <span class="option-label">Chantix / Wellbutrin</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'vaping')">
+          <div class="option-icon-wrap">🌬️</div>
+          <span class="option-label">Vaping / e-cigarettes</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'willpower')">
+          <div class="option-icon-wrap">💪</div>
+          <span class="option-label">Cold turkey / willpower</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'allencarr')">
+          <div class="option-icon-wrap">📖</div>
+          <span class="option-label">Allen Carr's Easy Way</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'methodsTried', 'none')">
+          <div class="option-icon-wrap">❌</div>
+          <span class="option-label">None of the above</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="requireMultiThenAdvance('methodsTried', 7)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 7 — DISQUALIFICATION INTERSTITIAL (dynamic) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-7">
+    <div class="screen-body scrollable">
+      <h1 class="q-title" style="text-align:left;margin-bottom:20px;">Here's what the quit-smoking industry doesn't advertise:</h1>
+      <div class="info-card" id="screen7Stats">
+        <!-- populated dynamically -->
+      </div>
+      <div class="highlight-box">
+        Thankfully there's a new quitting method with a <span>73% success rate</span> that thousands are switching to.
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="goTo(8)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 8 — TRIGGER SITUATIONS (multi-select) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-8">
+    <div class="screen-body scrollable">
+      <h1 class="q-title">When do you crave a cigarette the MOST?</h1>
+      <p class="q-subtitle">Select all that apply</p>
+      <div class="options">
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'coffee')">
+          <div class="option-icon-wrap">☕</div>
+          <span class="option-label">With morning coffee</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'stress')">
+          <div class="option-icon-wrap">😤</div>
+          <span class="option-label">When I'm stressed</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'meal')">
+          <div class="option-icon-wrap">🍽️</div>
+          <span class="option-label">After a meal</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'driving')">
+          <div class="option-icon-wrap">🚗</div>
+          <span class="option-label">While driving</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'social')">
+          <div class="option-icon-wrap">🍺</div>
+          <span class="option-label">When drinking socially</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'breaks')">
+          <div class="option-icon-wrap">⏰</div>
+          <span class="option-label">On work breaks</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'triggers', 'bored')">
+          <div class="option-icon-wrap">📱</div>
+          <span class="option-label">When I'm bored / need something to do with my hands</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="requireMultiThenAdvance('triggers', 9)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 9 — HARDEST PART -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-9">
+    <div class="screen-body">
+      <h1 class="q-title">After you quit (or tried to quit), what was the HARDEST part?</h1>
+      <p class="q-subtitle">Select one</p>
+      <div class="options">
+        <div class="option" onclick="selectSingle(this, 'hardestPart', 'hands')">
+          <div class="option-icon-wrap">🤲</div>
+          <span class="option-label">Not knowing what to do with my hands</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'hardestPart', 'inhale')">
+          <div class="option-icon-wrap">😮‍💨</div>
+          <span class="option-label">Missing the inhale/exhale</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'hardestPart', 'breaks')">
+          <div class="option-icon-wrap">🚪</div>
+          <span class="option-label">Losing my "excuse" for breaks</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'hardestPart', 'anxiety')">
+          <div class="option-icon-wrap">😰</div>
+          <span class="option-label">The anxiety without my ritual</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'hardestPart', 'withdrawal')">
+          <div class="option-icon-wrap">💊</div>
+          <span class="option-label">The nicotine withdrawal symptoms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 10 — THE REFRAME INTERSTITIAL -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-10">
+    <div class="screen-body scrollable">
+      <!-- Replace with <img src="your-image.jpg"> -->
+      <div class="info-image-placeholder">🧠💭</div>
+      <h1 class="q-title" style="text-align:left;margin-bottom:20px;">The Truth About Cigarette Addiction No One Told You:</h1>
+      <div class="truth-block">
+        <p>Nicotine leaves your body in <strong>72 hours.</strong></p>
+        <p>But you still crave cigarettes 3 weeks later.</p>
+        <p>Because you're not craving just the nicotine.</p>
+        <p>You're craving the <strong>RITUAL:</strong></p>
+        <p>The inhale. The exhale. The hand-to-mouth motion. The 5-minute break that takes your stress away.</p>
+        <p><strong>Nothing you've tried has replaced that ritual. Until now.</strong></p>
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="goTo(11)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 11 — LIFE IMPACT (multi-select) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-11">
+    <div class="screen-body scrollable">
+      <h1 class="q-title">How has smoking affected your life?</h1>
+      <p class="q-subtitle">Select all that apply</p>
+      <div class="options">
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'winded')">
+          <div class="option-icon-wrap">😮‍💨</div>
+          <span class="option-label">I get winded doing basic things (stairs, walking, exercise)</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'cough')">
+          <div class="option-icon-wrap">🫁</div>
+          <span class="option-label">I have a persistent cough or chest tightness</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'healthscare')">
+          <div class="option-icon-wrap">🏥</div>
+          <span class="option-label">I've had a health scare (diagnosis, ER visit, surgery)</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'kids')">
+          <div class="option-icon-wrap">👶</div>
+          <span class="option-label">My kids or grandkids worry about me</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'partner')">
+          <div class="option-icon-wrap">💑</div>
+          <span class="option-label">My partner or family have asked me to quit</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'hiding')">
+          <div class="option-icon-wrap">🙈</div>
+          <span class="option-label">I hide my smoking from people I care about</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'control')">
+          <div class="option-icon-wrap">😔</div>
+          <span class="option-label">I feel like cigarettes control my life</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="option" onclick="toggleMulti(this, 'lifeImpact', 'dontthink')">
+          <div class="option-icon-wrap">🤷</div>
+          <span class="option-label">I try not to think about it</span>
+          <div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-pad">
+      <button class="continue-btn" onclick="requireMultiThenAdvance('lifeImpact', 12)">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 12 — MONEY REALITY -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-12">
+    <div class="screen-body">
+      <h1 class="q-title">How much do you spend on cigarettes per month?</h1>
+      <p class="q-subtitle">Select one</p>
+      <div class="options">
+        <div class="option" onclick="selectSingle(this, 'monthlySpend', 150)">
+          <div class="option-icon-wrap">💵</div>
+          <span class="option-label">$100–200</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'monthlySpend', 250)">
+          <div class="option-icon-wrap">💵</div>
+          <span class="option-label">$200–300</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'monthlySpend', 350)">
+          <div class="option-icon-wrap">💵</div>
+          <span class="option-label">$300–400</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'monthlySpend', 450)">
+          <div class="option-icon-wrap">💰</div>
+          <span class="option-label">$400+</span>
+        </div>
+        <div class="option" onclick="selectSingle(this, 'monthlySpend', 0)">
+          <div class="option-icon-wrap">🤷</div>
+          <span class="option-label">I don't want to think about it</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 13 — MOTIVATION SLIDER -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-13">
+    <div class="screen-body">
+      <h1 class="q-title">How motivated are you to quit smoking for good?</h1>
+      <p class="q-subtitle">Drag the slider</p>
+
+      <div class="slider-wrap">
+        <div class="slider-value-display" id="sliderValue">5</div>
+        <div class="slider-value-label" id="sliderLabel">Ready to quit</div>
+        <input type="range" min="1" max="10" value="5" id="motivationSlider" oninput="updateSlider(this.value)">
+        <div class="slider-labels">
+          <span>1 — Just curious</span>
+          <span>10 — I want to quit NOW</span>
+        </div>
+      </div>
+
+      <button class="continue-btn slider-cta-btn" onclick="saveSliderAndAdvance()">
+        Continue
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 14 — LOADING / ANALYSIS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-14">
+    <div class="loading-screen">
+      <h2 class="loading-title">Building your personalized<br>Ritual Replacement Plan...</h2>
+
+      <div class="spinner-wrap">
+        <div class="spinner-ring" id="spinnerRing"></div>
+        <div class="spinner-pct" id="spinnerPct">0%</div>
+      </div>
+
+      <div class="analysis-steps">
+        <div class="analysis-step" id="step1">
+          <span class="step-icon">🔍</span>
+          Analyzing your smoking pattern...
+        </div>
+        <div class="analysis-step" id="step2">
+          <span class="step-icon">📊</span>
+          Calculating your health risk level...
+        </div>
+        <div class="analysis-step" id="step3">
+          <span class="step-icon">🧬</span>
+          Identifying your ritual addiction type...
+        </div>
+        <div class="analysis-step" id="step4">
+          <span class="step-icon">📋</span>
+          Building your Ritual Replacement Plan...
+        </div>
+      </div>
+
+      <div class="social-proof-box">
+        <div class="sp-eyebrow">You're not alone</div>
+        <div class="sp-stat">32,000+</div>
+        <div class="sp-sub">smokers have already quit with the<br>Ritual Replacement Method</div>
+        <div class="sp-rating">⭐ 4.7/5 average rating &nbsp;|&nbsp; 73% success rate</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /quiz-shell -->
+
+<script>
+  // ─── STATE ───────────────────────────────────────────────────
+  const answers = {
+    gender: null,
+    age: null,
+    goals: [],
+    smokingHistory: null,
+    quitAttempts: null,
+    methodsTried: [],
+    triggers: [],
+    hardestPart: null,
+    lifeImpact: [],
+    monthlySpend: null,
+    motivation: 5
+  };
+
+  let currentScreen = 1;
+  const TOTAL = 14;
+
+  // ─── NAVIGATION ─────────────────────────────────────────────
+  function goTo(n) {
+    document.getElementById('screen-' + currentScreen).classList.remove('active');
+    currentScreen = n;
+    const next = document.getElementById('screen-' + n);
+    next.classList.add('active');
+    updateHeader();
+    next.querySelector('.screen-body')?.scrollTo(0, 0);
+    if (n === 7) populateScreen7();
+    if (n === 14) startLoading();
+  }
+
+  function goBack() {
+    if (currentScreen <= 1) return;
+    goTo(currentScreen - 1);
+  }
+
+  function updateHeader() {
+    const lbl = document.getElementById('progressLabel');
+    const fill = document.getElementById('progressFill');
+    const back = document.getElementById('backBtn');
+    lbl.textContent = currentScreen + ' of ' + TOTAL;
+    fill.style.width = ((currentScreen / TOTAL) * 100) + '%';
+    back.disabled = (currentScreen === 1 || currentScreen === 14);
+  }
+
+  // ─── SINGLE SELECT (auto-advances) ──────────────────────────
+  function selectSingle(el, key, value) {
+    const siblings = el.closest('.options').querySelectorAll('.option');
+    siblings.forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[key] = value;
+    setTimeout(() => goTo(currentScreen + 1), 320);
+  }
+
+  // ─── GENDER SELECT (auto-advances) ───────────────────────────
+  function selectGender(el, value) {
+    document.querySelectorAll('.gender-tile').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    answers.gender = value;
+    setTimeout(() => goTo(2), 320);
+  }
+
+  // ─── MULTI SELECT ────────────────────────────────────────────
+  function toggleMulti(el, key, value) {
+    el.classList.toggle('selected');
+    const arr = answers[key];
+    const idx = arr.indexOf(value);
+    if (idx === -1) arr.push(value);
+    else arr.splice(idx, 1);
+  }
+
+  function requireMultiThenAdvance(key, nextScreen) {
+    if (answers[key].length === 0) {
+      shakeScreen(); return;
+    }
+    goTo(nextScreen);
+  }
+
+  function shakeScreen() {
+    const body = document.getElementById('screen-' + currentScreen).querySelector('.screen-body');
+    body.style.transition = 'transform 0.08s ease';
+    const steps = [6, -6, 4, -4, 0];
+    steps.forEach((x, i) => {
+      setTimeout(() => { body.style.transform = `translateX(${x}px)`; }, i * 60);
+    });
+    setTimeout(() => { body.style.transform = ''; body.style.transition = ''; }, steps.length * 60 + 60);
+  }
+
+  // ─── SLIDER ──────────────────────────────────────────────────
+  const sliderLabels = {
+    1: 'Just curious', 2: 'Starting to think about it', 3: 'Thinking about it',
+    4: 'Getting serious', 5: 'Ready to quit', 6: 'Pretty motivated',
+    7: 'Very motivated', 8: 'Highly committed', 9: 'Almost ready to start',
+    10: 'I want to quit NOW'
+  };
+
+  function updateSlider(val) {
+    document.getElementById('sliderValue').textContent = val;
+    document.getElementById('sliderLabel').textContent = sliderLabels[val] || '';
+    const pct = ((val - 1) / 9) * 100;
+    const slider = document.getElementById('motivationSlider');
+    slider.style.background = `linear-gradient(to right, #3A7D44 0%, #3A7D44 ${pct}%, #D8DDD5 ${pct}%, #D8DDD5 100%)`;
+  }
+
+  function saveSliderAndAdvance() {
+    answers.motivation = parseInt(document.getElementById('motivationSlider').value);
+    goTo(14);
+  }
+
+  // ─── SCREEN 7 DYNAMIC POPULATION ────────────────────────────
+  const methodStats = {
+    patches:   { label: 'Nicotine patches', rate: '7%' },
+    gum:       { label: 'Nicotine gum', rate: '6%' },
+    chantix:   { label: 'Chantix / Wellbutrin', rate: '18%' },
+    vaping:    { label: 'Vaping / e-cigarettes', rate: '12%' },
+    willpower: { label: 'Cold turkey / willpower', rate: '5%' },
+    allencarr: { label: "Allen Carr's Easy Way", rate: '15%' },
+  };
+
+  function populateScreen7() {
+    const container = document.getElementById('screen7Stats');
+    const tried = answers.methodsTried.filter(m => m !== 'none');
+    let html = '';
+    if (tried.length === 0) {
+      // They picked "none" — show all stats
+      Object.values(methodStats).forEach(m => {
+        html += `<div class="stat-row"><span class="x">❌</span><span>${m.label} — <strong>${m.rate} success rate</strong></span></div>`;
+      });
+    } else {
+      tried.forEach(key => {
+        const m = methodStats[key];
+        if (m) html += `<div class="stat-row"><span class="x">❌</span><span>${m.label} — <strong>${m.rate} success rate</strong></span></div>`;
+      });
+    }
+    html += `<div class="stat-row" style="border-top:2px solid #D4EDCE;margin-top:4px;padding-top:14px;color:#2D4A3E;font-weight:700;">These methods all make the same mistake. They don't solve the actual <strong>ROOT CAUSE</strong> of the addiction.</div>`;
+    container.innerHTML = html;
+  }
+
+  // ─── LOADING ANIMATION ───────────────────────────────────────
+  function startLoading() {
+    const steps = ['step1','step2','step3','step4'];
+    const pctEl = document.getElementById('spinnerPct');
+    let pct = 0;
+
+    const pctInterval = setInterval(() => {
+      if (pct >= 100) { clearInterval(pctInterval); return; }
+      pct = Math.min(pct + 1, 100);
+      pctEl.textContent = pct + '%';
+    }, 55);
+
+    steps.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).classList.add('done');
+      }, (i + 1) * 1400);
+    });
+
+    // Auto-advance to results after ~6s
+    setTimeout(() => {
+      // Replace with: window.location.href = '/results?data=' + encodeURIComponent(JSON.stringify(answers));
+      console.log('Quiz complete! Answers:', answers);
+      alert('Quiz complete! In production, this redirects to your results page.\n\nSee console for captured answers.');
+    }, 6200);
+  }
+
+  // ─── INIT ────────────────────────────────────────────────────
+  updateSlider(5);
+</script>
