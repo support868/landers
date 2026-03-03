@@ -122,7 +122,7 @@
 
   /* ── SCREEN 1 — SPLASH ─────────────────────────────── */
   .qs-splash-img {
-    width: 100%; height: 220px; border-radius: 16px; margin-bottom: 24px; flex-shrink: 0;
+    width: 100%; aspect-ratio: 1/1; border-radius: 16px; margin-bottom: 24px; flex-shrink: 0;
     overflow: hidden; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, #2D4A3E 0%, #3A7D44 60%, #1e3329 100%);
   }
@@ -218,7 +218,7 @@
 
   /* ── RESULTS — PRODUCT ─────────────────────────────── */
   .r-product-img {
-    width: 100%; height: 220px; border-radius: 16px; margin-bottom: 20px; flex-shrink: 0;
+    width: 100%; aspect-ratio: 1/1; border-radius: 16px; margin-bottom: 20px; flex-shrink: 0;
     overflow: hidden; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, #2D4A3E 0%, #3A7D44 60%, #1e3329 100%); font-size: 64px;
   }
@@ -418,9 +418,7 @@
   <!-- ── SCREEN 10 — REFRAME ── -->
   <div class="qs-screen" id="qs-10">
     <div class="qs-body">
-      <div class="qs-info-img">
-        <img src="HERO.webp" alt="The Truth About Addiction" onerror="this.parentElement.innerHTML='🧠💭'">
-      </div>
+      <div class="qs-info-img">🧠💭</div>
       <h1 class="qs-title" style="text-align:left;margin-bottom:20px;">The Truth About Cigarette Addiction No One Told You:</h1>
       <div class="qs-truth-block">
         <p>Nicotine leaves your body in <strong>72 hours.</strong></p>
@@ -528,10 +526,10 @@
         </div>
         <div class="r-ba-imgs">
           <div class="r-ba-img before">
-            <img src="beforeafter.webp" alt="Before quitting smoking" onerror="this.parentElement.innerHTML='🫁'">
+            <img src="before.webp" alt="Before quitting smoking" onerror="this.parentElement.innerHTML='🫁'">
           </div>
           <div class="r-ba-img after">
-            <img src="beforeafter.webp" alt="After quitting smoking" style="object-position: right center;" onerror="this.parentElement.innerHTML='💚'">
+            <img src="after.webp" alt="After quitting smoking" onerror="this.parentElement.innerHTML='💚'">
           </div>
         </div>
       </div>
@@ -600,8 +598,8 @@
       <div class="r-goal-cards" id="rGoalCards"></div>
       <div class="r-discount-box">
         <div class="db-lock">🎁</div>
-        <div class="db-eyebrow">You've unlocked</div>
-        <div class="db-headline">A Personal Discount Code</div>
+        <div class="db-eyebrow">⚡ Flash Sale — Limited Time</div>
+        <div class="db-headline">You've Unlocked a Personal Discount</div>
         <div class="r-discount-code" id="rDiscountCode">QUIT20</div>
       </div>
       <button class="qs-btn bright" onclick="rClaim()">Claim Your Personal Discount →</button>
