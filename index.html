@@ -722,6 +722,8 @@ function qsGender(el, value) {
   document.querySelectorAll('.qs-gender-tile').forEach(t => t.classList.remove('selected'));
   el.classList.add('selected');
   ans.gender = value;
+  ga4Event('quiz_step', { screen_number: 1, screen_name: 'splash_gender', answer: value });
+  metaCustom('QuizStep', { screen_number: 1, screen_name: 'splash_gender', answer: value });
   setTimeout(() => qsGoTo(2, value), 320);
 }
 
