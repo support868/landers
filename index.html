@@ -370,7 +370,7 @@
       <div class="qs-info-card" id="qs-s7-stats"></div>
       <div class="qs-highlight-box">Thankfully there's a new quitting method with a <span>73% success rate</span> that thousands are switching to.</div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="trackQ('Q7_interstitial');qsGoTo(8)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsGoTo(8)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
   <!-- ── SCREEN 8 — TRIGGERS ── -->
@@ -420,7 +420,7 @@
         <p><strong>Nothing you've tried has replaced that ritual. Until now.</strong></p>
       </div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="trackQ('Q10_reframe');qsGoTo(11)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsGoTo(11)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
   <!-- ── SCREEN 11 — LIFE IMPACT ── -->
@@ -640,22 +640,17 @@ function metaCustom(name, params) {
 function metaStandard(name, params) {
   if (typeof fbq !== 'undefined') fbq('track', name, params || {});
 }
-function trackScreen(id, answer) {
-  const name = SCREEN_NAMES[id] || String(id);
-  const params = {
-    screen_name: name,
-    screen_number: typeof id === 'number' ? id : id,
-    answer: answer !== undefined
-      ? (Array.isArray(answer) ? answer.join(',') : String(answer))
-      : null
-  };
-  ga4Event('quiz_step', params);
-  metaCustom('QuizStep', params);
-}
+// Named event map — fires on ARRIVAL at each screen
+const Q_ARRIVAL_NAMES = {
+  1: 'Q1_gender', 2: 'Q2_age', 3: 'Q3_goals', 4: 'Q4_smoking_history',
+  5: 'Q5_quit_attempts', 6: 'Q6_methods', 7: 'Q7_interstitial',
+  8: 'Q8_triggers', 9: 'Q9_hardest_part', 10: 'Q10_reframe',
+  11: 'Q11_life_impact', 12: 'Q12_monthly_spend', 13: 'Q13_motivation'
+};
 
-// Named per-screen events — fire on click/selection
-function trackQ(eventName, answer) {
-  ga4Event(eventName, answer !== undefined ? { answer: Array.isArray(answer) ? answer.join(',') : String(answer) } : {});
+// Named per-screen events
+function trackQ(eventName) {
+  ga4Event(eventName, {});
 }
 
 // ═══════════════════════════════════════════════════════
@@ -663,14 +658,15 @@ function trackQ(eventName, answer) {
 // ═══════════════════════════════════════════════════════
 function qsGetEl(id) { return document.getElementById('qs-' + id); }
 
-function qsGoTo(n, answer) {
+function qsGoTo(n) {
   qsGetEl(qsCurrent).classList.remove('active');
   qsCurrent = n;
   const el = qsGetEl(n);
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
-  trackScreen(n, answer);
+  const eventName = Q_ARRIVAL_NAMES[n];
+  if (eventName) trackQ(eventName);
   if (n === 7)  qsPopS7();
   if (n === 14) qsStartLoading();
 }
@@ -707,27 +703,18 @@ function qsUpdateHeader() {
 // ═══════════════════════════════════════════════════════
 // INTERACTIONS
 // ═══════════════════════════════════════════════════════
-// Named event map for single-select screens
-const Q_EVENT_NAMES = {
-  2: 'Q2_age', 4: 'Q4_smoking_history', 5: 'Q5_quit_attempts',
-  9: 'Q9_hardest_part', 12: 'Q12_monthly_spend', 13: 'Q13_motivation'
-};
-
 function qsSingle(el, key, value) {
   el.closest('.qs-options').querySelectorAll('.qs-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   ans[key] = value;
-  const eventName = Q_EVENT_NAMES[qsCurrent];
-  if (eventName) trackQ(eventName, value);
-  setTimeout(() => qsGoTo(qsCurrent + 1, value), 320);
+  setTimeout(() => qsGoTo(qsCurrent + 1), 320);
 }
 
 function qsGender(el, value) {
   document.querySelectorAll('.qs-gender-tile').forEach(t => t.classList.remove('selected'));
   el.classList.add('selected');
   ans.gender = value;
-  trackQ('Q1_gender', value);
-  setTimeout(() => qsGoTo(2, value), 320);
+  setTimeout(() => qsGoTo(2), 320);
 }
 
 function qsMulti(el, key, value) {
@@ -737,16 +724,9 @@ function qsMulti(el, key, value) {
   idx === -1 ? arr.push(value) : arr.splice(idx, 1);
 }
 
-// Named event map for multi-select screens
-const Q_MULTI_NAMES = {
-  3: 'Q3_goals', 6: 'Q6_methods', 8: 'Q8_triggers', 11: 'Q11_life_impact'
-};
-
 function qsRequireMulti(key, next) {
   if (ans[key].length === 0) { qsShake(); return; }
-  const eventName = Q_MULTI_NAMES[qsCurrent];
-  if (eventName) trackQ(eventName, ans[key]);
-  qsGoTo(next, ans[key]);
+  qsGoTo(next);
 }
 
 function qsShake() {
@@ -794,7 +774,6 @@ function qsStartLoading() {
     qsCurrent = 'r1';
     qsGetEl('r1').classList.add('active');
     qsUpdateHeader();
-    trackScreen('r1');
     trackQ('R1_diagnosis');
     rPopulateDiagnosis();
     rPopulateReviews();
@@ -815,7 +794,6 @@ function rGoTo(n) {
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
-  trackScreen('r' + n);
   const rNames = { 2: 'R2_solution', 3: 'R3_reviews', 4: 'R4_cta' };
   if (rNames[n]) trackQ(rNames[n]);
   if (n === 4) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
