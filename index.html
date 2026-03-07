@@ -32,6 +32,15 @@
     src="https://www.facebook.com/tr?id=2338204330017730&ev=PageView&noscript=1"/>
 </noscript>
 
+<!-- ─── MICROSOFT CLARITY ────────────────────────────────── -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vs2usyur8r");
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -640,6 +649,19 @@ function metaCustom(name, params) {
 function metaStandard(name, params) {
   if (typeof fbq !== 'undefined') fbq('track', name, params || {});
 }
+// URL map for each screen
+const Q_URL_NAMES = {
+  1: 'Q1_gender', 2: 'Q2_age', 3: 'Q3_goals', 4: 'Q4_smoking_history',
+  5: 'Q5_quit_attempts', 6: 'Q6_methods', 7: 'Q7_interstitial',
+  8: 'Q8_triggers', 9: 'Q9_hardest_part', 10: 'Q10_reframe',
+  11: 'Q11_life_impact', 12: 'Q12_monthly_spend', 13: 'Q13_motivation',
+  14: 'Q14_loading'
+};
+
+function updateURL(step) {
+  history.replaceState(null, '', '?step=' + step);
+}
+
 // Named event map — fires on ARRIVAL at each screen
 const Q_ARRIVAL_NAMES = {
   1: 'Q1_gender', 2: 'Q2_age', 3: 'Q3_goals', 4: 'Q4_smoking_history',
@@ -665,6 +687,8 @@ function qsGoTo(n) {
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
+  const urlName = Q_URL_NAMES[n];
+  if (urlName) updateURL(urlName);
   const eventName = Q_ARRIVAL_NAMES[n];
   if (eventName) trackQ(eventName);
   if (n === 7)  qsPopS7();
@@ -774,6 +798,7 @@ function qsStartLoading() {
     qsCurrent = 'r1';
     qsGetEl('r1').classList.add('active');
     qsUpdateHeader();
+    updateURL('R1_diagnosis');
     trackQ('R1_diagnosis');
     rPopulateDiagnosis();
     rPopulateReviews();
@@ -794,6 +819,7 @@ function rGoTo(n) {
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
+  updateURL('R' + n + '_' + ['','diagnosis','solution','reviews','cta'][n]);
   const rNames = { 2: 'R2_solution', 3: 'R3_reviews', 4: 'R4_cta' };
   if (rNames[n]) trackQ(rNames[n]);
   if (n === 4) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
