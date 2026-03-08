@@ -491,7 +491,7 @@
   <!-- ── SCREEN 14 — LOADING ── -->
   <div class="qs-screen" id="qs-14">
     <div class="qs-loading">
-      <h2 class="qs-loading-title">Building your personalized<br>Ritual Replacement Plan...</h2>
+      <h2 class="qs-loading-title">Building your personalized quitting plan...</h2>
       <div class="qs-spinner-wrap">
         <div class="qs-spinner"></div>
         <div class="qs-spinner-pct" id="qsSpinPct">0%</div>
@@ -519,10 +519,10 @@
       <p class="qs-eyebrow">Your Assessment</p>
       <h1 class="qs-title">Your Smoking Diagnosis</h1>
       <div class="r-diag-grid">
-        <div class="r-diag-card"><div class="d-lbl">Health Risk</div><div class="d-val" id="r-healthRisk">⚠️ Serious</div></div>
+        <div class="r-diag-card"><div class="d-lbl">Health Risk</div><div class="d-val v-serious">⚠️ Serious</div></div>
         <div class="r-diag-card"><div class="d-lbl">Addiction Type</div><div class="d-val v-ritual" id="r-addType">🔁 Ritual</div></div>
         <div class="r-diag-card"><div class="d-lbl">Yearly Cost</div><div class="d-val v-cost" id="r-yearlyCost">$3,000/yr</div></div>
-        <div class="r-diag-card"><div class="d-lbl">Motivation</div><div class="d-val" id="r-motivation">Very Motivated</div></div>
+        <div class="r-diag-card"><div class="d-lbl">Quitting Motivation</div><div class="d-val v-green">🔥 Very High</div></div>
       </div>
 
       <!-- BEFORE / AFTER IMAGE -->
@@ -607,7 +607,7 @@
         <div class="db-lock">⚡</div>
         <div class="db-eyebrow">Flash Sale — Limited Time Only</div>
         <div class="db-headline">You've completed the quiz — so we're giving you 50% OFF to make quitting as easy as possible.</div>
-        <div style="font-size:13px;font-weight:700;color:#8FD4A0;margin-bottom:12px;">Use code at checkout:</div>
+        <div style="font-size:13px;font-weight:700;color:#8FD4A0;margin-bottom:12px;letter-spacing:1.5px;">✓ CODE AUTOAPPLIED</div>
         <div class="r-discount-code">QUIT50</div>
       </div>
       <button class="qs-btn bright" onclick="rClaim()">Claim 50% Off Now →</button>
@@ -774,7 +774,7 @@ function qsPopS7() {
   const tried = ans.methodsTried.filter(m => m !== 'none');
   const keys = tried.length ? tried : Object.keys(qsMethodStats);
   let html = keys.map(k => { const m=qsMethodStats[k]; if(!m) return ''; return `<div class="qs-stat-row"><span>❌</span><span>${m.label} — <strong>${m.rate} success rate</strong></span></div>`; }).join('');
-  html += `<div class="qs-stat-row" style="border-top:2px solid #D4EDCE;margin-top:4px;padding-top:14px;color:#2D4A3E;font-weight:700;">These methods all make the same mistake. They don't solve the actual <strong>ROOT CAUSE</strong> of the addiction.</div>`;
+  html += `<div class="qs-stat-row" style="border-top:2px solid #D4EDCE;margin-top:4px;padding-top:14px;color:#2D4A3E;font-weight:700;">These methods all make the same mistake. They don't solve the actual root cause of the addiction.</div>`;
   document.getElementById('qs-s7-stats').innerHTML = html;
 }
 
@@ -866,11 +866,8 @@ function rBenefitPct() {
   return Math.min(92,Math.max(65,60+s*3));
 }
 function rPopulateDiagnosis() {
-  const risk=rHealthRisk(), mot=rMotivation();
-  const rEl=document.getElementById('r-healthRisk'); rEl.textContent=risk.label; rEl.className='d-val '+risk.cls;
-  document.getElementById('r-addType').textContent=rAddType();
-  const cEl=document.getElementById('r-yearlyCost'); cEl.textContent=rYearlyCost(); cEl.className='d-val v-cost';
-  const mEl=document.getElementById('r-motivation'); mEl.textContent=mot.label; mEl.className='d-val '+mot.cls;
+  document.getElementById('r-addType').textContent = rAddType();
+  const cEl = document.getElementById('r-yearlyCost'); cEl.textContent = rYearlyCost(); cEl.className = 'd-val v-cost';
 }
 function rAnimateBenefit() {
   const pct=rBenefitPct();
@@ -937,7 +934,7 @@ function rClaim() {
   ga4Event('cta_click', { discount_code: code, destination: 'pdp' });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
-  window.location.href = 'https://nordicgoods.co/pages/herbal-diffuser?utm_source=quiz&utm_medium=funnel&utm_campaign=quit_smoking&gender=' + encodeURIComponent(ans.gender||'') + '&motivation=' + ans.motivation + '&discount=' + code;
+  window.location.href = 'https://nordicgoods.co/pages/herbal-air-diffuser?utm_source=quiz&utm_medium=funnel&utm_campaign=quit_smoking&gender=' + encodeURIComponent(ans.gender||'') + '&motivation=' + ans.motivation;
 }
 
 // ═══════════════════════════════════════════════════════
