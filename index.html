@@ -604,12 +604,13 @@
       <h1 class="qs-title" id="r4Headline">Your plan is ready.</h1>
       <div class="r-goal-cards" id="rGoalCards"></div>
       <div class="r-discount-box">
-        <div class="db-lock">🎁</div>
-        <div class="db-eyebrow">⚡ Flash Sale — Limited Time</div>
-        <div class="db-headline">You've Unlocked a Personal Discount</div>
-        <div class="r-discount-code" id="rDiscountCode">QUIT20</div>
+        <div class="db-lock">⚡</div>
+        <div class="db-eyebrow">Flash Sale — Limited Time Only</div>
+        <div class="db-headline">You've completed the quiz — so we're giving you 50% OFF to make quitting as easy as possible.</div>
+        <div style="font-size:13px;font-weight:700;color:#8FD4A0;margin-bottom:12px;">Use code at checkout:</div>
+        <div class="r-discount-code">QUIT50</div>
       </div>
-      <button class="qs-btn bright" onclick="rClaim()">Claim Your Personal Discount →</button>
+      <button class="qs-btn bright" onclick="rClaim()">Claim 50% Off Now →</button>
       <div class="r-trust-row">
         <div class="r-trust-item">⭐ 4.7/5</div>
         <div class="r-trust-item">·</div>
@@ -811,7 +812,6 @@ function qsStartLoading() {
     rPopulateReviews();
     rPopulateGoalCards();
     rPopR4Headline();
-    document.getElementById('rDiscountCode').textContent = rGenCode();
     setTimeout(rAnimateBenefit, 400);
   }, 6000);
 }
@@ -931,15 +931,8 @@ function rPopR4Headline() {
   const first=(ans.goals||[]).find(g=>rGoalData[g]);
   if(first){const d=rGoalData[first],h=typeof d.headline==='function'?d.headline():d.headline;document.getElementById('r4Headline').textContent=h;}
 }
-function rGenCode(){
-  const base=ans.motivation>=7?'QUIT':'SWITCH';
-  const num=ans.monthlySpend?Math.floor(ans.monthlySpend/10):20;
-  return base+Math.min(num,30);
-}
-
-// CTA click — fires AddToCart equivalent before redirect
 function rClaim() {
-  const code = document.getElementById('rDiscountCode').textContent;
+  const code = 'QUIT50';
   trackQ('R4_cta_click');
   ga4Event('cta_click', { discount_code: code, destination: 'pdp' });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
