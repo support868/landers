@@ -879,22 +879,33 @@ function rAnimateBenefit() {
 const rAllReviews=[
   {avatarEmoji:'👨',avatarBg:'#e8f3fb',name:'Mark',age:54,yearsSmoked:28,goals:['freedom'],impacts:['winded'],hardest:['hands'],quote:"I tried patches, gum, Chantix — nothing stuck. This was the first thing that actually gave my hands something to do. I'm 4 months smoke-free."},
   {avatarEmoji:'👩',avatarBg:'#D4EDCE',name:'Linda',age:61,yearsSmoked:35,goals:['family'],impacts:['kids'],hardest:[],quote:"I didn't think I'd ever hug my grandkids without smelling like smoke. Now I do every single day."},
-  {avatarEmoji:'👨',avatarBg:'#fef3e2',name:'Jason',age:42,yearsSmoked:18,goals:['money'],impacts:['partner'],hardest:[],quote:"I'm saving $280 a month. My wife still can't believe I actually stopped."},
-  {avatarEmoji:'👩',avatarBg:'#fde8e8',name:'Sarah',age:37,yearsSmoked:12,goals:['freedom','smell'],impacts:['hiding'],hardest:[],quote:"I used to hide in the garage to smoke. Now I don't hide anything. That freedom is everything."},
-  {avatarEmoji:'👴',avatarBg:'#e8f0fb',name:'Robert',age:58,yearsSmoked:40,goals:['breathe'],impacts:['healthscare','cough'],hardest:[],quote:"After my COPD diagnosis, my doctor told me to quit immediately. This was the only thing that worked because it gave me the ritual without the damage."},
-  {avatarEmoji:'👩',avatarBg:'#f3e8fb',name:'Diane',age:49,yearsSmoked:22,goals:['prove'],impacts:['control'],hardest:['anxiety'],quote:"I've tried quitting more times than I can count. The difference with this? I never felt like I was giving anything up."},
-  {avatarEmoji:'👨',avatarBg:'#D4EDCE',name:'Carlos',age:45,yearsSmoked:20,goals:['fitness'],impacts:['winded'],hardest:['inhale'],quote:"Three months in and I'm back at the gym. I can actually breathe again. Never thought I'd say that after 20 years."},
-  {avatarEmoji:'👩',avatarBg:'#fef3e2',name:'Tanya',age:39,yearsSmoked:15,goals:['freedom'],impacts:['control'],hardest:['anxiety','breaks'],quote:"I needed cigarettes to deal with stress. This gave me the exact same release — just without the poison. Game changer."},
+  {avatarEmoji:'👨',avatarBg:'#fef3e2',name:'Jason',age:42,yearsSmoked:18,goals:['money'],impacts:['partner'],hardest:[],triggers:[],quote:"I'm saving $280 a month. My wife still can't believe I actually stopped."},
+  {avatarEmoji:'👩',avatarBg:'#fde8e8',name:'Sarah',age:37,yearsSmoked:12,goals:['freedom','smell'],impacts:['hiding'],hardest:[],triggers:[],quote:"I used to hide in the garage to smoke. Now I don't hide anything. That freedom is everything."},
+  {avatarEmoji:'👴',avatarBg:'#e8f0fb',name:'Robert',age:58,yearsSmoked:40,goals:['breathe'],impacts:['healthscare','cough'],hardest:[],triggers:[],quote:"After my COPD diagnosis, my doctor told me to quit immediately. This was the only thing that worked because it gave me the ritual without the damage."},
+  {avatarEmoji:'👩',avatarBg:'#f3e8fb',name:'Diane',age:49,yearsSmoked:22,goals:['prove'],impacts:['control'],hardest:['anxiety'],triggers:[],quote:"I've tried quitting more times than I can count. The difference with this? I never felt like I was giving anything up."},
+  {avatarEmoji:'👨',avatarBg:'#D4EDCE',name:'Carlos',age:45,yearsSmoked:20,goals:['fitness'],impacts:['winded'],hardest:['inhale'],triggers:[],quote:"Three months in and I'm back at the gym. I can actually breathe again. Never thought I'd say that after 20 years."},
+  {avatarEmoji:'👩',avatarBg:'#fef3e2',name:'Tanya',age:39,yearsSmoked:15,goals:['freedom'],impacts:['control'],hardest:['anxiety','breaks'],triggers:[],quote:"I needed cigarettes to deal with stress. This gave me the exact same release, just without the poison. Game changer."},
+  {avatarEmoji:'👩',avatarBg:'#fde8e8',name:'Diane',age:44,yearsSmoked:19,goals:['prove'],impacts:['control'],hardest:['anxiety'],triggers:['stress'],quote:"Every time work got stressful I'd step outside for 19 years. This gave me the same release without the cigarette. Stress actually feels more manageable now."},
+  {avatarEmoji:'👨',avatarBg:'#e8f0fb',name:'Dave',age:51,yearsSmoked:24,goals:['freedom'],impacts:['hiding'],hardest:[],triggers:['coffee'],quote:"Morning coffee and a cigarette was my religion. Now I have my coffee, use this, and the ritual feels just as satisfying."},
+  {avatarEmoji:'👨',avatarBg:'#D4EDCE',name:'Mike',age:47,yearsSmoked:21,goals:['freedom'],impacts:['control'],hardest:[],triggers:['driving'],quote:"I smoked a pack a day just from commuting. Swapped it for this and within two weeks the craving disappeared on my drive."},
+  {avatarEmoji:'👩',avatarBg:'#f3e8fb',name:'Amanda',age:38,yearsSmoked:14,goals:['smell'],impacts:['hiding'],hardest:[],triggers:['social'],quote:"I only smoked socially, or so I told myself. This let me keep the social ritual without the cigarette in my hand."},
+  {avatarEmoji:'👨',avatarBg:'#fef3e2',name:'Brian',age:53,yearsSmoked:30,goals:['freedom'],impacts:['control'],hardest:['hands'],triggers:['bored'],quote:"I wasn't addicted to nicotine. I just needed something to do with my hands. This sounds stupid but that's literally all it fixed and it worked immediately."},
+  {avatarEmoji:'👩',avatarBg:'#fde8e8',name:'Rachel',age:42,yearsSmoked:16,goals:['family'],impacts:['partner','hiding'],hardest:['anxiety'],triggers:[],quote:"I was hiding my smoking from my husband for two years. This helped me stop without having to come clean. The guilt is finally gone."},
+  {avatarEmoji:'👨',avatarBg:'#e8f0fb',name:'Tom',age:56,yearsSmoked:33,goals:['prove'],impacts:['control'],hardest:['withdrawal'],triggers:[],quote:"Every time I quit cold turkey the withdrawals destroyed me by day 3. Having the ritual to fall back on made them manageable for the first time."},
+  {avatarEmoji:'👨',avatarBg:'#D4EDCE',name:'Gary',age:61,yearsSmoked:38,goals:['breathe'],impacts:['healthscare'],hardest:['inhale'],triggers:[],quote:"My doctor found a shadow on my lung scan. I tried everything in a panic. This was the first thing that worked because it didn't feel like quitting."},
+  {avatarEmoji:'👩',avatarBg:'#f3e8fb',name:'Karen',age:48,yearsSmoked:22,goals:['breathe'],impacts:['winded','dontthink'],hardest:['hands'],triggers:[],quote:"I was the type who just didn't think about it. Until I couldn't walk up a flight of stairs without stopping. This made the transition painless."},
+  {avatarEmoji:'👨',avatarBg:'#fef3e2',name:'Steve',age:45,yearsSmoked:20,goals:['money'],impacts:['control'],hardest:[],triggers:['stress'],quote:"I calculated I'd spent over $60,000 on cigarettes in my life. Knowing I'm not throwing money away anymore is almost as satisfying as the quitting itself."},
 ];
 function rScoreReview(r) {
   let s=0;
   r.goals.forEach(g=>{if((ans.goals||[]).includes(g)) s+=3;});
   r.impacts.forEach(i=>{if((ans.lifeImpact||[]).includes(i)) s+=2;});
   r.hardest.forEach(h=>{if(ans.hardestPart===h) s+=2;});
+  (r.triggers||[]).forEach(t=>{if((ans.triggers||[]).includes(t)) s+=2;});
   return s;
 }
 function rPopulateReviews() {
-  const sorted=[...rAllReviews].sort((a,b)=>rScoreReview(b)-rScoreReview(a)).slice(0,6);
+  const sorted=[...rAllReviews].sort((a,b)=>rScoreReview(b)-rScoreReview(a)).slice(0,4);
   document.getElementById('rReviewsList').innerHTML=sorted.map((r,i)=>`
     <div class="r-review-card${i===0?' featured':''}">
       <div class="r-rc-top">
