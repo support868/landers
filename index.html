@@ -130,22 +130,31 @@
   .qs-btn.bright:hover { background: #2D4A3E; }
 
   /* ── SCREEN 1 — SPLASH ─────────────────────────────── */
-  .qs-splash-img {
-    width: 100%; aspect-ratio: 1/1; border-radius: 16px; margin-bottom: 24px; flex-shrink: 0;
-    overflow: hidden; display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #2D4A3E 0%, #3A7D44 60%, #1e3329 100%);
+  .qs-splash-question {
+    font-size: 36px; font-weight: 900; color: #111; text-align: left;
+    line-height: 1.15; margin-bottom: 12px;
   }
-  .qs-splash-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .qs-hook { font-size: 22px; font-weight: 900; color: #111; text-align: center; line-height: 1.3; margin-bottom: 12px; }
-  .qs-hook span { color: #2D4A3E; }
-  .qs-hook-sub { font-size: 14px; font-weight: 600; color: #444; text-align: center; line-height: 1.5; margin-bottom: 28px; }
-  .qs-gender-prompt { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #2D4A3E; text-transform: uppercase; text-align: center; margin-bottom: 16px; }
-  .qs-gender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .qs-gender-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 28px 16px; border: 1.5px solid #D8DDD5; border-radius: 16px; cursor: pointer; background: #fff; transition: all 0.15s ease; user-select: none; }
+  .qs-splash-question span { color: #2D4A3E; }
+  .qs-splash-sub {
+    font-size: 22px; font-weight: 600; color: #444; text-align: left;
+    margin-bottom: 32px; line-height: 1.4;
+  }
+  .qs-gender-prompt { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #2D4A3E; text-transform: uppercase; text-align: left; margin-bottom: 16px; }
+  .qs-gender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  .qs-gender-tile {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; padding: 28px 16px; border: 2px solid #D8DDD5; border-radius: 16px;
+    cursor: pointer; background: #fff; transition: all 0.15s ease; user-select: none;
+  }
   .qs-gender-tile:hover { border-color: #3A7D44; background: #F0F7F1; }
   .qs-gender-tile.selected { background: #D4EDCE; border-color: #3A7D44; }
-  .qs-gender-tile .g-icon { font-size: 40px; }
-  .qs-gender-tile .g-label { font-size: 17px; font-weight: 800; color: #111; }
+  .qs-gender-tile .g-icon { font-size: 44px; }
+  .qs-gender-tile .g-label { font-size: 18px; font-weight: 900; color: #111; }
+  .qs-splash-trust {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 12px; font-weight: 700; color: #888; text-align: center;
+  }
+  .qs-splash-trust span { color: #2D4A3E; font-weight: 800; }
 
   /* ── INFO CARDS ────────────────────────────────────── */
   .qs-info-card { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 16px; padding: 24px 20px; margin-bottom: 20px; }
@@ -278,17 +287,15 @@
 
   <!-- ── SCREEN 1 — SPLASH + GENDER ── -->
   <div class="qs-screen active" id="qs-1">
-    <div class="qs-body">
-      <div class="qs-splash-img">
-        <img src="splash.webp" alt="Quit Smoking" onerror="this.parentElement.innerHTML='🚬💨🚭'">
-      </div>
-      <p class="qs-hook"><span>93% of smokers fail to QUIT</span> because they're focusing on the wrong thing.</p>
-      <p class="qs-hook-sub">Take this 60-second quiz to find your addiction type and learn how you can actually quit for good.</p>
-      <p class="qs-gender-prompt">Select your gender to start the quiz:</p>
+    <div class="qs-body" style="padding-top: 36px;">
+      <p class="qs-splash-question">Why <span>can't you quit</span><br>smoking?</p>
+      <p class="qs-splash-sub">Take the 60-second quiz to find your addiction type.</p>
+      <p class="qs-gender-prompt">Select your gender to begin</p>
       <div class="qs-gender-grid">
         <div class="qs-gender-tile" onclick="qsGender(this,'Male')"><span class="g-icon">🚹</span><span class="g-label">Male</span></div>
         <div class="qs-gender-tile" onclick="qsGender(this,'Female')"><span class="g-icon">🚺</span><span class="g-label">Female</span></div>
       </div>
+      <div class="qs-splash-trust">⭐⭐⭐⭐⭐ &nbsp;<span>32,000+</span> people already quit</div>
     </div>
   </div>
 
