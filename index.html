@@ -935,6 +935,7 @@ function rClaim() {
   const code = document.getElementById('rDiscountCode').textContent;
   trackQ('R4_cta_click');
   ga4Event('cta_click', { discount_code: code, destination: 'pdp' });
+  metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
   window.location.href = 'https://nordicgoods.co/pages/herbal-diffuser?utm_source=quiz&utm_medium=funnel&utm_campaign=quit_smoking&gender=' + encodeURIComponent(ans.gender||'') + '&motivation=' + ans.motivation + '&discount=' + code;
 }
