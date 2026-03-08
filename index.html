@@ -790,16 +790,44 @@ function qsStartLoading() {
   setTimeout(() => {
     // Fire completion events
     trackQ('Q14_loading');
-    ga4Event('quiz_complete', {
-      gender: ans.gender, age: ans.age,
-      smoking_history: ans.smokingHistory, quit_attempts: ans.quitAttempts,
-      hardest_part: ans.hardestPart, monthly_spend: ans.monthlySpend,
-      motivation: ans.motivation, goals: ans.goals.join(','),
+    const urlParams = new URLSearchParams(window.location.search);
+    const quizData = {
+      timestamp: new Date().toISOString(),
+      gender: ans.gender,
+      age: ans.age,
+      goals: ans.goals.join(','),
+      smoking_history: ans.smokingHistory,
+      quit_attempts: ans.quitAttempts,
       methods_tried: ans.methodsTried.join(','),
-      triggers: ans.triggers.join(','), life_impact: ans.lifeImpact.join(',')
+      triggers: ans.triggers.join(','),
+      hardest_part: ans.hardestPart,
+      life_impact: ans.lifeImpact.join(','),
+      monthly_spend: ans.monthlySpend,
+      motivation: ans.motivation,
+      page_url: window.location.href,
+      referrer: document.referrer || '',
+      utm_source: urlParams.get('utm_source') || '',
+      utm_medium: urlParams.get('utm_medium') || '',
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      utm_content: urlParams.get('utm_content') || '',
+      utm_term: urlParams.get('utm_term') || ''
+    };
+    ga4Event('quiz_complete', {
+      gender: quizData.gender, age: quizData.age,
+      smoking_history: quizData.smoking_history, quit_attempts: quizData.quit_attempts,
+      hardest_part: quizData.hardest_part, monthly_spend: quizData.monthly_spend,
+      motivation: quizData.motivation, goals: quizData.goals,
+      methods_tried: quizData.methods_tried,
+      triggers: quizData.triggers, life_impact: quizData.life_impact
     });
     metaStandard('Lead', { content_name: 'quit_smoking_quiz' });
     metaCustom('QuizComplete', { gender: ans.gender, age: ans.age, motivation: ans.motivation, monthly_spend: ans.monthlySpend });
+    fetch('https://script.google.com/macros/s/AKfycbwpww0BKrCG48AMaGz6lNK30BXZRk7Cy6cLil_p5se6gijWS0M_zX-lCIa54yTmkSiX/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(quizData)
+    }).catch(() => {});
 
     // Transition to results
     qsGetEl(14).classList.remove('active');
