@@ -152,9 +152,10 @@
   .qs-gender-tile .g-label { font-size: 18px; font-weight: 900; color: #111; }
   .qs-splash-trust {
     display: flex; align-items: center; justify-content: center; gap: 6px;
-    font-size: 12px; font-weight: 700; color: #888; text-align: center;
+    font-size: 16px; font-weight: 700; color: #888; text-align: center;
   }
-  .qs-splash-trust span { color: #2D4A3E; font-weight: 800; }
+  .qs-splash-trust .trust-stars { font-size: 22px; }
+  .qs-splash-trust span { color: #2D4A3E; font-weight: 900; font-size: 18px; }
 
   /* ── INFO CARDS ────────────────────────────────────── */
   .qs-info-card { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 16px; padding: 24px 20px; margin-bottom: 20px; }
@@ -288,14 +289,14 @@
   <!-- ── SCREEN 1 — SPLASH + GENDER ── -->
   <div class="qs-screen active" id="qs-1">
     <div class="qs-body" style="padding-top: 36px;">
-      <p class="qs-splash-question">Why <span>can't you quit</span><br>smoking?</p>
-      <p class="qs-splash-sub">Take the 60-second quiz to find your addiction type.</p>
+      <p class="qs-splash-question">What type of <span>smoker</span> are you?</p>
+      <p class="qs-splash-sub">Take the 2-minute quiz to find your "Addiction Type" and get a personalized quitting plan.</p>
       <p class="qs-gender-prompt">Select your gender to begin</p>
       <div class="qs-gender-grid">
         <div class="qs-gender-tile" onclick="qsGender(this,'Male')"><span class="g-icon">🚹</span><span class="g-label">Male</span></div>
         <div class="qs-gender-tile" onclick="qsGender(this,'Female')"><span class="g-icon">🚺</span><span class="g-label">Female</span></div>
       </div>
-      <div class="qs-splash-trust">⭐⭐⭐⭐⭐ &nbsp;<span>32,000+</span> people already quit</div>
+      <div class="qs-splash-trust"><span class="trust-stars">⭐⭐⭐⭐⭐</span> &nbsp;<span>32,000+</span> people already quit</div>
     </div>
   </div>
 
@@ -657,7 +658,6 @@ function metaCustom(name, params) {
 function metaStandard(name, params) {
   if (typeof fbq !== 'undefined') fbq('track', name, params || {});
 }
-// URL map for each screen
 const Q_URL_NAMES = {
   1: 'Q1_gender', 2: 'Q2_age', 3: 'Q3_goals', 4: 'Q4_smoking_history',
   5: 'Q5_quit_attempts', 6: 'Q6_methods', 7: 'Q7_interstitial',
@@ -670,7 +670,6 @@ function updateURL(step) {
   history.replaceState(null, '', '?step=' + step);
 }
 
-// Named event map — fires on ARRIVAL at each screen
 const Q_ARRIVAL_NAMES = {
   1: 'Q1_gender', 2: 'Q2_age', 3: 'Q3_goals', 4: 'Q4_smoking_history',
   5: 'Q5_quit_attempts', 6: 'Q6_methods', 7: 'Q7_interstitial',
@@ -678,7 +677,6 @@ const Q_ARRIVAL_NAMES = {
   11: 'Q11_life_impact', 12: 'Q12_monthly_spend', 13: 'Q13_motivation'
 };
 
-// Named per-screen events
 function trackQ(eventName) {
   ga4Event(eventName, {});
 }
@@ -788,7 +786,6 @@ function qsStartLoading() {
   ['qsStep1','qsStep2','qsStep3','qsStep4'].forEach((id,i) => setTimeout(() => document.getElementById(id).classList.add('done'), (i+1)*1400));
 
   setTimeout(() => {
-    // Fire completion events
     trackQ('Q14_loading');
     const urlParams = new URLSearchParams(window.location.search);
     const quizData = {
@@ -829,7 +826,6 @@ function qsStartLoading() {
       body: JSON.stringify(quizData)
     }).catch(() => {});
 
-    // Transition to results
     qsGetEl(14).classList.remove('active');
     qsCurrent = 'r1';
     qsGetEl('r1').classList.add('active');
