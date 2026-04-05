@@ -464,12 +464,38 @@
     <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
-  <!-- R3 — PERSONAL BENEFITS -->
+  <!-- R3 — PRODUCT SHOWCASE -->
   <div class="qs-screen" id="qs-r3">
+    <div class="qs-body">
+      <p class="qs-eyebrow">The #1 Method for Your Addiction Type</p>
+      <h1 class="qs-title">The Ritual Replacement Method</h1>
+      <p style="text-align:center;font-size:17px;font-weight:700;color:#2D4A3E;margin-bottom:18px;">Same Ritual. Zero Poison.</p>
+      <div class="r-product-img"><img src="HERO.webp" alt="Nordic Goods Herbal Diffuser" onerror="this.parentElement.innerHTML='🌿'"></div>
+      <div class="r-mech-list">
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same hand-to-mouth motion</div>
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same inhale and exhale</div>
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same breaks, same calm, same satisfaction</div>
+      </div>
+      <div class="r-divider-lbl">— What you leave behind —</div>
+      <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Tobacco</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
+      <div class="r-prod-desc">The <strong>Nordic Goods Herbal Diffuser</strong> replicates the ritual of smoking — without the poison. Instead of addictive chemicals, it's infused with natural <strong>mullein herbal</strong> — a lung-healing herb used for over 2,000 years.</div>
+      <div class="r-social-badge">
+        <div><div class="sb-stat">32,000+</div><div class="sb-sub">Smoke-Free Customers</div></div>
+        <div class="sb-div"></div>
+        <div><div class="sb-stat">⭐ 4.7/5</div><div class="sb-sub">Average Rating</div></div>
+        <div class="sb-div"></div>
+        <div><div class="sb-stat">73%</div><div class="sb-sub">Success Rate</div></div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- R4 — PERSONAL BENEFITS -->
+  <div class="qs-screen" id="qs-r4">
     <div class="qs-body">
       <p class="qs-eyebrow">What Quitting Looks Like For You</p>
       <h1 class="qs-title" id="r3BenefitHeadline">Your life without cigarettes</h1>
-      <p class="qs-hook-sub" id="r3BenefitCopy" style="font-size:15px;font-weight:600;color:#444;line-height:1.6;margin-bottom:20px;text-align:center;"></p>
+      <p id="r3BenefitCopy" style="font-size:15px;font-weight:600;color:#444;line-height:1.6;margin-bottom:20px;text-align:center;"></p>
       <div class="r-ba-block">
         <div class="r-ba-labels"><div class="r-ba-lbl before">Before</div><div class="r-ba-lbl after">After</div></div>
         <div class="r-ba-imgs">
@@ -479,11 +505,11 @@
       </div>
       <div class="r-reviews" id="r3Review"></div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(5)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
-  <!-- R4 — OFFER -->
-  <div class="qs-screen" id="qs-r4">
+  <!-- R5 — OFFER -->
+  <div class="qs-screen" id="qs-r5">
     <div class="qs-body">
       <p class="qs-eyebrow">Limited Time Offer For You</p>
       <h1 class="qs-title" id="r4Headline">Your plan is ready.</h1>
@@ -596,8 +622,8 @@ function qsUpdateHeader() {
   const fill = document.getElementById('qsProgFill');
   if (isResult) {
     const n = parseInt(qsCurrent.replace('r', ''));
-    lbl.textContent = 'Results ' + n + ' of 4';
-    fill.style.width = (n / 4 * 100) + '%';
+    lbl.textContent = 'Results ' + n + ' of 5';
+    fill.style.width = (n / 5 * 100) + '%';
     back.disabled = (n === 1);
   } else {
     lbl.textContent = qsCurrent + ' of ' + QS_TOTAL;
@@ -724,13 +750,14 @@ function rGoTo(n) {
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
-  updateURL('R' + n + '_' + ['','diagnosis','addiction_type','personal_benefits','offer'][n]);
-  const rNames = { 2: 'R2_addiction_type', 3: 'R3_personal_benefits', 4: 'R4_offer' };
+  const urlNames = ['','diagnosis','addiction_type','product','personal_benefits','offer'];
+  updateURL('R' + n + '_' + (urlNames[n] || n));
+  const rNames = { 2:'R2_addiction_type', 3:'R3_product', 4:'R4_personal_benefits', 5:'R5_offer' };
   if (rNames[n]) trackQ(rNames[n]);
-  if (n === 4) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
+  if (n === 5) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
   if (n === 1) setTimeout(rAnimateBenefit, 400);
   if (n === 2) rPopulateR2Trigger();
-  if (n === 3) rPopulateR3();
+  if (n === 4) rPopulateR3();
 }
 
 function rAddType() {
@@ -894,7 +921,7 @@ function rPopulateR3() {
 
 function rClaim() {
   const code = 'QUIT50';
-  trackQ('R4_cta_click');
+  trackQ('R5_cta_click');
   ga4Event('cta_click', { discount_code: code, destination: 'pdp' });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
