@@ -642,6 +642,7 @@ function qsStartLoading() {
     const urlParams = new URLSearchParams(window.location.search);
     const quizData = {
       timestamp: new Date().toISOString(),
+      version: 'quiz1',
       gender: ans.gender, age: ans.age,
       goals: ans.goals.join(','),
       smoking_history: ans.smokingHistory,
@@ -670,7 +671,7 @@ function qsStartLoading() {
     });
     metaStandard('Lead', { content_name: 'quit_smoking_quiz' });
     metaCustom('QuizComplete', { gender: ans.gender, age: ans.age, motivation: ans.motivation, monthly_spend: ans.monthlySpend });
-    fetch('https://script.google.com/macros/s/AKfycbwpww0BKrCG48AMaGz6lNK30BXZRk7Cy6cLil_p5se6gijWS0M_zX-lCIa54yTmkSiX/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyhB_4EHo73PBrC9vMDd3rYPrElzn1xOzUN1dLFNG6XTOHxEl4qJ-ExzqpsbUPTge_K/exec', {
       method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(quizData)
