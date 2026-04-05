@@ -422,6 +422,7 @@
     </div>
   </div>
 
+  <!-- R1 — DIAGNOSIS -->
   <div class="qs-screen" id="qs-r1">
     <div class="qs-body">
       <p class="qs-eyebrow">Your Assessment</p>
@@ -432,13 +433,6 @@
         <div class="r-diag-card"><div class="d-lbl">Yearly Cost</div><div class="d-val v-cost" id="r-yearlyCost">$3,000/yr</div></div>
         <div class="r-diag-card"><div class="d-lbl">Quitting Motivation</div><div class="d-val v-green">🔥 Very High</div></div>
       </div>
-      <div class="r-ba-block">
-        <div class="r-ba-labels"><div class="r-ba-lbl before">Before</div><div class="r-ba-lbl after">After</div></div>
-        <div class="r-ba-imgs">
-          <div class="r-ba-img before"><img src="before.webp" alt="Before" onerror="this.parentElement.innerHTML='🫁'"></div>
-          <div class="r-ba-img after"><img src="after.webp" alt="After" onerror="this.parentElement.innerHTML='💚'"></div>
-        </div>
-      </div>
       <div class="r-benefit-wrap">
         <div class="r-benefit-section-lbl">Your Potential Health Benefits:</div>
         <div class="r-benefit-tick-row"><span>Low</span><span>Medium</span><span>High</span><span>Very High</span></div>
@@ -446,48 +440,53 @@
         <div class="r-benefit-label" id="rBenefitLabel">Calculating...</div>
       </div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(2)">See your best quitting method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(2)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
+  <!-- R2 — ADDICTION TYPE -->
   <div class="qs-screen" id="qs-r2">
     <div class="qs-body">
-      <p class="qs-eyebrow">The #1 Method for Your Addiction Type</p>
-      <h1 class="qs-title">The Ritual Replacement Method</h1>
-      <p style="text-align:center;font-size:17px;font-weight:700;color:#2D4A3E;margin-bottom:18px;">Same Ritual. Zero Poison.</p>
-      <div class="r-product-img"><img src="HERO.webp" alt="Nordic Goods Herbal Diffuser" onerror="this.parentElement.innerHTML='🌿'"></div>
-      <div class="r-mech-list">
-        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same hand-to-mouth motion</div>
-        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same inhale and exhale</div>
-        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same breaks, same calm, same satisfaction</div>
+      <p class="qs-eyebrow">Your Addiction Type</p>
+      <h1 class="qs-title">You Have a <span style="color:#2D4A3E">Ritual Addiction</span></h1>
+      <div class="qs-truth-block">
+        <p>You're not just addicted to the nicotine. You're addicted to <strong>everything else too.</strong></p>
+        <p>The deep inhale. The hand-to-mouth motion. The 5-minute break from life.</p>
+        <p><strong>That's why patches and gum never worked.</strong> They replace the nicotine — but they don't replace the ritual.</p>
       </div>
-      <div class="r-divider-lbl">— What you leave behind —</div>
-      <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Tobacco</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
-      <div class="r-prod-desc">The <strong>Nordic Goods Herbal Diffuser</strong> replicates the ritual of smoking — without the poison. Instead of addictive chemicals, it's infused with natural <strong>mullein herbal</strong> — a lung-healing herb used for over 2,000 years.</div>
-      <div class="r-social-badge">
-        <div><div class="sb-stat">32,000+</div><div class="sb-sub">Smoke-Free Customers</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">⭐ 4.7/5</div><div class="sb-sub">Average Rating</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">73%</div><div class="sb-sub">Success Rate</div></div>
+      <div class="qs-highlight-box" id="r2TriggerLine">Your biggest triggers are being addressed in your plan.</div>
+      <div class="qs-info-card" style="margin-bottom:0">
+        <div class="qs-stat-row"><span>❌</span><span>Patches — replace nicotine, ignore the ritual</span></div>
+        <div class="qs-stat-row"><span>❌</span><span>Gum — replace nicotine, ignore the ritual</span></div>
+        <div class="qs-stat-row"><span>❌</span><span>Willpower — fight both at once, fail at both</span></div>
+        <div class="qs-stat-row" style="color:#2D4A3E;font-weight:800;border-bottom:none;"><span>✅</span><span>Ritual Replacement — replace <em>everything</em></span></div>
       </div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">See what others are saying <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
+  <!-- R3 — PERSONAL BENEFITS -->
   <div class="qs-screen" id="qs-r3">
     <div class="qs-body">
-      <p class="qs-eyebrow">32,000+ Smoke-Free Customers</p>
-      <h1 class="qs-title">People Just Like You</h1>
-      <div class="r-reviews" id="rReviewsList"></div>
+      <p class="qs-eyebrow">What Quitting Looks Like For You</p>
+      <h1 class="qs-title" id="r3BenefitHeadline">Your life without cigarettes</h1>
+      <p class="qs-hook-sub" id="r3BenefitCopy" style="font-size:15px;font-weight:600;color:#444;line-height:1.6;margin-bottom:20px;text-align:center;"></p>
+      <div class="r-ba-block">
+        <div class="r-ba-labels"><div class="r-ba-lbl before">Before</div><div class="r-ba-lbl after">After</div></div>
+        <div class="r-ba-imgs">
+          <div class="r-ba-img before"><img id="r3BeforeImg" src="before-f.webp" alt="Before" onerror="this.parentElement.innerHTML='🫁'"></div>
+          <div class="r-ba-img after"><img id="r3AfterImg" src="after-f.webp" alt="After" onerror="this.parentElement.innerHTML='💚'"></div>
+        </div>
+      </div>
+      <div class="r-reviews" id="r3Review"></div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">See why it's perfect for you <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
+  <!-- R4 — OFFER -->
   <div class="qs-screen" id="qs-r4">
     <div class="qs-body">
-      <p class="qs-eyebrow">Why It's Perfect for You</p>
+      <p class="qs-eyebrow">Limited Time Offer For You</p>
       <h1 class="qs-title" id="r4Headline">Your plan is ready.</h1>
-      <div class="r-goal-cards" id="rGoalCards"></div>
       <div class="r-discount-box">
         <div class="db-lock">🎁</div>
         <div class="db-eyebrow">Personalized Discount — Limited Time Only</div>
@@ -714,8 +713,6 @@ function qsStartLoading() {
     trackQ('R1_diagnosis');
     rPopulateDiagnosis();
     rPopulateReviews();
-    rPopulateGoalCards();
-    rPopR4Headline();
     setTimeout(rAnimateBenefit, 400);
   }, 6000);
 }
@@ -727,11 +724,13 @@ function rGoTo(n) {
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0, 0);
   qsUpdateHeader();
-  updateURL('R' + n + '_' + ['','diagnosis','solution','reviews','cta'][n]);
-  const rNames = { 2: 'R2_solution', 3: 'R3_reviews', 4: 'R4_cta' };
+  updateURL('R' + n + '_' + ['','diagnosis','addiction_type','personal_benefits','offer'][n]);
+  const rNames = { 2: 'R2_addiction_type', 3: 'R3_personal_benefits', 4: 'R4_offer' };
   if (rNames[n]) trackQ(rNames[n]);
   if (n === 4) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
   if (n === 1) setTimeout(rAnimateBenefit, 400);
+  if (n === 2) rPopulateR2Trigger();
+  if (n === 3) rPopulateR3();
 }
 
 function rAddType() {
@@ -827,6 +826,70 @@ function rPopulateGoalCards() {
 function rPopR4Headline() {
   const first=(ans.goals||[]).find(g=>rGoalData[g]);
   if(first){const d=rGoalData[first],h=typeof d.headline==='function'?d.headline():d.headline;document.getElementById('r4Headline').textContent=h;}
+}
+
+// R2 — dynamic trigger line
+function rPopulateR2Trigger() {
+  const triggerLabels = {
+    coffee: 'your morning coffee',
+    stress: 'moments of stress',
+    meal: 'meals',
+    driving: 'driving',
+    social: 'social situations',
+    breaks: 'work breaks',
+    bored: 'boredom'
+  };
+  const triggers = (ans.triggers || []).map(t => triggerLabels[t]).filter(Boolean);
+  let line = '';
+  if (triggers.length === 1) {
+    line = `Your biggest trigger is <span>${triggers[0]}</span> — your plan targets this directly.`;
+  } else if (triggers.length >= 2) {
+    const last = triggers.pop();
+    line = `Your biggest triggers are <span>${triggers.join(', ')}</span> and <span>${last}</span> — your plan targets all of them.`;
+  } else {
+    line = `Your plan is built around your specific triggers and habits.`;
+  }
+  document.getElementById('r2TriggerLine').innerHTML = line;
+}
+
+// R3 — personal benefits page
+function rPopulateR3() {
+  // Gender-specific before/after images
+  const isFemale = ans.gender === 'Female';
+  document.getElementById('r3BeforeImg').src = isFemale ? 'before-f.webp' : 'before-m.webp';
+  document.getElementById('r3AfterImg').src  = isFemale ? 'after-f.webp'  : 'after-m.webp';
+
+  // Benefit headline — placeholder until you write better ones
+  const goalHeadlines = {
+    breathe: 'Breathe deeply again. Wake up without the cough.',
+    family:  'Be the version of yourself your family deserves.',
+    money:   'Stop burning money. Start saving it.',
+    freedom: 'Break free. For real this time.',
+    smell:   'No more hiding. No more cover-ups.',
+    fitness: 'Get your energy back. Feel 10 years younger.',
+    prove:   'Finally prove to yourself you can do this.',
+  };
+  const firstGoal = (ans.goals || []).find(g => goalHeadlines[g]);
+  document.getElementById('r3BenefitHeadline').textContent = firstGoal ? goalHeadlines[firstGoal] : 'Your life without cigarettes.';
+
+  // Benefit copy
+  const name = ans.name || 'You';
+  document.getElementById('r3BenefitCopy').textContent = `${name}, thousands of people just like you have already made the switch. The only thing standing between you and this is one decision.`;
+
+  // Best matching review
+  const sorted = [...rAllReviews].sort((a,b) => rScoreReview(b) - rScoreReview(a));
+  const best = sorted[0];
+  if (best) {
+    document.getElementById('r3Review').innerHTML = `
+      <div class="r-review-card featured">
+        <div class="r-rc-top">
+          <div class="r-rc-avatar" style="background:${best.avatarBg}">${best.avatarEmoji}</div>
+          <div><div class="r-rc-name">${best.name}, ${best.age}</div><div class="r-rc-detail">Smoked ${best.yearsSmoked} years</div></div>
+        </div>
+        <div class="r-rc-stars">⭐⭐⭐⭐⭐</div>
+        <div class="r-rc-quote">"${best.quote}"</div>
+      </div>`;
+  }
 }
 
 function rClaim() {
