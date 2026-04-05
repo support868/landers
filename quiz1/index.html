@@ -978,6 +978,7 @@ function rClaim() {
 qsUpdateHeader();
 ga4Event('quiz_start', { screen_name: 'splash_gender' });
 metaStandard('ViewContent', { content_name: 'quit_smoking_quiz' });
+setTimeout(() => trackQ('Q1_gender'), 1000);
 </script>
 </body>
 </html>
