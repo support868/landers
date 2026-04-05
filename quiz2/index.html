@@ -656,7 +656,7 @@ function qsSubmitName() {
   qsGoTo(15);
 }
 
-
+function qsStartLoading() {
   let pct = 0;
   const pctEl = document.getElementById('qsSpinPct');
   const iv = setInterval(() => { if(pct>=100){clearInterval(iv);return;} pctEl.textContent=(++pct)+'%'; }, 55);
