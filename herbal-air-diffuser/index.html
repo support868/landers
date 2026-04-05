@@ -2855,7 +2855,23 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// ── CTA buttons scroll to top ──
+// ── Package qty map ──
+const qtyMap = { 'pkg-0': 4, 'pkg-1': 6, 'pkg-2': 2 };
+const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/9381045436641';
+const DISCOUNT = 'QUIT50';
+
+function getCheckoutUrl() {
+  const selected = document.querySelector('.pkg-option.selected');
+  const qty = selected ? qtyMap[selected.id] : 4;
+  return CART_BASE + ':' + qty + '?discount=' + DISCOUNT;
+}
+
+// Main CTA button
+document.getElementById('cta').addEventListener('click', function() {
+  window.location.href = getCheckoutUrl();
+});
+
+// Section CTA buttons → scroll to top then let user click main CTA
 document.querySelectorAll('.weaf-cta-btn, .ing-cta-btn, .journey-cta-btn, .faq-cta-btn').forEach(btn => {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
