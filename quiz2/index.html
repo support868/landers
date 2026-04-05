@@ -670,6 +670,7 @@ function qsStartLoading() {
     const urlParams = new URLSearchParams(window.location.search);
     const quizData = {
       timestamp: new Date().toISOString(),
+      version: 'quiz2',
       name: ans.name,
       gender: ans.gender, age: ans.age,
       goals: ans.goals.join(','),
