@@ -519,6 +519,9 @@
         <div class="db-headline">You've completed the quiz — so we're giving you 50% OFF to make quitting as easy as possible.</div>
         <div style="font-size:13px;font-weight:700;color:#8FD4A0;margin-bottom:12px;letter-spacing:1.5px;">✓ CODE AUTOAPPLIED</div>
         <div class="r-discount-code" id="discountCodeDisplay">QUIT50</div>
+        <div id="discountTimerWrap" style="margin-top:12px;font-size:13px;font-weight:700;color:#8FD4A0;display:none;">
+          ⏱ Expires in <span id="discountTimer">20:00</span>
+        </div>
       </div>
       <button class="qs-btn bright" onclick="rClaim()">Claim 50% Off Now →</button>
       <div class="r-trust-row">
@@ -538,18 +541,22 @@
 // ── QUIZ CONFIG — only edit this block when duplicating
 // ═══════════════════════════════════════════════════════
 const QUIZ_CONFIG = {
-  version:     'quiz1-r2o2',
-  sheetUrl:    'https://script.google.com/macros/s/AKfycbyhB_4EHo73PBrC9vMDd3rYPrElzn1xOzUN1dLFNG6XTOHxEl4qJ-ExzqpsbUPTge_K/exec',
-  redirectUrl: 'https://try.nordicgoods.co/herbal-air-diffuser',
-  discountCode:'QUIT50',
+  version:        'quiz1-r2o2',
+  sheetUrl:       'https://script.google.com/macros/s/AKfycbyhB_4EHo73PBrC9vMDd3rYPrElzn1xOzUN1dLFNG6XTOHxEl4qJ-ExzqpsbUPTge_K/exec',
+  redirectUrl:    'https://try.nordicgoods.co/herbal-air-diffuser',
+  discountCode:   'QUIT50',                  // fallback only
+  workerUrl:      'https://discount-generator-50.dry-thunder-8d18.workers.dev',
 };
 // ═══════════════════════════════════════════════════════
 
+// ── CHANGE 1: added discountCode + discountExpiresTs to ans
 const ans = {
   gender: null, age: null, goals: [], smokingHistory: null,
   quitAttempts: null, methodsTried: [], triggers: [],
   hardestPart: null, lifeImpact: [], monthlySpend: null, motivation: 5,
-  name: ''
+  name: '',
+  discountCode: null,
+  discountExpiresTs: null,
 };
 
 let qsCurrent = 1;
@@ -569,16 +576,6 @@ const Q_URL_NAMES = {
 
 function updateURL(step) { history.replaceState(null, '', '?step=' + step); }
 
-// ── EVENT NAMING CONVENTION ──────────────────────────────────────────
-// Qn_xxx fires on ARRIVAL at screen n+1 = question n was just ANSWERED
-// quiz_start     = page load
-// Q1_gender      = gender answered   (arrival at S2)
-// ...
-// Q13_motivation = motivation answered (arrival at S14)
-// Q14_name       = name answered (arrival at S15 / loading)
-// Q15_loading    = loading complete, results shown
-// R1_diagnosis   = results screen 1 viewed
-// ────────────────────────────────────────────────────────────────────
 const Q_ARRIVAL_NAMES = {
   2:  'Q1_gender',
   3:  'Q2_age',
@@ -685,10 +682,28 @@ function qsPopS7() {
   document.getElementById('qs-s7-stats').innerHTML = html;
 }
 
-function qsSubmitName() {
+// ── CHANGE 2: qsSubmitName now calls the worker before advancing
+async function qsSubmitName() {
   const val = document.getElementById('nameInput').value.trim();
   ans.name = val || 'Friend';
   trackQ('Q14_name');
+
+  // Call worker to generate personalized discount code
+  try {
+    const res = await fetch(QUIZ_CONFIG.workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ first_name: ans.name })
+    });
+    const data = await res.json();
+    ans.discountCode = data.code;
+    ans.discountExpiresTs = data.expires_ts;
+  } catch (e) {
+    // Fallback to static code if worker fails
+    ans.discountCode = QUIZ_CONFIG.discountCode;
+    ans.discountExpiresTs = Date.now() + 20 * 60 * 1000;
+  }
+
   qsGoTo(15);
 }
 
@@ -699,8 +714,6 @@ function qsStartLoading() {
   ['qsStep1','qsStep2','qsStep3','qsStep4'].forEach((id,i) => setTimeout(() => document.getElementById(id).classList.add('done'), (i+1)*1400));
 
   setTimeout(() => {
-    // Q14_name fired on arrival at S15 via Q_ARRIVAL_NAMES
-    // Q15_loading fires now = loading complete, results about to show
     trackQ('Q15_loading');
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -765,7 +778,10 @@ function rGoTo(n) {
   updateURL('R' + n + '_' + (urlNames[n] || n));
   const rNames = { 2:'R2_addiction_type', 3:'R3_product', 4:'R4_personal_benefits', 5:'R5_offer' };
   if (rNames[n]) trackQ(rNames[n]);
-  if (n === 5) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
+  if (n === 5) {
+    metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
+    rStartDiscountTimer();
+  }
   if (n === 1) setTimeout(rAnimateBenefit, 400);
   if (n === 2) rPopulateR2Trigger();
   if (n === 4) rPopulateR3();
@@ -787,16 +803,43 @@ function rBenefitPct() {
   const s=(ans.lifeImpact||[]).length+(hMap[ans.smokingHistory]||2)+(ans.motivation>=7?2:1);
   return Math.min(92,Math.max(65,60+s*3));
 }
+
+// ── CHANGE 3: rPopulateDiagnosis now sets the dynamic discount code
 function rPopulateDiagnosis() {
   const name = ans.name || 'Friend';
   document.getElementById('r1Headline').textContent = name + ', here\'s your smoker profile';
   document.getElementById('r-addType').textContent = rAddType();
   const cEl = document.getElementById('r-yearlyCost'); cEl.textContent = rYearlyCost(); cEl.className = 'd-val v-cost';
+  // Set the personalized discount code on the offer screen
+  document.getElementById('discountCodeDisplay').textContent = ans.discountCode || QUIZ_CONFIG.discountCode;
 }
+
 function rAnimateBenefit() {
   const pct=rBenefitPct();
   document.getElementById('rBenefitFill').style.width=pct+'%';
   document.getElementById('rBenefitLabel').textContent = pct>=80?'Very High Benefit Potential 🌿':'High Benefit Potential 💚';
+}
+
+// ── Countdown timer shown on R5
+let _timerInterval = null;
+function rStartDiscountTimer() {
+  const expiresTs = ans.discountExpiresTs;
+  if (!expiresTs) return;
+  const wrap = document.getElementById('discountTimerWrap');
+  const timerEl = document.getElementById('discountTimer');
+  wrap.style.display = 'block';
+  if (_timerInterval) clearInterval(_timerInterval);
+  _timerInterval = setInterval(() => {
+    const remaining = expiresTs - Date.now();
+    if (remaining <= 0) {
+      clearInterval(_timerInterval);
+      timerEl.textContent = 'Expired';
+      return;
+    }
+    const m = Math.floor(remaining / 60000);
+    const s = Math.floor((remaining % 60000) / 1000);
+    timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+  }, 1000);
 }
 
 const rAllReviews=[
@@ -866,7 +909,6 @@ function rPopR4Headline() {
   if(first){const d=rGoalData[first],h=typeof d.headline==='function'?d.headline():d.headline;document.getElementById('r4Headline').textContent=h;}
 }
 
-// R2 — dynamic trigger line
 function rPopulateR2Trigger() {
   const triggerLabels = {
     coffee: 'your morning coffee',
@@ -890,14 +932,11 @@ function rPopulateR2Trigger() {
   document.getElementById('r2TriggerLine').innerHTML = line;
 }
 
-// R3 — personal benefits page
 function rPopulateR3() {
-  // Gender-specific before/after images
   const isFemale = ans.gender === 'Female';
   document.getElementById('r3BeforeImg').src = isFemale ? 'before-f.webp' : 'before-m.webp';
   document.getElementById('r3AfterImg').src  = isFemale ? 'after-f.webp'  : 'after-m.webp';
 
-  // Benefit headline — placeholder until you write better ones
   const goalHeadlines = {
     breathe: 'Breathe deeply again. Wake up without the cough.',
     family:  'Be the version of yourself your family deserves.',
@@ -910,11 +949,9 @@ function rPopulateR3() {
   const firstGoal = (ans.goals || []).find(g => goalHeadlines[g]);
   document.getElementById('r3BenefitHeadline').textContent = firstGoal ? goalHeadlines[firstGoal] : 'Your life without cigarettes.';
 
-  // Benefit copy
   const name = ans.name || 'You';
   document.getElementById('r3BenefitCopy').textContent = `${name}, thousands of people just like you have already made the switch. The only thing standing between you and this is one decision.`;
 
-  // Best matching review
   const sorted = [...rAllReviews].sort((a,b) => rScoreReview(b) - rScoreReview(a));
   const best = sorted[0];
   if (best) {
@@ -930,13 +967,22 @@ function rPopulateR3() {
   }
 }
 
+// ── CHANGE 4: rClaim passes discount_code + expires_ts as UTM params
 function rClaim() {
-  const code = QUIZ_CONFIG.discountCode;
+  const code = ans.discountCode || QUIZ_CONFIG.discountCode;
+  const expiresTs = ans.discountExpiresTs || '';
   trackQ('R5_cta_click');
   ga4Event('cta_click', { discount_code: code, destination: 'pdp', quiz_version: QUIZ_CONFIG.version });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
-  window.location.href = QUIZ_CONFIG.redirectUrl + '?utm_source=quiz&utm_medium=funnel&utm_campaign=quit_smoking&gender=' + encodeURIComponent(ans.gender||'') + '&motivation=' + ans.motivation;
+  window.location.href = QUIZ_CONFIG.redirectUrl
+    + '?utm_source=quiz'
+    + '&utm_medium=funnel'
+    + '&utm_campaign=quit_smoking'
+    + '&discount_code=' + encodeURIComponent(code)
+    + '&expires_ts=' + expiresTs
+    + '&gender=' + encodeURIComponent(ans.gender || '')
+    + '&motivation=' + ans.motivation;
 }
 
 // ── INIT ─────────────────────────────────────────────────────────
