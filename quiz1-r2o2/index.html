@@ -780,7 +780,7 @@ function rMotivationLabel(){
 function rPopulateR1(){
   const name=ans.name||'Friend';
   document.getElementById('r1Headline').textContent=name+', here is your smoker profile';
-  document.getElementById('r1AddType').textContent=rAddType();
+  document.getElementById('r1AddType').textContent='🔁 Ritual';
   document.getElementById('r1YearlyCost').textContent=rYearlyCost();
   document.getElementById('r1Motivation').textContent='🔥 High';
   document.getElementById('r1BeforeImg').src=ans.gender==='Male'?'before-m.webp':'before-f.webp';
@@ -917,39 +917,37 @@ function rAnimateChart(){
   const container = document.getElementById('recoveryChart');
   if(!container) return;
 
-  const labels = window._r4Milestones || ['Week 1 Done','Week 2 Done','Week 3 Done','Smoke Free'];
+  const labels = window._r4Milestones || ['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
   const weeks  = ['Week 1','Week 2','Week 3','Week 4'];
 
-  // Chart geometry
-  const W = 320, H = 200;
-  const PAD = { top:48, right:16, bottom:28, left:16 };
+  const W = 320, H = 230;
+  const PAD = { top:52, right:20, bottom:32, left:20 };
   const CW = W - PAD.left - PAD.right;
   const CH = H - PAD.top  - PAD.bottom;
 
-  // Data points: x as fraction of CW, y as fraction of CH (0=top, 1=bottom)
+  // Steeper S-curve: flat start, steep middle, flat top
   const pts = [
-    { xf:0.02, yf:0.90 },
-    { xf:0.35, yf:0.58 },
-    { xf:0.68, yf:0.25 },
-    { xf:0.98, yf:0.04 },
+    { xf:0.02, yf:0.92 },
+    { xf:0.33, yf:0.78 },
+    { xf:0.67, yf:0.22 },
+    { xf:0.98, yf:0.05 },
   ];
 
-  // Colours: red → green across 4 points
-  const colors = ['#e74c3c','#f39c12','#2ecc71','#27ae60'];
+  const colors = ['#e74c3c','#f39c12','#8bc34a','#27ae60'];
 
-  // Convert to absolute coords
   const abs = pts.map(p => ({
     x: PAD.left + p.xf * CW,
     y: PAD.top  + p.yf * CH,
   }));
 
-  // Build smooth cubic bezier path through all points
+  // Tighter control points for steeper S-shape
   function buildPath(points){
     let d = `M ${points[0].x} ${points[0].y}`;
     for(let i=0;i<points.length-1;i++){
       const p0=points[i], p1=points[i+1];
-      const cpx1=p0.x+(p1.x-p0.x)*0.5, cpy1=p0.y;
-      const cpx2=p0.x+(p1.x-p0.x)*0.5, cpy2=p1.y;
+      const tension = 0.42;
+      const cpx1=p0.x+(p1.x-p0.x)*tension, cpy1=p0.y;
+      const cpx2=p0.x+(p1.x-p0.x)*(1-tension), cpy2=p1.y;
       d += ` C ${cpx1} ${cpy1} ${cpx2} ${cpy2} ${p1.x} ${p1.y}`;
     }
     return d;
@@ -957,52 +955,59 @@ function rAnimateChart(){
 
   const pathD = buildPath(abs);
 
-  // Estimate total path length for stroke animation
-  // Use a rough formula: sum of segment distances * 1.15 for curve overhead
   let pathLen = 0;
   for(let i=0;i<abs.length-1;i++){
     const dx=abs[i+1].x-abs[i].x, dy=abs[i+1].y-abs[i].y;
-    pathLen += Math.sqrt(dx*dx+dy*dy)*1.15;
+    pathLen += Math.sqrt(dx*dx+dy*dy)*1.2;
   }
   pathLen = Math.round(pathLen);
 
-  // Label box above/below each point
+  // Grid lines (3 horizontal)
+  const gridY = [0.25, 0.5, 0.75];
+  const gridSVG = gridY.map(f => {
+    const y = PAD.top + f * CH;
+    return `<line x1="${PAD.left}" y1="${y}" x2="${W-PAD.right}" y2="${y}" stroke="#f0f0f0" stroke-width="1"/>`;
+  }).join('');
+
+  // Label bubbles — bigger boxes and font
   function labelBox(lbl, cx, cy, color, idx){
-    const bw=72, bh=32, br=6;
-    const above = cy > PAD.top + CH*0.5;
-    const by = above ? cy - bh - 10 : cy + 10;
-    const bx = Math.min(Math.max(cx - bw/2, PAD.left), W - PAD.right - bw);
-    const ax = Math.min(Math.max(cx, bx+8), bx+bw-8);
-    const lines = lbl.split(' ');
-    const mid = Math.ceil(lines.length/2);
-    const line1 = lines.slice(0,mid).join(' ');
-    const line2 = lines.slice(mid).join(' ');
-    const delay = 0.4 + idx * 0.45;
+    const bw=80, bh=40, br=8;
+    const above = cy > PAD.top + CH * 0.5;
+    const by = above ? cy - bh - 12 : cy + 12;
+    const bx = Math.min(Math.max(cx - bw/2, PAD.left - 4), W - PAD.right - bw + 4);
+    const ax = Math.min(Math.max(cx, bx+10), bx+bw-10);
+    const words = lbl.split(' ');
+    const mid = Math.ceil(words.length/2);
+    const line1 = words.slice(0,mid).join(' ');
+    const line2 = words.slice(mid).join(' ');
+    const delay = 0.5 + idx * 0.45;
     return `
-      <g class="chart-label" style="opacity:0;animation:chartFadeIn 0.35s ease ${delay}s forwards;">
+      <g style="opacity:0;animation:chartFadeIn 0.35s ease ${delay}s forwards;">
         <rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="${br}" fill="${color}"/>
-        <polygon points="${ax-4},${above?by+bh:by} ${ax+4},${above?by+bh:by} ${ax},${above?by+bh+6:by-6}" fill="${color}"/>
+        <polygon points="${ax-5},${above?by+bh:by} ${ax+5},${above?by+bh:by} ${ax},${above?by+bh+7:by-7}" fill="${color}"/>
         ${line2
-          ? `<text x="${bx+bw/2}" y="${by+bh/2-6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line1}</text>
-             <text x="${bx+bw/2}" y="${by+bh/2+6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line2}</text>`
-          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line1}</text>`
+          ? `<text x="${bx+bw/2}" y="${by+bh/2-7}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line1}</text>
+             <text x="${bx+bw/2}" y="${by+bh/2+7}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line2}</text>`
+          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line1}</text>`
         }
       </g>`;
   }
 
   const dotsSVG = abs.map((p,i) => {
-    const delay = 0.35 + i*0.45;
-    return `<circle cx="${p.x}" cy="${p.y}" r="6" fill="${colors[i]}" stroke="#fff" stroke-width="2.5"
-      style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>`;
+    const delay = 0.45 + i*0.45;
+    return `
+      <circle cx="${p.x}" cy="${p.y}" r="9" fill="${colors[i]}" opacity="0.25"
+        style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>
+      <circle cx="${p.x}" cy="${p.y}" r="6" fill="${colors[i]}" stroke="#fff" stroke-width="2.5"
+        style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>`;
   }).join('');
 
   const weeksSVG = abs.map((p,i) =>
-    `<text x="${p.x}" y="${H-6}" text-anchor="middle" fill="#bbb" font-family="Nunito,sans-serif" font-size="10" font-weight="600">${weeks[i]}</text>`
+    `<text x="${p.x}" y="${H-8}" text-anchor="middle" fill="#aaa" font-family="Nunito,sans-serif" font-size="11" font-weight="700">${weeks[i]}</text>`
   ).join('');
 
   const labelsSVG = abs.map((p,i) => labelBox(labels[i], p.x, p.y, colors[i], i)).join('');
 
-  // Gradient for the line
   const gradStops = colors.map((c,i) => `<stop offset="${i/(colors.length-1)*100}%" stop-color="${c}"/>`).join('');
 
   container.innerHTML = `
@@ -1012,7 +1017,7 @@ function rAnimateChart(){
         to   { stroke-dashoffset: 0; }
       }
       @keyframes chartFadeIn {
-        from { opacity:0; transform:translateY(4px); }
+        from { opacity:0; transform:translateY(5px); }
         to   { opacity:1; transform:translateY(0); }
       }
     </style>
@@ -1022,10 +1027,11 @@ function rAnimateChart(){
           ${gradStops}
         </linearGradient>
       </defs>
+      ${gridSVG}
       ${weeksSVG}
-      <path d="${pathD}" fill="none" stroke="url(#lineGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+      <path d="${pathD}" fill="none" stroke="url(#lineGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"
         stroke-dasharray="${pathLen}" stroke-dashoffset="${pathLen}"
-        style="animation:chartDraw 1.6s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;"/>
+        style="animation:chartDraw 1.8s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;"/>
       ${dotsSVG}
       ${labelsSVG}
     </svg>`;
