@@ -748,7 +748,7 @@ function rGoTo(n){
   if(rNames[n]) trackQ(rNames[n]);
   if(n===3) metaStandard('ViewContent',{content_name:'herbal_diffuser',content_type:'product'});
   if(n===1) setTimeout(rAnimateSlider,400);
-  if(n===4) requestAnimationFrame(()=>requestAnimationFrame(rAnimateChart));
+  if(n===4) setTimeout(rAnimateChart, 50);
 }
 
 // ── POPULATE ALL RESULT SCREENS ───────────────────────
@@ -918,18 +918,15 @@ function rPopulateR4Review(){
 function rAnimateChart(){
   const canvas=document.getElementById('recoveryChart');
   if(!canvas) return;
-  // Clear any previous animation frame
   if(window._chartRAF) cancelAnimationFrame(window._chartRAF);
 
-  // Wait for canvas to have real layout dimensions
-  requestAnimationFrame(()=>{
-    const W=canvas.offsetWidth||canvas.parentElement?.offsetWidth||320;
-    const H=180;
-    const dpr=window.devicePixelRatio||1;
-    canvas.width=W*dpr; canvas.height=H*dpr;
-    canvas.style.width=W+'px'; canvas.style.height=H+'px';
-    const ctx=canvas.getContext('2d');
-    ctx.scale(dpr,dpr);
+  const W=canvas.offsetWidth||canvas.parentElement?.offsetWidth||320;
+  const H=180;
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=W*dpr; canvas.height=H*dpr;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
 
     const labels=window._r4Milestones||['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
     const weeks=['Week 1','Week 2','Week 3','Week 4'];
@@ -1021,7 +1018,6 @@ function rAnimateChart(){
       if(progress<1){window._chartRAF=requestAnimationFrame(draw);}
     }
     window._chartRAF=requestAnimationFrame(draw);
-  });
 }
 
 // ── R5 ────────────────────────────────────────────────
