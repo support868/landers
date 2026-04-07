@@ -2808,6 +2808,16 @@ const _expiresTs = parseInt(_urlParams.get('expires_ts')) || 0;
 document.getElementById('announceCode').textContent = _discountCode;
 document.getElementById('discountCode').textContent = ' ' + _discountCode + ' ';
 
+// ── META PIXEL EVENTS ──
+// ViewContent — fires on PDP load
+fbq('track', 'ViewContent', {
+  content_name: 'Herbal Air Diffuser',
+  content_type: 'product',
+  content_ids: ['47965648716001'],
+  currency: 'USD',
+  value: 64.36,
+});
+
 // ── CAROUSEL ──
 let current = 0;
 const slides = document.querySelectorAll('.carousel-slide');
@@ -2829,7 +2839,6 @@ track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { 
 track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1); });
 
 // ── COUNTDOWN ──
-// Use expires_ts from quiz if present and in the future, otherwise 20 min from now
 const _deadline = (_expiresTs && _expiresTs > Date.now())
   ? _expiresTs
   : Date.now() + 20 * 60 * 1000;
@@ -2846,6 +2855,8 @@ updateTimer();
 const _timerInterval = setInterval(updateTimer, 1000);
 
 // ── PACKAGE SELECTOR ──
+const pkgValues = { 'pkg-0': { qty: 4, price: 64.36 }, 'pkg-1': { qty: 6, price: 96.54 }, 'pkg-2': { qty: 2, price: 32.18 } };
+
 document.querySelectorAll('.pkg-option').forEach(opt => {
   opt.addEventListener('click', () => {
     document.querySelectorAll('.pkg-option').forEach(o => o.classList.remove('selected'));
@@ -2872,16 +2883,52 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 
 // ── CHECKOUT ──
-const qtyMap = { 'pkg-0': 4, 'pkg-1': 6, 'pkg-2': 2 };
 const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
+
+function getSelectedPkg() {
+  const selected = document.querySelector('.pkg-option.selected');
+  const id = selected ? selected.id : 'pkg-0';
+  return pkgValues[id] || pkgValues['pkg-0'];
+}
 
 function getCheckoutUrl() {
   const selected = document.querySelector('.pkg-option.selected');
   const qty = selected ? qtyMap[selected.id] : 4;
-  return CART_BASE + ':' + qty + '?discount=' + encodeURIComponent(_discountCode);
+  let url = CART_BASE + ':' + qty + '?discount=' + encodeURIComponent(_discountCode);
+  if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
+  if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
+  if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
+  if (_urlParams.get('utm_content'))  url += '&utm_content='  + encodeURIComponent(_urlParams.get('utm_content'));
+  if (_urlParams.get('utm_term'))     url += '&utm_term='     + encodeURIComponent(_urlParams.get('utm_term'));
+  const quizVersion = _urlParams.get('quiz_version');
+  if (quizVersion) url += '&attributes[quiz_version]=' + encodeURIComponent(quizVersion);
+  return url;
 }
 
 document.getElementById('cta').addEventListener('click', function() {
+  const pkg = getSelectedPkg();
+
+  // AddToCart
+  fbq('track', 'AddToCart', {
+    content_name: 'Herbal Air Diffuser',
+    content_type: 'product',
+    content_ids: ['47965648716001'],
+    currency: 'USD',
+    value: pkg.price,
+    num_items: pkg.qty,
+  });
+
+  // InitiateCheckout
+  fbq('track', 'InitiateCheckout', {
+    content_name: 'Herbal Air Diffuser',
+    content_type: 'product',
+    content_ids: ['47965648716001'],
+    currency: 'USD',
+    value: pkg.price,
+    num_items: pkg.qty,
+    coupon: _discountCode,
+  });
+
   window.location.href = getCheckoutUrl();
 });
 
