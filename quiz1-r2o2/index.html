@@ -503,6 +503,8 @@
           <div style="overflow:hidden;"><img id="r4AfterImg" src="after-f.webp" alt="After" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.parentElement.style.cssText='background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:48px';this.parentElement.textContent='💚'"></div>
         </div>
       </div>
+
+      <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:16px;margin-bottom:20px;" id="r4Review"></div>
     </div>
     <div class="qs-footer"><button class="qs-btn bright" onclick="rGoTo(5)">I'm Ready To Quit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
@@ -746,7 +748,7 @@ function rGoTo(n){
   if(rNames[n]) trackQ(rNames[n]);
   if(n===3) metaStandard('ViewContent',{content_name:'herbal_diffuser',content_type:'product'});
   if(n===1) setTimeout(rAnimateSlider,400);
-  if(n===4) setTimeout(rAnimateChart,400);
+  if(n===4) requestAnimationFrame(()=>requestAnimationFrame(rAnimateChart));
 }
 
 // ── POPULATE ALL RESULT SCREENS ───────────────────────
@@ -754,6 +756,7 @@ function rPopulateAll(){
   rPopulateR1();
   rPopulateR2();
   rPopulateR4();
+  rPopulateR4Review();
   rPopulateR5Name();
 }
 
@@ -781,7 +784,7 @@ function rPopulateR1(){
   document.getElementById('r1Headline').textContent=name+', here is your smoker profile';
   document.getElementById('r1AddType').textContent=rAddType();
   document.getElementById('r1YearlyCost').textContent=rYearlyCost();
-  document.getElementById('r1Motivation').textContent=rMotivationLabel();
+  document.getElementById('r1Motivation').textContent='🔥 High';
   document.getElementById('r1BeforeImg').src=ans.gender==='Male'?'before-m.webp':'before-f.webp';
 }
 function rAnimateSlider(){
@@ -858,109 +861,167 @@ function rPopulateR4(){
   window._r4Milestones=r4Milestones[key];
 }
 
-let _chartAnimated=false;
+// ── R4 review data ───────────────────────────────────
+const r4Reviews={
+  control:{
+    male:  {name:'James T.',age:'54',text:'I felt like cigarettes owned me for 20 years. Four weeks in and I\'m the one in control. I can\'t explain how different that feels.'},
+    female:{name:'Susan M.',age:'51',text:'I used to plan my day around when I could smoke. Now I don\'t even think about it. Getting my life back has been everything.'},
+  },
+  healthscare:{
+    male:  {name:'David R.',age:'58',text:'My doctor gave me a serious warning. Three weeks after switching I went back and he couldn\'t believe the difference in my breathing.'},
+    female:{name:'Karen L.',age:'55',text:'After my health scare I knew I had to do something. This was the first thing that actually worked. My numbers have improved dramatically.'},
+  },
+  winded:{
+    male:  {name:'Marcus B.',age:'47',text:'I used to get winded walking up one flight of stairs. After a month I ran a 5K. I genuinely did not think that was possible.'},
+    female:{name:'Rachel G.',age:'44',text:'I stopped being embarrassed on walks with my kids. I can keep up now. That alone was worth everything.'},
+  },
+  cough:{
+    male:  {name:'Tom H.',age:'52',text:'The morning cough was so bad my wife slept in another room. It\'s completely gone. We laugh about it now.'},
+    female:{name:'Linda C.',age:'49',text:'I\'d had a cough for so long I thought it was just who I was. Three weeks clean and it was gone. I cried the first morning I woke up without it.'},
+  },
+  kids:{
+    male:  {name:'Chris W.',age:'43',text:'My son told me he was scared I was going to die. That was it for me. 11 weeks smoke-free. He\'s proud of me now and that means more than anything.'},
+    female:{name:'Priya N.',age:'41',text:'My daughter told me I don\'t smell like smoke anymore. I cried in the car after she said that. 14 weeks clean.'},
+  },
+  partner:{
+    male:  {name:'Mike D.',age:'46',text:'My wife had asked me to quit for years. I finally did. She said it\'s the best thing I\'ve ever done for our marriage. Hard to argue.'},
+    female:{name:'Emma S.',age:'39',text:'My partner never complained but I could see the worry in his eyes. Quitting was the best gift I ever gave him — and myself.'},
+  },
+  hiding:{
+    male:  {name:'Paul K.',age:'38',text:'I was sneaking cigarettes like a teenager. The shame was exhausting. Now I don\'t have anything to hide and I feel lighter in a way I didn\'t expect.'},
+    female:{name:'Ana P.',age:'36',text:'I was hiding it from everyone. The relief of not having that secret anymore is almost as good as being able to breathe again.'},
+  },
+  dontthink:{
+    male:  {name:'Steve J.',age:'50',text:'I kept telling myself I\'d deal with it later. My doctor made it clear there was no later. Best decision I ever made was finally facing it.'},
+    female:{name:'Claire B.',age:'48',text:'I avoided thinking about it for years. Taking that first step was the hardest part. Everything after that got easier week by week.'},
+  },
+};
+
+function rPopulateR4Review(){
+  const impact=ans.lifeImpact||[];
+  const key=r4Priority.find(k=>impact.includes(k))||'control';
+  const gKey=ans.gender==='Male'?'male':'female';
+  const rev=r4Reviews[key][gKey];
+  document.getElementById('r4Review').innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div style="width:40px;height:40px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${gKey==='male'?'👨':'👩'}</div>
+      <div>
+        <div style="font-size:14px;font-weight:800;color:#111;">${rev.name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${rev.age}</span></div>
+        <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:13px;">★★★★★</span></div>
+      </div>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
+    </div>
+    <p style="font-size:14px;font-weight:600;color:#333;line-height:1.65;font-style:italic;">"${rev.text}"</p>
+  `;
+}
+
 function rAnimateChart(){
-  if(_chartAnimated) return;
-  _chartAnimated=true;
   const canvas=document.getElementById('recoveryChart');
   if(!canvas) return;
-  const W=canvas.offsetWidth||400, H=180;
-  const dpr=window.devicePixelRatio||1;
-  canvas.width=W*dpr; canvas.height=H*dpr;
-  canvas.style.width=W+'px'; canvas.style.height=H+'px';
-  const ctx=canvas.getContext('2d');
-  ctx.scale(dpr,dpr);
+  // Clear any previous animation frame
+  if(window._chartRAF) cancelAnimationFrame(window._chartRAF);
 
-  const labels=window._r4Milestones||['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
-  const weeks=['Week 1','Week 2','Week 3','Week 4'];
-  const xPos=[0.08,0.38,0.68,0.95];
-  const yPos=[0.80,0.55,0.28,0.10];
-  const pts=xPos.map((x,i)=>({x:x*W,y:yPos[i]*(H-30)+5}));
+  // Wait for canvas to have real layout dimensions
+  requestAnimationFrame(()=>{
+    const W=canvas.offsetWidth||canvas.parentElement?.offsetWidth||320;
+    const H=180;
+    const dpr=window.devicePixelRatio||1;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    canvas.style.width=W+'px'; canvas.style.height=H+'px';
+    const ctx=canvas.getContext('2d');
+    ctx.scale(dpr,dpr);
 
-  let totalLen=0; const segLens=[];
-  for(let i=0;i<pts.length-1;i++){
-    const dx=pts[i+1].x-pts[i].x,dy=pts[i+1].y-pts[i].y;
-    const l=Math.sqrt(dx*dx+dy*dy); segLens.push(l); totalLen+=l;
-  }
+    const labels=window._r4Milestones||['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
+    const weeks=['Week 1','Week 2','Week 3','Week 4'];
+    const xPos=[0.08,0.38,0.68,0.95];
+    const yPos=[0.80,0.55,0.28,0.10];
+    const pts=xPos.map((x,i)=>({x:x*W,y:yPos[i]*(H-30)+5}));
 
-  function getCurvePoint(t){
-    let dist=t*totalLen,acc=0;
-    for(let i=0;i<segLens.length;i++){
-      if(dist<=acc+segLens[i]){
-        const lt=(dist-acc)/segLens[i];
-        const p0=pts[i],p1=pts[i+1];
-        const cp1x=p0.x+(p1.x-p0.x)*0.4,cp1y=p0.y;
-        const cp2x=p0.x+(p1.x-p0.x)*0.6,cp2y=p1.y;
-        const mt=1-lt;
-        return{x:mt*mt*mt*p0.x+3*mt*mt*lt*cp1x+3*mt*lt*lt*cp2x+lt*lt*lt*p1.x,y:mt*mt*mt*p0.y+3*mt*mt*lt*cp1y+3*mt*lt*lt*cp2y+lt*lt*lt*p1.y};
+    let totalLen=0; const segLens=[];
+    for(let i=0;i<pts.length-1;i++){
+      const dx=pts[i+1].x-pts[i].x,dy=pts[i+1].y-pts[i].y;
+      const l=Math.sqrt(dx*dx+dy*dy); segLens.push(l); totalLen+=l;
+    }
+
+    function getCurvePoint(t){
+      let dist=t*totalLen,acc=0;
+      for(let i=0;i<segLens.length;i++){
+        if(dist<=acc+segLens[i]){
+          const lt=(dist-acc)/segLens[i];
+          const p0=pts[i],p1=pts[i+1];
+          const cp1x=p0.x+(p1.x-p0.x)*0.4,cp1y=p0.y;
+          const cp2x=p0.x+(p1.x-p0.x)*0.6,cp2y=p1.y;
+          const mt=1-lt;
+          return{x:mt*mt*mt*p0.x+3*mt*mt*lt*cp1x+3*mt*lt*lt*cp2x+lt*lt*lt*p1.x,y:mt*mt*mt*p0.y+3*mt*mt*lt*cp1y+3*mt*lt*lt*cp2y+lt*lt*lt*p1.y};
+        }
+        acc+=segLens[i];
       }
-      acc+=segLens[i];
+      return pts[pts.length-1];
     }
-    return pts[pts.length-1];
-  }
 
-  function drawLabel(lbl,px,py,color){
-    const bw=76,bh=36,br=7;
-    let bx=px-bw/2,by;
-    const above=py>H/2;
-    by=above?py-bh-12:py+12;
-    if(bx<2)bx=2; if(bx+bw>W-2)bx=W-bw-2;
-    ctx.fillStyle=color;
-    ctx.beginPath();
-    ctx.moveTo(bx+br,by);ctx.lineTo(bx+bw-br,by);ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+br);
-    ctx.lineTo(bx+bw,by+bh-br);ctx.quadraticCurveTo(bx+bw,by+bh,bx+bw-br,by+bh);
-    ctx.lineTo(bx+br,by+bh);ctx.quadraticCurveTo(bx,by+bh,bx,by+bh-br);
-    ctx.lineTo(bx,by+br);ctx.quadraticCurveTo(bx,by,bx+br,by);
-    ctx.closePath();ctx.fill();
-    const ax=Math.min(Math.max(px,bx+8),bx+bw-8);
-    ctx.beginPath();
-    if(above){ctx.moveTo(ax-5,by+bh);ctx.lineTo(ax+5,by+bh);ctx.lineTo(ax,by+bh+7);}
-    else{ctx.moveTo(ax-5,by);ctx.lineTo(ax+5,by);ctx.lineTo(ax,by-7);}
-    ctx.fillStyle=color;ctx.fill();
-    ctx.fillStyle='#fff';ctx.font='700 10px Nunito,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    const words=lbl.split(' ');
-    if(words.length<=2){ctx.fillText(lbl,bx+bw/2,by+bh/2);}
-    else{const mid=Math.ceil(words.length/2);ctx.fillText(words.slice(0,mid).join(' '),bx+bw/2,by+bh/2-8);ctx.fillText(words.slice(mid).join(' '),bx+bw/2,by+bh/2+8);}
-  }
-
-  let progress=0; const duration=2000; let start=null;
-  function ease(t){return t<0.5?2*t*t:-1+(4-2*t)*t;}
-
-  function draw(ts){
-    if(!start)start=ts;
-    progress=Math.min(ease((ts-start)/duration),1);
-    ctx.clearRect(0,0,W,H);
-    ctx.font='600 11px Nunito,sans-serif';ctx.fillStyle='#bbb';ctx.textAlign='center';ctx.textBaseline='top';
-    xPos.forEach((x,i)=>ctx.fillText(weeks[i],x*W,H-18));
-    const steps=200;
-    for(let i=0;i<steps-1;i++){
-      const t0=(i/steps)*progress,t1=((i+1)/steps)*progress;
-      if(t0>=progress)break;
-      const p0=getCurvePoint(t0),p1=getCurvePoint(t1);
-      const frac=i/steps;
-      const r=Math.round(0xe7+(0x2D-0xe7)*frac);
-      const g=Math.round(0x4c+(0x4A-0x4c)*frac);
-      const b=Math.round(0x3c+(0x3E-0x3c)*frac);
-      ctx.strokeStyle='rgb('+r+','+g+','+b+')';
-      ctx.lineWidth=4;ctx.lineCap='round';
-      ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.lineTo(p1.x,p1.y);ctx.stroke();
+    function drawLabel(lbl,px,py,color){
+      const bw=76,bh=36,br=7;
+      let bx=px-bw/2,by;
+      const above=py>H/2;
+      by=above?py-bh-12:py+12;
+      if(bx<2)bx=2; if(bx+bw>W-2)bx=W-bw-2;
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(bx+br,by);ctx.lineTo(bx+bw-br,by);ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+br);
+      ctx.lineTo(bx+bw,by+bh-br);ctx.quadraticCurveTo(bx+bw,by+bh,bx+bw-br,by+bh);
+      ctx.lineTo(bx+br,by+bh);ctx.quadraticCurveTo(bx,by+bh,bx,by+bh-br);
+      ctx.lineTo(bx,by+br);ctx.quadraticCurveTo(bx,by,bx+br,by);
+      ctx.closePath();ctx.fill();
+      const ax=Math.min(Math.max(px,bx+8),bx+bw-8);
+      ctx.beginPath();
+      if(above){ctx.moveTo(ax-5,by+bh);ctx.lineTo(ax+5,by+bh);ctx.lineTo(ax,by+bh+7);}
+      else{ctx.moveTo(ax-5,by);ctx.lineTo(ax+5,by);ctx.lineTo(ax,by-7);}
+      ctx.fillStyle=color;ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='700 10px Nunito,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      const words=lbl.split(' ');
+      if(words.length<=2){ctx.fillText(lbl,bx+bw/2,by+bh/2);}
+      else{const mid=Math.ceil(words.length/2);ctx.fillText(words.slice(0,mid).join(' '),bx+bw/2,by+bh/2-8);ctx.fillText(words.slice(mid).join(' '),bx+bw/2,by+bh/2+8);}
     }
-    pts.forEach((pt,idx)=>{
-      const mT=idx/(pts.length-1);
-      if(progress>=mT){
-        const frac=mT;
+
+    let progress=0; const duration=2000; let start=null;
+    function ease(t){return t<0.5?2*t*t:-1+(4-2*t)*t;}
+
+    function draw(ts){
+      if(!start)start=ts;
+      progress=Math.min(ease((ts-start)/duration),1);
+      ctx.clearRect(0,0,W,H);
+      ctx.font='600 11px Nunito,sans-serif';ctx.fillStyle='#bbb';ctx.textAlign='center';ctx.textBaseline='top';
+      xPos.forEach((x,i)=>ctx.fillText(weeks[i],x*W,H-18));
+      const steps=200;
+      for(let i=0;i<steps-1;i++){
+        const t0=(i/steps)*progress,t1=((i+1)/steps)*progress;
+        if(t0>=progress)break;
+        const p0=getCurvePoint(t0),p1=getCurvePoint(t1);
+        const frac=i/steps;
         const r=Math.round(0xe7+(0x2D-0xe7)*frac);
         const g=Math.round(0x4c+(0x4A-0x4c)*frac);
         const b=Math.round(0x3c+(0x3E-0x3c)*frac);
-        const col='rgb('+r+','+g+','+b+')';
-        ctx.beginPath();ctx.arc(pt.x,pt.y,7,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
-        ctx.beginPath();ctx.arc(pt.x,pt.y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
-        drawLabel(labels[idx],pt.x,pt.y,col);
+        ctx.strokeStyle='rgb('+r+','+g+','+b+')';
+        ctx.lineWidth=4;ctx.lineCap='round';
+        ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.lineTo(p1.x,p1.y);ctx.stroke();
       }
-    });
-    if(progress<1)requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
+      pts.forEach((pt,idx)=>{
+        const mT=idx/(pts.length-1);
+        if(progress>=mT){
+          const frac=mT;
+          const r=Math.round(0xe7+(0x2D-0xe7)*frac);
+          const g=Math.round(0x4c+(0x4A-0x4c)*frac);
+          const b=Math.round(0x3c+(0x3E-0x3c)*frac);
+          const col='rgb('+r+','+g+','+b+')';
+          ctx.beginPath();ctx.arc(pt.x,pt.y,7,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
+          ctx.beginPath();ctx.arc(pt.x,pt.y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+          drawLabel(labels[idx],pt.x,pt.y,col);
+        }
+      });
+      if(progress<1){window._chartRAF=requestAnimationFrame(draw);}
+    }
+    window._chartRAF=requestAnimationFrame(draw);
+  });
 }
 
 // ── R5 ────────────────────────────────────────────────
