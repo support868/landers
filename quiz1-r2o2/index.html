@@ -152,7 +152,7 @@
         <div class="qs-gender-tile" onclick="qsGender(this,'Male')"><span class="g-icon">🚹</span><span class="g-label">Male</span></div>
         <div class="qs-gender-tile" onclick="qsGender(this,'Female')"><span class="g-icon">🚺</span><span class="g-label">Female</span></div>
       </div>
-      <div class="qs-splash-trust"><span class="trust-stars">⭐⭐⭐⭐⭐</span>&nbsp;<span>32,000+</span> people already quit</div>
+      <div class="qs-splash-trust"><span class="trust-stars">⭐⭐⭐⭐⭐</span>&nbsp;<span>322,671+</span> people already quit</div>
     </div>
   </div>
 
@@ -273,22 +273,6 @@
 
   <div class="qs-screen" id="qs-10">
     <div class="qs-body">
-      <div class="qs-info-img">🧠💭</div>
-      <h1 class="qs-title" style="text-align:left;margin-bottom:20px;">The Truth About Cigarette Addiction No One Told You:</h1>
-      <div class="qs-truth-block">
-        <p>Nicotine leaves your body in <strong>72 hours.</strong></p>
-        <p>But you still crave cigarettes 3 weeks later.</p>
-        <p>Because you're not craving just the nicotine.</p>
-        <p>You're craving the <strong>RITUAL:</strong></p>
-        <p>The inhale. The exhale. The hand-to-mouth motion. The 5-minute break that takes your stress away.</p>
-        <p><strong>Nothing you've tried has replaced that ritual. Until now.</strong></p>
-      </div>
-    </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="qsGoTo(11)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
-  </div>
-
-  <div class="qs-screen" id="qs-11">
-    <div class="qs-body">
       <h1 class="qs-title">How has smoking affected your life?</h1>
       <p class="qs-subtitle">Select all that apply</p>
       <div class="qs-options">
@@ -365,8 +349,8 @@
       </div>
       <div class="qs-sp-box">
         <div class="qs-sp-eyebrow">You're not alone</div>
-        <div class="qs-sp-stat">32,000+</div>
-        <div class="qs-sp-sub">smokers have already quit with the<br>Nordic Goods Herbal Diffuser</div>
+        <div class="qs-sp-stat">322,671+</div>
+        <div class="qs-sp-sub">smokers have already quit with<br>Nordic Goods</div>
         <div class="qs-sp-rating">⭐ 4.7/5 average rating &nbsp;|&nbsp; 93% success rate</div>
       </div>
     </div>
@@ -433,7 +417,34 @@
         </div>
       </div>
     </div>
-    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(2)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R2 — ADDICTION TYPE
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r2">
+    <div class="qs-body" style="padding-bottom:100px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Your Addiction Type</p>
+      <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 24px;line-height:1.25;">You Have a <span style="font-weight:900;text-decoration:underline;text-decoration-color:#3A7D44;text-underline-offset:4px;color:#2D4A3E;">Ritual Addiction</span></h1>
+
+      <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 14px;" id="r2TriggerPara">You're not just addicted to nicotine, you're addicted to <strong style="color:#2D4A3E;font-weight:800;">everything else.</strong></p>
+        <div style="border-top:1.5px solid #D4EDCE;padding-top:14px;">
+          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 8px;"><strong style="color:#111;font-weight:800;">That's why nothing worked before.</strong></p>
+          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0;">Most methods have very low success rates. But it's <strong style="color:#2D4A3E;font-weight:800;">NOT your fault</strong>, they were never made for your addiction type.</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px;font-weight:800;color:#111;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px;">Methods you tried and why they failed</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;" id="r2MethodsList"></div>
+
+      <div style="background:linear-gradient(135deg,#2D4A3E 0%,#3A7D44 100%);border-radius:16px;padding:22px 20px;text-align:center;">
+        <p style="font-size:13px;font-weight:700;color:#8FD4A0;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 8px;">The good news</p>
+        <p style="font-size:17px;font-weight:800;color:#fff;line-height:1.5;margin:0;">There's a quitting method with a <span style="color:#8FD4A0;font-size:22px;font-weight:900;">93%</span> success rate for your addiction type.</p>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
 
   <!-- ══════════════════════════════════════════════════
@@ -457,7 +468,7 @@
       <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Tobacco</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
       <div class="r-prod-desc">The <strong>Nordic Goods Herbal Diffuser</strong> replicates the ritual of smoking — without the poison. Instead of addictive chemicals, it's infused with natural <strong>mullein herbal</strong> — a lung-healing herb used for over 2,000 years.</div>
       <div class="r-social-badge">
-        <div><div class="sb-stat">32,000+</div><div class="sb-sub">Smoke-Free Customers</div></div>
+        <div><div class="sb-stat">322,671+</div><div class="sb-sub">Smoke-Free Customers</div></div>
         <div class="sb-div"></div>
         <div><div class="sb-stat">⭐ 4.7/5</div><div class="sb-sub">Average Rating</div></div>
         <div class="sb-div"></div>
@@ -551,7 +562,7 @@
         <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
           <span style="font-size:13px;font-weight:700;color:#888;">⭐ 4.7/5</span>
           <span style="font-size:13px;color:#ddd;">·</span>
-          <span style="font-size:13px;font-weight:700;color:#888;">32,000+ Customers</span>
+          <span style="font-size:13px;font-weight:700;color:#888;">322,671+ Customers</span>
           <span style="font-size:13px;color:#ddd;">·</span>
           <span style="font-size:13px;font-weight:700;color:#888;">Free Shipping</span>
         </div>
@@ -588,7 +599,7 @@ function metaStandard(n,p){if(typeof fbq!=='undefined')fbq('track',n,p||{});}
 
 const Q_URL_NAMES={1:'Q1_gender',2:'Q2_age',3:'Q3_goals',4:'Q4_smoking_history',5:'Q5_quit_attempts',6:'Q6_methods',7:'Q7_interstitial',8:'Q8_triggers',9:'Q9_hardest_part',10:'Q10_reframe',11:'Q11_life_impact',12:'Q12_monthly_spend',13:'Q13_motivation',14:'Q14_name',15:'Q15_loading'};
 function updateURL(s){history.replaceState(null,'','?step='+s);}
-const Q_ARRIVAL_NAMES={2:'Q1_gender',3:'Q2_age',4:'Q3_goals',5:'Q4_smoking_history',6:'Q5_quit_attempts',7:'Q6_methods',8:'Q7_interstitial',9:'Q8_triggers',10:'Q9_hardest_part',11:'Q10_reframe',12:'Q11_life_impact',13:'Q12_monthly_spend',14:'Q13_motivation'};
+const Q_ARRIVAL_NAMES={2:'Q1_gender',3:'Q2_age',4:'Q3_goals',5:'Q4_smoking_history',6:'Q5_quit_attempts',7:'Q6_methods',8:'Q7_interstitial',9:'Q8_triggers',10:'Q9_hardest_part',11:'Q10_life_impact',12:'Q11_monthly_spend',13:'Q12_motivation'};
 function trackQ(n){ga4Event(n,{quiz_version:QUIZ_CONFIG.version});}
 function qsGetEl(id){return document.getElementById('qs-'+id);}
 
