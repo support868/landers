@@ -1,0 +1,2950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbal Diffuser to Quit Smoking - Same Ritual. Zero Poison. – Nordic Goods</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: "ITC Garamond Std Book Narrow";
+  src: url("fonts/garamond-regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: "ITC Garamond Std Book Narrow";
+  src: url("fonts/garamond-bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FFFAF1;
+  --green: #09842C;
+  --green-dark: #29594D;
+  --green-dark2: #2D5A27;
+  --green-light: #EBF7DE;
+  --red: #FF0000;
+  --red-dark: #9C0000;
+  --red-muted: #C0392B;
+  --red-bg: #FBE7E7;
+  --yellow: #FFEB3B;
+  --text-dark: #1C1C1C;
+  --text-body: #333333;
+  --text-muted: #6B6B6B;
+  --border: #E2E4E7;
+  --border-light: #E8E4DD;
+  --font: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-spline: 'Spline Sans', sans-serif;
+  --font-garamond: 'ITC Garamond Std Book Narrow', 'EB Garamond', Georgia, serif;
+}
+html { font-family: var(--font); background: var(--bg); -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); min-height: 100vh; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce {
+  background: var(--green);
+  border: 1px solid #CFCECA;
+  padding: 5px 16px;
+  display: flex; justify-content: center; align-items: center;
+}
+.announce p {
+  color: #FFFAF1;
+  font-family: var(--font-inter);
+  font-size: 16px; font-weight: 700; line-height: 20px; text-align: center;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 0 20px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  
+}
+.header-logo img { height: 40px; width: auto; }
+
+/* ── PAGE WRAPPER ── */
+.main { max-width: 480px; margin: 0 auto; background: var(--bg); }
+
+/* ── HERO SECTION ── */
+.hero { display: flex; flex-direction: column; padding: 16px 10px 0; }
+
+/* ── CAROUSEL ── */
+.carousel-wrap { position: relative; overflow: hidden; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+.carousel-slide { flex-shrink: 0; width: 100%; }
+.carousel-slide img { width: 100%; aspect-ratio: 1/1; object-fit: contain; display: block; max-height: 380px; }
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
+.carousel-btn svg { width: 14px; height: 14px; color: #333; }
+.thumb-strip {
+  display: flex; gap: 7px; margin-top: 10px;
+  overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;
+}
+.thumb-strip::-webkit-scrollbar { display: none; }
+.thumb-item { flex-shrink: 0; width: 65px; height: 65px; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+.thumb-item.active { border-color: #000; }
+.thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+.reviews-col { display: none; }
+
+/* ── PRODUCT INFO ── */
+.product-info { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; }
+.rating-row { display: flex; align-items: center; gap: 6px; }
+.stars-sm { display: flex; gap: 2px; }
+.star-sm { color: #FF6B12; font-size: 20px; }
+.rating-num, .rating-count { font-family: var(--font-inter); font-size: 15px; font-weight: 400; color: var(--text-body); letter-spacing: -0.5px; }
+.product-title { font-family: var(--font-garamond); font-size: 28px; font-weight: 400; color: #000; line-height: 28px; }
+.product-tagline { font-family: var(--font-inter); font-size: 18px; font-weight: 700; color: var(--text-body); line-height: 18px; letter-spacing: -1px; }
+.feature-list { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.feature-item { display: flex; align-items: center; gap: 12px; }
+.feature-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--green-dark); }
+.feature-text { font-family: var(--font-inter); font-size: 14px; font-weight: 400; color: var(--text-body); letter-spacing: -0.5px; line-height: 14px; }
+
+/* ── DISCOUNT BOX ── */
+.discount-box {
+  background: var(--green-light);
+  border-top: 2px solid var(--green); border-bottom: 2px solid var(--green);
+  padding: 5px 12px; margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: center; flex-direction: row; gap: 16px;
+}
+.discount-text-col { display: flex; flex-direction: column; align-items: center; }
+.discount-label { font-family: var(--font-inter); font-size: 16px; font-weight: 700; line-height: 28px; text-align: center; }
+.discount-label span { color: var(--red); }
+.discount-sub { font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--green-dark); line-height: 12px; }
+.timer-row { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.timer-unit { display: flex; flex-direction: column; align-items: center; }
+.timer-num { font-size: 18px; font-weight: 400; line-height: 24px; }
+.timer-label { font-size: 12px; font-weight: 500; line-height: 12px; }
+
+/* ── PACKAGE SELECTOR ── */
+.package-selector { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.pkg-option { width: 100%; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
+.pkg-badge {
+  font-family: var(--font); font-size: 14px; font-weight: 700; text-align: center;
+  padding: 3px 20px; border-radius: 13px; border: 2px solid #E2CD1F;
+  background: var(--yellow); color: #000; margin-bottom: -3px;
+  position: relative; z-index: 1; margin-left: 7px; line-height: 17px;
+}
+.pkg-card {
+  width: 100%; background: #fff; border: 1px solid var(--border);
+  border-radius: 9px; box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  padding: 13px 10px; display: flex; align-items: center; gap: 10px; transition: all 0.3s;
+}
+.pkg-option.selected .pkg-card { background: #F5F5F5; box-shadow: inset 0 4px 4px rgba(0,0,0,0.25); }
+.pkg-radio { width: 20px; height: 20px; border: 1px solid #c0c0c0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.pkg-radio .dot { width: 12px; height: 12px; border-radius: 50%; background: transparent; transition: background 0.2s; }
+.pkg-option.selected .pkg-radio .dot { background: var(--green-dark); }
+.pkg-img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
+.pkg-info { flex: 1; display: flex; flex-direction: column; gap: 0; }
+.pkg-name { font-family: var(--font-inter); font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 20px; }
+.pkg-savings { font-size: 14px; font-weight: 500; color: var(--red); line-height: 16px; }
+.pkg-price-col { display: flex; flex-direction: column; align-items: flex-end; padding-right: 4px; }
+.pkg-price { font-size: 17px; font-weight: 600; color: var(--text-dark); line-height: 16px; }
+.pkg-compare { font-size: 17px; font-weight: 400; color: var(--text-dark); line-height: 20px; text-decoration: line-through; }
+
+/* ── CTA BUTTON ── */
+.cta-btn {
+  width: 100%; background: var(--green); color: #fff; border: none; border-radius: 5px;
+  padding: 12px; margin-top: 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25); gap: 0;
+}
+.cta-btn:active { transform: scale(0.98); }
+.cta-main { font-size: 20px; font-weight: 700; line-height: 22px; }
+.cta-sub { font-size: 12px; font-weight: 500; line-height: 22px; color: rgba(255,255,255,0.9); }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--green-light); border: 1px solid #E1F0D5; border-radius: 25px;
+  margin: 6px 0; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between;
+}
+.trust-left { display: flex; align-items: center; gap: 3px; }
+.trust-dot { width: 9px; height: 9px; background: #54C63A; border-radius: 50%; flex-shrink: 0; }
+.trust-stock { font-family: var(--font-inter); font-size: 10px; font-weight: 600; color: var(--text-body); }
+.trust-right { display: flex; align-items: center; gap: 3px; }
+.trust-ship-img { width: 16px; height: 16px; }
+.trust-ship-text { font-family: var(--font-inter); font-size: 12px; font-weight: 500; }
+.trust-ship-text strong { font-weight: 600; }
+
+/* ── WARNING BOX ── */
+.warning-box {
+  background: var(--red-bg); border: 2px dashed var(--red-dark); border-radius: 10px;
+  padding: 15px 12px; display: flex; gap: 8px; margin: 0 0 8px;
+}
+.warning-icon { width: 24px; height: 24px; flex-shrink: 0; color: var(--red-dark); }
+.warning-title { font-family: var(--font-inter); font-size: 16px; font-weight: 700; color: var(--red-dark); line-height: 24px; }
+.warning-text { font-family: var(--font-inter); font-size: 14px; font-weight: 400; color: var(--red-dark); line-height: 16px; }
+
+/* ── ACCORDION ── */
+.accordion { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.acc-item { border-bottom: 1px solid #CBD5E1; }
+.acc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px; background: none; border: none; cursor: pointer; }
+.acc-label { font-family: var(--font-inter); font-size: 17px; font-weight: 400; color: var(--text-body); line-height: 24px; letter-spacing: -0.5px; text-align: left; }
+.acc-icon { width: 24px; height: 24px; flex-shrink: 0; color: var(--text-body); transition: transform 0.2s; }
+.acc-item.open .acc-icon { transform: rotate(45deg); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.acc-item.open .acc-body { max-height: 600px; }
+.acc-content { padding: 0 12px 12px; font-family: var(--font-inter); font-size: 14px; color: var(--text-body); line-height: 1.6; }
+
+/* ── DESKTOP REVIEW CARDS ── */
+.rev-card-desktop { background: var(--green-light); border: 1px solid #C4C4C4; border-radius: 8px; overflow: visible; }
+.rev-card-desktop .rev-body { padding: 6px 8px; text-align: left; }
+.rev-text-desktop { font-family: var(--font-inter); font-size: 15px; font-weight: 400; color: var(--text-body); line-height: 21px; letter-spacing: -0.3px; text-align: left; }
+.rev-meta { display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; }
+.rev-person { display: flex; align-items: center; gap: 8px; }
+.rev-avatar { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+.rev-name-text { font-family: var(--font-inter); font-size: 15px; font-weight: 700; line-height: 19px; }
+.rev-verified { font-size: 13px; font-weight: 400; color: #666; line-height: 17px; white-space: nowrap; }
+.rev-stars-row { display: flex; gap: 2px; }
+.rev-star-big { color: #FF6B12; font-size: 16px; }
+
+/* ─────────────────────────────────────────
+   REVIEWS GRID SECTION
+───────────────────────────────────────── */
+.reviews-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 40px 16px; font-family: var(--font-inter);
+  color: #1a1a1a; background: #fff;
+}
+.reviews-section h2 {
+  font-family: var(--font-garamond);
+  font-size: 32px; font-weight: 400; text-align: center;
+  margin-bottom: 12px; color: #1a1a1a;
+}
+.reviews-subtitle { text-align: center; font-size: 14px; color: #444; margin-bottom: 24px; line-height: 1.5; }
+.reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.reviews-rating { display: flex; align-items: center; gap: 8px; }
+.reviews-stars { display: flex; gap: 2px; }
+.reviews-star { color: #f5c518; font-size: 18px; }
+.reviews-count { font-size: 15px; color: #333; }
+.write-review-btn {
+  background: #fff; border: 1px solid #ccc; padding: 7px 16px;
+  font-size: 13px; cursor: pointer; border-radius: 2px; color: #333; transition: background 0.2s;
+}
+.write-review-btn:hover { background: #f5f5f5; }
+.reviews-grid { columns: 2; column-gap: 12px; }
+.review-card { break-inside: avoid; margin-bottom: 12px; background: #fff; display: inline-block; width: 100%; }
+.review-image-wrapper { position: relative; overflow: hidden; border-radius: 4px; }
+.review-image { width: 100%; display: block; border-radius: 4px; }
+.reviewer-info { padding: 6px 0 0; }
+.reviewer-name { font-family: var(--font-spline); font-size: 13px; font-weight: 700; color: #1a1a1a; display: inline-flex; align-items: center; gap: 5px; }
+.verified-badge { display: inline-flex; align-items: center; gap: 2px; font-size: 11px; color: #4CAF50; font-weight: 400; }
+.review-stars-row { display: flex; gap: 1px; margin: 3px 0 4px; }
+.review-star { color: #f5c518; font-size: 14px; }
+.review-text { font-family: var(--font-inter); font-size: 12px; line-height: 1.5; color: #333; border-left: 2px solid #e0e0e0; padding-left: 8px; margin-top: 3px; }
+.rev-expanded-text { display: none; }
+.rev-card.rev-expanded .rev-collapsed-text { display: none; }
+.rev-card.rev-expanded .rev-expanded-text { display: inline; }
+.read-more-btn { background: none; border: none; font-size: 12px; color: #09842C; cursor: pointer; padding: 0; font-family: var(--font-inter); }
+
+/* Horizontal scroll carousel for reviews (mobile) */
+.rev-track-wrap { position: relative; overflow: hidden; }
+.rev-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 2px 8px; }
+.rev-track::-webkit-scrollbar { display: none; }
+.rev-track .review-card { flex: 0 0 260px; scroll-snap-align: start; border: 1px solid #E8E4DD; border-radius: 8px; padding: 12px; margin-bottom: 0; }
+.rev-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px;
+  background: #fff; border: 1px solid #E8E4DD; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer; z-index: 10;
+}
+.rev-btn--left { left: 4px; }
+.rev-btn--right { right: 4px; }
+.rev-btn svg { width: 18px; height: 18px; color: #1A1A1A; }
+
+/* ─────────────────────────────────────────
+   WHY EVERYTHING ELSE FAILS SECTION
+───────────────────────────────────────── */
+.weaf-section { width: 100%; padding: 40px 16px 50px; color: var(--text-body); }
+.weaf-inner { max-width: 600px; margin: 0 auto; }
+.weaf-title { font-family: var(--font-garamond); font-size: 24px; font-weight: 600; color: #1A1A1A; text-align: center; margin-bottom: 8px; line-height: 1.25; }
+.weaf-empathy { font-family: var(--font-inter); font-size: 14px; color: var(--text-body); text-align: center; margin: 0 auto 28px; line-height: 1.55; max-width: 480px; }
+.weaf-competitors { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.weaf-card { background: #fff; border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; }
+.weaf-card-top { display: flex; }
+.weaf-card-img-wrap { width: 35%; flex-shrink: 0; padding: 10px; }
+.weaf-card-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-light); }
+.weaf-card-content { padding: 14px; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.weaf-card-header { display: flex; flex-direction: column; margin-bottom: 10px; gap: 6px; }
+.weaf-card-name { font-family: var(--font-garamond); font-size: 18px; font-weight: 600; color: #1A1A1A; line-height: 1.3; }
+.weaf-card-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--red-muted); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; align-self: flex-start;
+}
+.weaf-card-badge svg { width: 12px; height: 12px; }
+.weaf-card-body { font-family: var(--font-inter); font-size: 13px; line-height: 1.55; color: var(--text-body); }
+.weaf-card-fail { background: var(--red-bg); padding: 10px 14px; display: flex; align-items: flex-start; gap: 8px; }
+.weaf-card-fail-icon { width: 16px; height: 16px; flex-shrink: 0; color: var(--red-muted); margin-top: 1px; }
+.weaf-card-fail-text { font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: var(--red-muted); line-height: 1.45; }
+.weaf-card-fail-text span { font-weight: 400; color: #8B4040; }
+
+/* Nordic Goods hero card */
+.weaf-hero { background: var(--green-dark2); border-radius: 12px; overflow: hidden; }
+.weaf-hero-top-row { display: flex; }
+.weaf-hero-img-wrap { width: 35%; flex-shrink: 0; padding: 10px; }
+.weaf-hero-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); }
+.weaf-hero-content { padding: 14px; flex: 1; min-width: 0; }
+.weaf-hero-header { margin-bottom: 4px; }
+.weaf-hero-name { font-family: var(--font-garamond); font-size: 18px; font-weight: 600; color: #fff; line-height: 1.3; }
+.weaf-hero-tagline { font-family: var(--font-inter); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+.weaf-hero-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #4CAF50; color: #fff;
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+}
+.weaf-hero-badge svg { width: 12px; height: 12px; }
+.weaf-hero-stat-number { font-family: var(--font-garamond); font-size: 44px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
+.weaf-hero-stat-number em { color: #7BC67E; font-style: normal; }
+.weaf-hero-stat-label { font-family: var(--font-inter); font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+.weaf-hero-stat-source { font-family: var(--font-inter); font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 3px; font-style: italic; }
+.weaf-hero-bottom { padding: 0 14px 20px; }
+.weaf-hero-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 12px 0; }
+.weaf-hero-body { font-family: var(--font-inter); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 14px; }
+.weaf-hero-checks { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px; }
+.weaf-hero-check { display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); white-space: nowrap; }
+.weaf-hero-check svg { width: 14px; height: 14px; color: #7BC67E; flex-shrink: 0; }
+.weaf-hero-success { background: rgba(123,198,126,0.15); border-radius: 8px; padding: 10px 12px; display: flex; align-items: flex-start; gap: 8px; }
+.weaf-hero-success-icon { width: 16px; height: 16px; flex-shrink: 0; color: #7BC67E; margin-top: 1px; }
+.weaf-hero-success-text { font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: #7BC67E; line-height: 1.45; }
+
+/* Bar chart */
+.weaf-bars { margin-top: 28px; background: #fff; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px 10px 16px; }
+.weaf-bars-title { font-family: var(--font-spline); font-size: 16px; font-weight: 600; color: #1A1A1A; margin-bottom: 20px; text-align: center; }
+.weaf-bars-row { display: flex; align-items: flex-end; justify-content: center; gap: 12px; padding: 0 8px; }
+.weaf-bar-col { flex: 1; max-width: 100px; display: flex; flex-direction: column; align-items: center; }
+.weaf-bar-pct { font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--text-body); margin-bottom: 6px; white-space: nowrap; }
+.weaf-bar-pct--nordic { color: var(--green-dark2); font-size: 14px; }
+.weaf-bar-track { width: 100%; background: #F5F5F5; border-radius: 6px 6px 0 0; display: flex; align-items: flex-end; height: 120px; }
+.weaf-bar-fill { width: 100%; border-radius: 6px 6px 0 0; background: #E8E4DD; transition: height 0.8s ease; }
+.weaf-bar-fill--nordic { background: var(--green-dark2); }
+.weaf-bar-label { font-family: var(--font-inter); font-size: 10px; font-weight: 500; color: var(--text-muted); text-align: center; margin-top: 8px; line-height: 1.3; }
+.weaf-cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.weaf-cta-btn { background: var(--green); color: #fff; border: none; border-radius: 5px; padding: 12px 32px; font-size: 16px; font-weight: 700; font-family: var(--font); cursor: pointer; width: 100%; max-width: 400px; }
+.weaf-cta-sub { font-family: var(--font-inter); font-size: 12px; color: var(--text-muted); }
+
+/* ─────────────────────────────────────────
+   INGREDIENTS SECTION
+───────────────────────────────────────── */
+.ing-section { background: var(--bg); padding: 40px 16px 50px; }
+.ing-inner { max-width: 600px; margin: 0 auto; }
+.ing-title { font-family: var(--font-garamond); font-size: 28px; font-weight: 400; color: #1A1A1A; text-align: center; margin-bottom: 28px; line-height: 1.2; }
+.ing-list { display: flex; flex-direction: column; gap: 20px; }
+.ing-item { display: flex; align-items: flex-start; gap: 14px; }
+.ing-img { width: 90px; height: 90px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.ing-info {}
+.ing-name { font-family: var(--font-garamond); font-size: 20px; font-weight: 600; color: #1A1A1A; line-height: 1.2; margin-bottom: 4px; }
+.ing-desc { font-family: var(--font-inter); font-size: 13px; color: var(--text-body); line-height: 1.55; }
+.ing-cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ing-cta-btn { background: var(--green); color: #fff; border: none; border-radius: 5px; padding: 12px 32px; font-size: 16px; font-weight: 700; font-family: var(--font); cursor: pointer; width: 100%; max-width: 400px; }
+.ing-cta-sub { font-family: var(--font-inter); font-size: 12px; color: var(--text-muted); }
+
+/* ─────────────────────────────────────────
+   JOURNEY / TIMELINE SECTION
+───────────────────────────────────────── */
+.journey-section { padding: 0; background: var(--green-light); }
+.journey-inner { max-width: 1200px; margin: 0 auto; }
+.journey-layout { display: flex; flex-direction: column; }
+.journey-photo-col { display: none; }
+.journey-content-col { padding: 40px 16px 50px; }
+.journey-title { font-family: var(--font-garamond); font-size: 28px; font-weight: 400; color: #1A1A1A; margin-bottom: 32px; line-height: 1.2; }
+.journey-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+.journey-list::before { content: ''; position: absolute; left: 11px; top: 12px; bottom: 12px; width: 2px; background: #C8D8C4; z-index: 0; }
+.journey-item { display: flex; gap: 20px; padding-bottom: 32px; position: relative; }
+.journey-item:last-child { padding-bottom: 0; }
+.journey-dot { width: 24px; height: 24px; background: #29594D; border-radius: 50%; flex-shrink: 0; position: relative; z-index: 1; margin-top: 2px; }
+.journey-dot--active { background: var(--green); }
+.journey-content { flex: 1; }
+.journey-day { font-family: var(--font-spline); font-size: 15px; font-weight: 700; color: #1A1A1A; margin-bottom: 6px; }
+.journey-text { font-family: var(--font-inter); font-size: 14px; color: #3D3D3D; line-height: 1.6; }
+.journey-cta { margin-top: 32px; display: flex; flex-direction: column; gap: 6px; }
+.journey-cta-btn { background: var(--green); color: #fff; border: none; border-radius: 6px; padding: 14px 24px; font-size: 15px; font-weight: 700; font-family: var(--font); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.journey-cta-sub { font-family: var(--font-inter); font-size: 12px; color: var(--text-muted); }
+@media (min-width: 641px) {
+  .journey-section { padding: 0; }
+  .journey-layout { flex-direction: row; min-height: 700px; }
+  .journey-photo-col { display: block; flex: 0 0 42%; }
+  .journey-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .journey-content-col { flex: 1; padding: 60px 50px; display: flex; flex-direction: column; justify-content: center; }
+  .journey-title { font-size: 36px; }
+  .journey-list { flex-direction: column; }
+  .journey-item { flex-direction: row; flex: none; }
+  .journey-cta-btn { width: auto; align-self: flex-start; padding: 14px 32px; }
+}
+
+/* ─────────────────────────────────────────
+   FAQ SECTION
+───────────────────────────────────────── */
+.faq-section { background: var(--bg); padding: 40px 16px 50px; }
+.faq-inner { max-width: 640px; margin: 0 auto; }
+.faq-title { font-family: var(--font-garamond); font-size: 28px; font-weight: 400; color: #1A1A1A; text-align: center; line-height: 1.25; margin-bottom: 24px; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: #fff; border: 1px solid var(--border-light); border-radius: 10px; overflow: hidden; }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 18px; cursor: pointer; width: 100%; background: none; border: none;
+  font-family: var(--font-spline); font-size: 16px; font-weight: 600; color: #1A1A1A; line-height: 1.35; text-align: left;
+}
+.faq-icon { font-size: 20px; font-weight: 300; color: #1A1A1A; transition: transform 0.25s ease; flex-shrink: 0; user-select: none; }
+.faq-item.faq-open .faq-icon { transform: rotate(45deg); }
+.faq-answer-wrap { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-item.faq-open .faq-answer-wrap { max-height: 600px; }
+.faq-answer { padding: 0 18px 18px; font-family: var(--font-inter); font-size: 15px; color: #3D3D3D; line-height: 1.6; }
+.faq-cta { margin-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.faq-cta-btn { background: var(--green); color: #fff; border: none; border-radius: 5px; padding: 12px 32px; font-size: 16px; font-weight: 700; font-family: var(--font); cursor: pointer; width: 100%; max-width: 400px; }
+.faq-cta-sub { font-family: var(--font-inter); font-size: 12px; color: var(--text-muted); }
+
+/* ─────────────────────────────────────────
+   FOOTER REVIEWS CTA
+───────────────────────────────────────── */
+.footer-cta-section { background: #fff; padding: 40px 16px; }
+.footer-cta-inner { max-width: 1200px; margin: 0 auto; }
+.footer-cta-section h2 { font-family: var(--font-garamond); font-size: 32px; font-weight: 400; text-align: center; margin-bottom: 6px; }
+.footer-rating-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
+.footer-stars { display: flex; gap: 2px; }
+.footer-star { color: #f5c518; font-size: 18px; }
+.footer-count { font-size: 14px; color: #333; }
+.footer-write-btn { background: #fff; border: 1px solid #ccc; padding: 7px 16px; font-size: 13px; cursor: pointer; border-radius: 2px; color: #333; }
+
+/* ─────────────────────────────────────────
+   SECTION DIVIDER
+───────────────────────────────────────── */
+.section-divider { width: 100%; height: 1px; background: var(--border-light); }
+
+/* ─────────────────────────────────────────
+   DESKTOP OVERRIDES
+───────────────────────────────────────── */
+@media (min-width: 641px) {
+  .main { max-width: 1200px; }
+  .hero { flex-direction: row; gap: 40px; padding: 40px 40px 22px; align-items: flex-start; }
+  .carousel-col { flex: 0 0 auto; width: 50%; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  .carousel-slide img { max-height: none; }
+  .reviews-col { display: flex !important; flex-direction: column; gap: 8px; }
+  .product-col { flex: 1; min-width: 0; padding: 0 0 48px; }
+  .product-info { padding-top: 0; }
+
+  .weaf-section { padding: 60px 40px 70px; }
+  .weaf-inner { max-width: 800px; }
+  .weaf-title { font-size: 32px; }
+  .weaf-competitors { flex-direction: row; flex-wrap: wrap; }
+  .weaf-competitors .weaf-card { flex: 1 1 calc(50% - 7px); }
+
+  .ing-section { padding: 60px 40px 70px; }
+  .ing-inner { max-width: 800px; }
+  .ing-title { font-size: 36px; }
+  .ing-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .ing-item { flex-direction: column; align-items: flex-start; }
+  .ing-img { width: 100%; height: 200px; }
+
+
+
+  .faq-section { padding: 60px 40px 70px; }
+  .faq-title { font-size: 36px; margin-bottom: 32px; }
+  .faq-question { font-size: 17px; }
+
+  .reviews-section { padding: 60px 40px; }
+  .reviews-section h2 { font-size: 42px; }
+  .reviews-grid { columns: 4; column-gap: 16px; }
+  .rev-track .review-card { flex: 0 0 300px; }
+
+  .footer-cta-section { padding: 60px 40px; }
+  .footer-cta-section h2 { font-size: 40px; }
+
+  .section-pad { padding: 0 40px; }
+}
+.section-pad { padding: 0 10px; }
+</style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2338204330017730');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2338204330017730&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <img src="images/logo.png" alt="Nordic Goods">
+  </div>
+</header>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce"><p>DISCOUNT <span id="announceCode">QUIT50</span>: BUY 3 GET 3 FREE</p></div>
+
+<main class="main">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+
+    <!-- Left col: Carousel + reviews (desktop) -->
+    <div class="carousel-col">
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="track">
+          <div class="carousel-slide"><img src="images/hero.webp" alt="Herbal Diffuser" loading="eager"></div>
+          <div class="carousel-slide"><img src="images/benefits.webp" alt="Benefits" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/reviews.webp" alt="Reviews" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/ritual.webp" alt="Ritual" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/how-to-use.webp" alt="How To Use" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/flavors.webp" alt="Flavors" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn prev" id="prev"><svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg></button>
+        <button class="carousel-btn next" id="next"><svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg></button>
+      </div>
+      <div class="thumb-strip" id="thumbs">
+        <div class="thumb-item active" data-idx="0"><img src="images/hero.webp" alt=""></div>
+        <div class="thumb-item" data-idx="1"><img src="images/benefits.webp" alt=""></div>
+        <div class="thumb-item" data-idx="2"><img src="images/reviews.webp" alt=""></div>
+        <div class="thumb-item" data-idx="3"><img src="images/ritual.webp" alt=""></div>
+        <div class="thumb-item" data-idx="4"><img src="images/how-to-use.webp" alt=""></div>
+        <div class="thumb-item" data-idx="5"><img src="images/flavors.webp" alt=""></div>
+      </div>
+      <!-- Desktop review cards under carousel -->
+      <div class="reviews-col">
+        <div class="rev-card-desktop">
+          <div class="rev-body"><div class="rev-text-desktop">"I smoked a pack a day for 22 years and tried absolutely everything — patches, gum, vapes, cold turkey a dozen times. This is the first thing that actually made me stop reaching for a cigarette, because my mouth, lungs and brain can't tell the difference."</div></div>
+          <div class="rev-meta">
+            <div class="rev-person">
+              <img class="rev-avatar" src="images/avatar-susan.webp" alt="Susan N.">
+              <div><div class="rev-name-text">Susan N.</div><div class="rev-verified">Verified Customer</div></div>
+            </div>
+            <div class="rev-stars-row"><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span></div>
+          </div>
+        </div>
+        <div class="rev-card-desktop">
+          <div class="rev-body"><div class="rev-text-desktop">"I didn't think I'd make it past day 3. I'm on month 4. It's crazy that all I needed to quit cigs was something safe to hold and inhale when a craving hits."</div></div>
+          <div class="rev-meta">
+            <div class="rev-person">
+              <img class="rev-avatar" src="images/avatar-zara.webp" alt="Zara J.">
+              <div><div class="rev-name-text">Zara J.</div><div class="rev-verified">Verified Customer</div></div>
+            </div>
+            <div class="rev-stars-row"><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span><span class="rev-star-big">★</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right col: Product info -->
+    <div class="product-col section-pad">
+      <div class="product-info">
+        <div class="rating-row">
+          <div class="stars-sm"><span class="star-sm">★</span><span class="star-sm">★</span><span class="star-sm">★</span><span class="star-sm">★</span><span class="star-sm">★</span></div>
+          <span class="rating-num"><strong>4.6</strong></span>
+          <span class="rating-count">2,847+ Reviews</span>
+        </div>
+        <h1 class="product-title">Herbal Air Diffuser</h1>
+        <div class="product-tagline">Same Ritual. Zero Poison.</div>
+        <div class="feature-list">
+          <div class="feature-item"><svg class="feature-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg><span class="feature-text">Natural Lung-Healing Ingredients</span></div>
+          <div class="feature-item"><svg class="feature-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg><span class="feature-text">32,000+ Smoke-Free Customers</span></div>
+          <div class="feature-item"><svg class="feature-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg><span class="feature-text">Smoke-Free In 30 Days Guarantee</span></div>
+        </div>
+        <div class="discount-box">
+          <div class="discount-text-col">
+            <div class="discount-label">DISCOUNT APPLIED:<span id="discountCode"> QUIT50 </span></div>
+            <div class="discount-sub">Get <strong>50% OFF</strong> Limited Time ONLY</div>
+          </div>
+          <div class="timer-row">
+            <div class="timer-unit"><span class="timer-num" id="mins">15</span><span class="timer-label">MIN</span></div>
+            <span style="font-size:18px;line-height:24px;margin:0 2px;">:</span>
+            <div class="timer-unit"><span class="timer-num" id="secs">41</span><span class="timer-label">SEC</span></div>
+          </div>
+        </div>
+        <div class="package-selector" id="packages">
+          <div class="pkg-option selected" id="pkg-0">
+            <div class="pkg-badge">MOST POPULAR</div>
+            <div class="pkg-card">
+              <div class="pkg-radio"><div class="dot"></div></div>
+              <img class="pkg-img" src="images/pkg-1.png" alt="">
+              <div class="pkg-info"><div class="pkg-name">Buy 2 Get 2 FREE</div><div class="pkg-savings">YOU SAVE $95.44!</div></div>
+              <div class="pkg-price-col"><div class="pkg-price">$64.36</div><div class="pkg-compare">$159.80</div></div>
+            </div>
+          </div>
+          <div class="pkg-option" id="pkg-1">
+            <div class="pkg-badge">BEST VALUE</div>
+            <div class="pkg-card">
+              <div class="pkg-radio"><div class="dot"></div></div>
+              <img class="pkg-img" src="images/pkg-2.png" alt="">
+              <div class="pkg-info"><div class="pkg-name">Buy 3 Get 3 FREE</div><div class="pkg-savings">YOU SAVE $143.16!</div></div>
+              <div class="pkg-price-col"><div class="pkg-price">$96.54</div><div class="pkg-compare">$239.70</div></div>
+            </div>
+          </div>
+          <div class="pkg-option" id="pkg-2" style="margin-top:5px;">
+            <div class="pkg-card">
+              <div class="pkg-radio"><div class="dot"></div></div>
+              <img class="pkg-img" src="images/pkg-3.png" alt="">
+              <div class="pkg-info"><div class="pkg-name">Buy 1 Get 1 FREE</div><div class="pkg-savings">YOU SAVE $47.81!</div></div>
+              <div class="pkg-price-col"><div class="pkg-price">$32.18</div><div class="pkg-compare">$79.99</div></div>
+            </div>
+          </div>
+        </div>
+        <button class="cta-btn" id="cta">
+          <span class="cta-main">CLAIM OFFER</span>
+          <span class="cta-sub">30-Day Money Back Guarantee</span>
+        </button>
+        <div class="trust-bar">
+          <div class="trust-left"><div class="trust-dot"></div><span class="trust-stock">High Demand, Limited Stock</span></div>
+          <div class="trust-right">
+            <img class="trust-ship-img" src="images/shipping-icon.png" alt="">
+            <span class="trust-ship-text"><strong>FREE</strong> <span style="color:#29594D">USA</span> Shipping</span>
+          </div>
+        </div>
+        <div class="warning-box">
+          <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div><div class="warning-title">Watch Out For Cheap Replicas.</div><div class="warning-text">Only Nordic Goods guarantees the highest quality product loved by thousands. Don't fall for the replicas on Amazon, Ebay and other sites.</div></div>
+        </div>
+        <div class="accordion">
+          <div class="acc-item" id="acc-0">
+            <button class="acc-trigger"><span class="acc-label">How It Works</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
+            <div class="acc-body"><div class="acc-content">The Herbal Diffuser replaces the full ritual of smoking — the hold, the draw, the inhale and exhale — using only natural herbal ingredients. No nicotine, no tobacco, nothing addictive. Just the sensation your body craves, without the poison.</div></div>
+          </div>
+          <div class="acc-item" id="acc-1">
+            <button class="acc-trigger"><span class="acc-label">Full Ingredient List</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
+            <div class="acc-body"><div class="acc-content">Mullein Extract, Mint Leaves, Thyme, Verbena. No nicotine. No tobacco. No additives. No synthetic chemicals.</div></div>
+          </div>
+          <div class="acc-item" id="acc-2">
+            <button class="acc-trigger"><span class="acc-label">Refund Policy</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
+            <div class="acc-body"><div class="acc-content">30-day money-back guarantee. If you don't feel a difference, contact us and we'll refund your order in full — no questions asked.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+<style>
+  .rev-section {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .rev-section *, .rev-section *::before, .rev-section *::after {
+    box-sizing: border-box;
+  }
+
+  .rev-section h1, .rev-section p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rev-title {
+    font-family: 'ITC Garamond Std Book Narrow', 'EB Garamond', 'Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #1A1A1A;
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    padding: 0 16px;
+  }
+
+  .rev-wrap {
+    position: relative;
+  }
+
+  .rev-track {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px 16px;
+    scrollbar-width: none;
+  }
+
+  .rev-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rev-card {
+    flex-shrink: 0;
+    width: calc(50% - 21px);
+    background: #FFFFFF;
+    border: 1px solid #E8E4DD;
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rev-img-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 10px 0;
+  }
+
+  .rev-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #E8E4DD;
+  }
+
+  .rev-stars {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    gap: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .rev-star {
+    width: 20px;
+    height: 20px;
+    color: #F5A623;
+    display: block;
+  }
+
+  .rev-body {
+    padding: 20px 14px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .rev-name {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .rev-verified {
+    width: 16px;
+    height: 16px;
+    color: #4CAF50;
+    display: block;
+  }
+
+  .rev-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #3D3D3D;
+    line-height: 1.55;
+    margin-top: 8px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+
+  .rev-card.rev-expanded .rev-text {
+    -webkit-line-clamp: unset;
+    display: block;
+  }
+
+  .rev-more {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2D5A27;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 0 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rev-card.rev-expanded .rev-more {
+    display: none;
+  }
+
+  /* Scroll buttons */
+  .rev-btn {
+    display: none;
+  }
+
+  @media (min-width: 641px) {
+    .rev-title { font-size: 36px; }
+    .rev-track { gap: 16px; padding: 0 16px 20px; }
+    .rev-card { width: calc(25% - 12px); }
+    .rev-img-wrap { padding: 12px 12px 0; }
+    .rev-body { padding: 22px 16px 20px; }
+    .rev-name { font-size: 16px; }
+    .rev-text { font-size: 14px; -webkit-line-clamp: unset; display: block; }
+    .rev-more { display: none; }
+    .rev-stars { padding: 6px 14px; }
+    .rev-star { width: 22px; height: 22px; }
+
+    .rev-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid #E8E4DD;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+
+    .rev-btn:hover {
+      background: #F5F5F0;
+    }
+
+    .rev-btn svg {
+      width: 18px;
+      height: 18px;
+      color: #1A1A1A;
+    }
+
+    .rev-btn--left {
+      left: 4px;
+    }
+
+    .rev-btn--right {
+      right: 4px;
+    }
+  }
+</style>
+
+<section class="rev-section">
+
+  <h1 class="rev-title">Here's What The People Are Saying</h1>
+
+  <div class="rev-wrap">
+    <button class="rev-btn rev-btn--left" onclick="this.closest('.rev-wrap').querySelector('.rev-track').scrollBy({left:-280,behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="rev-btn rev-btn--right" onclick="this.closest('.rev-wrap').querySelector('.rev-track').scrollBy({left:280,behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+    </button>
+
+    <div class="rev-track">
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-1.webp" alt="Sarah review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Sarah K. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">22 years of smoking. Tried patches three times, gum twice, Champix once. Nothing stuck. This is the first thing that made me stop reaching for a cigarette because my hands and lungs didn't know the difference.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-2.webp" alt="Marcus review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Marcus T. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">I didn't think I'd make it past day 3. I'm on month 5 now. The only thing that changed was having something to hold and inhale when the craving hit. That was the piece every other method was missing.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-3.webp" alt="David review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">David R. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">Every quit product made me feel like a patient. This made me feel like a smoker who just doesn't smoke poison anymore. I still take my breaks, I still step outside. I just don't hate myself after.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-4.webp" alt="Priya review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Priya N. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">My kids asked me to stop. I tried for them a hundred times. 14 weeks clean now. My daughter told me I don't smell like smoke anymore. I cried in the car after she said that.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-5.webp" alt="James review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">James W. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">Used the patch AND this together. Patch handled the nicotine. This handled everything else. First time in 18 years I made it past two weeks. I'm on month 3 and I don't even think about it anymore.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-6.webp" alt="Ana review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Ana P. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">I read Allen Carr's book twice. It made sense in my head but my body still wanted the cigarette. This gives my body what it wants without the poison. That's the difference nobody talks about.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-7.webp" alt="Tom review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Tom H. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">Pack a day for 30 years. My doctor said quit or face the consequences. Cold turkey lasted 4 days. Patches lasted 3 weeks. This lasted. Because it actually replaces the thing I was addicted to doing.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-8.webp" alt="Rachel review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Rachel G. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">I was spending £12 a day on cigarettes. That's over £4,000 a year to slowly kill myself. Now I spend a fraction of that and my lungs feel clear for the first time in a decade.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-9.webp" alt="Mike review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Mike D. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">Switched from vaping to this. Thought it would be harder but it wasn't. The throat hit is real, the exhale is real. The only thing missing is the nicotine. And after a week I didn't miss that either.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-10.webp" alt="Linda review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Linda C. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">I was terrified it would taste awful or feel fake. It doesn't. The mint is genuinely pleasant and the exhale feels exactly like smoking. I keep forgetting I'm not actually smoking.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-11.webp" alt="Chris review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Chris B. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">My wife bought me this for my birthday. I thought it was a gag gift. Two months later I haven't bought a single pack. She says it's the best present she ever gave me. Hard to argue.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-img-wrap">
+          <img class="rev-img" src="images/review-12.webp" alt="Emma review">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+            <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"></path></svg>
+          </div>
+        </div>
+        <div class="rev-body">
+          <div class="rev-name">Emma S. <svg class="rev-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></div>
+          <div class="rev-text">I was the person who said "I'll quit when I'm ready." I was never going to be ready. Ordering this was the smallest step I could take. Six weeks later I can breathe properly for the first time in 12 years.</div>
+          <button class="rev-more" onclick="this.closest('.rev-card').classList.add('rev-expanded')">...read more</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section></div></div><div data-rid="9c9771bc-d386-450b-aafc-ec39f1dd8975" style="--replo-library-2c02fd68-c0d2-4447-a3cb-0a578105fbda-styles-3c975dbb-37d0-4bd8-acee-6199d4b659eb-attributes-color:#29594DFF" class="r-1syt5mq"><div data-rid="08d8e4a4-70ec-4925-bb01-33af70bfc26c" class="r-19pob4a"><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Spline+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-card: #FFFFFF;
+    --green-dark: #2D5A27;
+    --red-muted: #C0392B;
+    --red-bg: #FBE9E7;
+    --text-dark: #1A1A1A;
+    --text-body: #3D3D3D;
+    --text-muted: #6B6B6B;
+    --border-light: #E8E4DD;
+    --font-h1: 'ITC Garamond Std Book Narrow', 'EB Garamond', 'Garamond', Georgia, serif;
+    --font-h2: 'Spline Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  .weaf-section {
+    width: 100%;
+    padding: 40px 0 50px;
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .weaf-section *, .weaf-section *::before, .weaf-section *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .weaf-section h1, .weaf-section h2, .weaf-section p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .weaf-title {
+    font-family: var(--font-h1);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .weaf-empathy {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-body);
+    text-align: center;
+    margin: 0 auto 28px;
+    line-height: 1.55;
+  }
+
+
+  .weaf-competitors {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .weaf-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .weaf-card-top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .weaf-card-content {
+    padding: 14px;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .weaf-card-img-wrap {
+    width: 35%;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .weaf-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+
+  .weaf-card-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .weaf-card-name {
+    font-family: var(--font-h1);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  .weaf-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--red-muted);
+    color: #FFFFFF;
+    
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+
+  .weaf-card-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .weaf-card-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-body);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .weaf-card-fail {
+    background: var(--red-bg);
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .weaf-card-fail-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--red-muted);
+    margin-top: 1px;
+  }
+
+  .weaf-card-fail-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--red-muted);
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .weaf-card-fail-text span {
+    font-weight: 400;
+    color: #8B4040;
+  }
+
+  /* ── Hero ── */
+  .weaf-hero {
+    background: var(--green-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .weaf-hero-top-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .weaf-hero-content {
+    padding: 14px;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .weaf-hero-img-wrap {
+    width: 35%;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .weaf-hero-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .weaf-hero-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+    gap: 3px;
+  }
+
+  .weaf-hero-name {
+    font-family: var(--font-h1);
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  .weaf-hero-tagline {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+
+  .weaf-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    align-self: flex-start;
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
+
+  .weaf-hero-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .weaf-hero-stat { margin-bottom: 0; }
+
+  .weaf-hero-stat-number {
+    font-family: var(--font-h1);
+    font-size: 44px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .weaf-hero-stat-number em {
+    color: #7BC67E;
+    font-style: normal;
+  }
+
+  .weaf-hero-stat-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+  }
+
+  .weaf-hero-stat-source {
+    font-family: var(--font-body);
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .weaf-hero-bottom {
+    padding: 0 14px 20px;
+    position: relative;
+  }
+
+  .weaf-hero-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 12px 0;
+  }
+
+  .weaf-hero-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 14px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .weaf-hero-checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 16px;
+  }
+
+  .weaf-hero-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+
+  .weaf-hero-check svg {
+    width: 14px;
+    height: 14px;
+    color: #7BC67E;
+    flex-shrink: 0;
+  }
+
+  .weaf-hero-success {
+    background: rgba(123,198,126,0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .weaf-hero-success-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #7BC67E;
+    margin-top: 1px;
+  }
+
+  .weaf-hero-success-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: #7BC67E;
+    line-height: 1.45;
+  }
+
+  /* ── Vertical Bar Chart ── */
+  .weaf-bars {
+    margin-top: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 20px 10px 16px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .weaf-bars-title {
+    font-family: var(--font-h2);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .weaf-bars-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .weaf-bar-col {
+    flex: 1;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weaf-bar-pct {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-body);
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .weaf-bar-pct--nordic {
+    color: var(--green-dark);
+    font-size: 14px;
+  }
+
+  .weaf-bar-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.3;
+  }
+
+  .weaf-bar-label--nordic {
+    color: var(--green-dark);
+    font-weight: 700;
+  }
+
+  /* ── Larger screens ── */
+  @media (min-width: 641px) {
+    .weaf-section { padding: 60px 24px 70px; max-width: 900px; margin: 0 auto; }
+    .weaf-title { font-size: 32px; }
+    .weaf-empathy { font-size: 16px; }
+    .weaf-card-content { padding: 24px 26px 20px; }
+    .weaf-card-name { font-size: 24px; }
+    .weaf-card-badge { font-size: 16px; padding: 6px 14px; border-radius: 8px; }
+    .weaf-card-badge svg { width: 15px; height: 15px; }
+    .weaf-card-body { font-size: 15px; line-height: 1.65; }
+    .weaf-card-fail { padding: 14px 26px; }
+    .weaf-card-fail-text { font-size: 14.5px; }
+    .weaf-card-fail-icon { width: 20px; height: 20px; }
+    .weaf-hero-content { padding: 32px 30px 28px; }
+    .weaf-hero-name { font-size: 26px; }
+    .weaf-hero-tagline { font-size: 14px; }
+    .weaf-hero-badge { font-size: 16px; padding: 6px 14px; border-radius: 8px; margin-bottom: 18px; }
+    .weaf-hero-badge svg { width: 15px; height: 15px; }
+    .weaf-hero-stat-number { font-size: 64px; }
+    .weaf-hero-stat-label { font-size: 14.5px; }
+    .weaf-hero-stat-source { font-size: 12px; }
+    .weaf-hero-bottom { padding: 0 30px 34px; }
+    .weaf-hero-divider { margin: 22px 0; }
+    .weaf-hero-body { font-size: 15.5px; line-height: 1.7; margin-bottom: 22px; }
+    .weaf-hero-checks { gap: 10px 22px; margin-bottom: 24px; }
+    .weaf-hero-check { font-size: 14px; }
+    .weaf-hero-success { padding: 14px 18px; }
+    .weaf-hero-success-text { font-size: 14.5px; }
+    .weaf-hero-success-icon { width: 20px; height: 20px; }
+    .weaf-bars { padding: 28px 28px 24px; margin-top: 40px; }
+    .weaf-bars-title { font-size: 18px; margin-bottom: 24px; }
+    .weaf-bars-row { gap: 20px; }
+    .weaf-bar-col { max-width: 120px; }
+    .weaf-bar-pct { font-size: 14px; }
+    .weaf-bar-pct--nordic { font-size: 16px; }
+    .weaf-bar-label { font-size: 13px; }
+  }
+</style>
+
+<div class="section-divider"></div>
+
+<style>
+  :root {
+    --bg-card: #FFFFFF;
+    --green-dark: #2D5A27;
+    --red-muted: #C0392B;
+    --red-bg: #FBE9E7;
+    --text-dark: #1A1A1A;
+    --text-body: #3D3D3D;
+    --text-muted: #6B6B6B;
+    --border-light: #E8E4DD;
+    --font-h1: 'ITC Garamond Std Book Narrow', 'EB Garamond', 'Garamond', Georgia, serif;
+    --font-h2: 'Spline Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  .weaf-section {
+    width: 100%;
+    padding: 40px 0 50px;
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .weaf-section *, .weaf-section *::before, .weaf-section *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .weaf-section h1, .weaf-section h2, .weaf-section p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .weaf-title {
+    font-family: var(--font-h1);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .weaf-empathy {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-body);
+    text-align: center;
+    margin: 0 auto 28px;
+    line-height: 1.55;
+  }
+
+
+  .weaf-competitors {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .weaf-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .weaf-card-top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .weaf-card-content {
+    padding: 14px;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .weaf-card-img-wrap {
+    width: 35%;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .weaf-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+
+  .weaf-card-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .weaf-card-name {
+    font-family: var(--font-h1);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  .weaf-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--red-muted);
+    color: #FFFFFF;
+    
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+
+  .weaf-card-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .weaf-card-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-body);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .weaf-card-fail {
+    background: var(--red-bg);
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .weaf-card-fail-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--red-muted);
+    margin-top: 1px;
+  }
+
+  .weaf-card-fail-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--red-muted);
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .weaf-card-fail-text span {
+    font-weight: 400;
+    color: #8B4040;
+  }
+
+  /* ── Hero ── */
+  .weaf-hero {
+    background: var(--green-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .weaf-hero-top-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .weaf-hero-content {
+    padding: 14px;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .weaf-hero-img-wrap {
+    width: 35%;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .weaf-hero-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .weaf-hero-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+    gap: 3px;
+  }
+
+  .weaf-hero-name {
+    font-family: var(--font-h1);
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  .weaf-hero-tagline {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+
+  .weaf-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    align-self: flex-start;
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
+
+  .weaf-hero-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .weaf-hero-stat { margin-bottom: 0; }
+
+  .weaf-hero-stat-number {
+    font-family: var(--font-h1);
+    font-size: 44px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .weaf-hero-stat-number em {
+    color: #7BC67E;
+    font-style: normal;
+  }
+
+  .weaf-hero-stat-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+  }
+
+  .weaf-hero-stat-source {
+    font-family: var(--font-body);
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .weaf-hero-bottom {
+    padding: 0 14px 20px;
+    position: relative;
+  }
+
+  .weaf-hero-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 12px 0;
+  }
+
+  .weaf-hero-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 14px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .weaf-hero-checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 16px;
+  }
+
+  .weaf-hero-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+
+  .weaf-hero-check svg {
+    width: 14px;
+    height: 14px;
+    color: #7BC67E;
+    flex-shrink: 0;
+  }
+
+  .weaf-hero-success {
+    background: rgba(123,198,126,0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .weaf-hero-success-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #7BC67E;
+    margin-top: 1px;
+  }
+
+  .weaf-hero-success-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: #7BC67E;
+    line-height: 1.45;
+  }
+
+  /* ── Vertical Bar Chart ── */
+  .weaf-bars {
+    margin-top: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 20px 10px 16px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .weaf-bars-title {
+    font-family: var(--font-h2);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .weaf-bars-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .weaf-bar-col {
+    flex: 1;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weaf-bar-pct {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-body);
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .weaf-bar-pct--nordic {
+    color: var(--green-dark);
+    font-size: 14px;
+  }
+
+  .weaf-bar-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.3;
+  }
+
+  .weaf-bar-label--nordic {
+    color: var(--green-dark);
+    font-weight: 700;
+  }
+
+  /* ── Larger screens ── */
+  @media (min-width: 641px) {
+    .weaf-section { padding: 60px 24px 70px; max-width: 900px; margin: 0 auto; }
+    .weaf-title { font-size: 32px; }
+    .weaf-empathy { font-size: 16px; }
+    .weaf-card-content { padding: 24px 26px 20px; }
+    .weaf-card-name { font-size: 24px; }
+    .weaf-card-badge { font-size: 16px; padding: 6px 14px; border-radius: 8px; }
+    .weaf-card-badge svg { width: 15px; height: 15px; }
+    .weaf-card-body { font-size: 15px; line-height: 1.65; }
+    .weaf-card-fail { padding: 14px 26px; }
+    .weaf-card-fail-text { font-size: 14.5px; }
+    .weaf-card-fail-icon { width: 20px; height: 20px; }
+    .weaf-hero-content { padding: 32px 30px 28px; }
+    .weaf-hero-name { font-size: 26px; }
+    .weaf-hero-tagline { font-size: 14px; }
+    .weaf-hero-badge { font-size: 16px; padding: 6px 14px; border-radius: 8px; margin-bottom: 18px; }
+    .weaf-hero-badge svg { width: 15px; height: 15px; }
+    .weaf-hero-stat-number { font-size: 64px; }
+    .weaf-hero-stat-label { font-size: 14.5px; }
+    .weaf-hero-stat-source { font-size: 12px; }
+    .weaf-hero-bottom { padding: 0 30px 34px; }
+    .weaf-hero-divider { margin: 22px 0; }
+    .weaf-hero-body { font-size: 15.5px; line-height: 1.7; margin-bottom: 22px; }
+    .weaf-hero-checks { gap: 10px 22px; margin-bottom: 24px; }
+    .weaf-hero-check { font-size: 14px; }
+    .weaf-hero-success { padding: 14px 18px; }
+    .weaf-hero-success-text { font-size: 14.5px; }
+    .weaf-hero-success-icon { width: 20px; height: 20px; }
+    .weaf-bars { padding: 28px 28px 24px; margin-top: 40px; }
+    .weaf-bars-title { font-size: 18px; margin-bottom: 24px; }
+    .weaf-bars-row { gap: 20px; }
+    .weaf-bar-col { max-width: 120px; }
+    .weaf-bar-pct { font-size: 14px; }
+    .weaf-bar-pct--nordic { font-size: 16px; }
+    .weaf-bar-label { font-size: 13px; }
+  }
+</style>
+
+<section class="weaf-section">
+
+  <h1 class="weaf-title">Why Everything Else Fails</h1>
+  <p class="weaf-empathy">If you've tried to quit before and couldn't, it's not your fault. Every method you were given was only solving half the problem.</p>
+
+  <div class="weaf-competitors">
+
+    <div class="weaf-card">
+      <div class="weaf-card-top">
+        <div class="weaf-card-content">
+          <div class="weaf-card-header">
+            <h2 class="weaf-card-name">Cold Turkey</h2>
+            <div class="weaf-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Success Rate: 3–5%
+            </div>
+          </div>
+          <div class="weaf-card-body">You stop everything overnight. No nicotine, no ritual, nothing. Your body goes into withdrawal and your hands have nothing to do. You white-knuckle it until willpower runs out. For 95% of people, it runs out.</div>
+        </div>
+        <div class="weaf-card-img-wrap">
+          <img class="weaf-card-img" src="images/weaf-cold-turkey.webp" alt="Cold Turkey">
+        </div>
+      </div>
+      <div class="weaf-card-fail">
+        <svg class="weaf-card-fail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <div class="weaf-card-fail-text">Replaces nothing. <span>You fight the chemical AND the ritual with zero support.</span></div>
+      </div>
+    </div>
+
+    <div class="weaf-card">
+      <div class="weaf-card-top">
+        <div class="weaf-card-content">
+          <div class="weaf-card-header">
+            <h2 class="weaf-card-name">Nicotine Patches &amp; Gum</h2>
+            <div class="weaf-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Success Rate: 7%
+            </div>
+          </div>
+          <div class="weaf-card-body">The patch handles the chemical side. But you still crave something in your hand, something to inhale, something to do on your break. Only 7% stay quit long term.</div>
+        </div>
+        <div class="weaf-card-img-wrap">
+          <img class="weaf-card-img" src="images/weaf-nicotine-patches.jpg" alt="Nicotine Patches and Gum">
+        </div>
+      </div>
+      <div class="weaf-card-fail">
+        <svg class="weaf-card-fail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <div class="weaf-card-fail-text">Solves the chemical. <span>Completely ignores the ritual your body is screaming for.</span></div>
+      </div>
+    </div>
+
+    <div class="weaf-card">
+      <div class="weaf-card-top">
+        <div class="weaf-card-content">
+          <div class="weaf-card-header">
+            <h2 class="weaf-card-name">Chantix</h2>
+            <div class="weaf-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Success Rate: 15%
+            </div>
+          </div>
+          <div class="weaf-card-body">Chantix turns off the nicotine receptors in your brain. It works for some (if you don't have bad side effects). But at 10pm after a long day, when your body wants the rhythm of inhale and exhale, a pill can't replace the ritual.</div>
+        </div>
+        <div class="weaf-card-img-wrap">
+          <img class="weaf-card-img" src="images/weaf-chantix.avif" alt="Chantix">
+        </div>
+      </div>
+      <div class="weaf-card-fail">
+        <svg class="weaf-card-fail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <div class="weaf-card-fail-text">Blocks the chemical. <span>Doesn't give your body anything to do when the craving hits.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="weaf-hero">
+    <div class="weaf-hero-top-row">
+      <div class="weaf-hero-content">
+        <div class="weaf-hero-header">
+          <h2 class="weaf-hero-name">Nordic Goods Herbal Diffuser</h2>
+          <div class="weaf-hero-tagline">Ritual Replacement</div>
+          <div class="weaf-hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Success Rate: 93%
+          </div>
+        </div>
+        <div class="weaf-hero-stat">
+          <div class="weaf-hero-stat-number">9<span style="color:#fff">3</span>%</div>
+          <div class="weaf-hero-stat-label">reported no desire to return to cigarettes after 90 days.</div>
+          <div class="weaf-hero-stat-source">Based on customer research studies</div>
+        </div>
+      </div>
+      <div class="weaf-hero-img-wrap">
+        <img class="weaf-hero-img" src="images/weaf-hero.png" alt="Nordic Goods Herbal Diffuser">
+      </div>
+    </div>
+    <div class="weaf-hero-bottom">
+      <div class="weaf-hero-divider"></div>
+      <div class="weaf-hero-body">Every method above skips the root cause. Your addiction is not just nicotine. It is the 15,000 hand-to-mouth motions a year. The inhale. The exhale. The five-minute break. That is the ritual. That is the root cause. This is the first product built to replace it completely.</div>
+      <div class="weaf-hero-checks">
+        <div class="weaf-hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Same draw</div>
+        <div class="weaf-hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Same throat hit</div>
+        <div class="weaf-hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Zero nicotine</div>
+        <div class="weaf-hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Zero addictive</div>
+        <div class="weaf-hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Nothing to wean off</div>
+      </div>
+      <div class="weaf-hero-success">
+        <svg class="weaf-hero-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="16 9 10.5 15 8 12.5"></polyline></svg>
+        <div class="weaf-hero-success-text">Why it works: It fixes the root cause every other method ignores.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weaf-bars">
+    <h2 class="weaf-bars-title">Success Rate Comparison</h2>
+    <div class="weaf-bars-row">
+      <div class="weaf-bar-col">
+        <div class="weaf-bar-pct">3–5%</div>
+        <div style="width:100%;min-height:14px;height:14px;background:#D4A5A0;border-radius:6px 6px 0 0;">&nbsp;</div>
+        <div class="weaf-bar-label">Cold Turkey</div>
+      </div>
+      <div class="weaf-bar-col">
+        <div class="weaf-bar-pct">7%</div>
+        <div style="width:100%;min-height:36px;height:36px;background:#CBBA9E;border-radius:6px 6px 0 0;">&nbsp;</div>
+        <div class="weaf-bar-label">Patches</div>
+      </div>
+      <div class="weaf-bar-col">
+        <div class="weaf-bar-pct">15%</div>
+        <div style="width:100%;min-height:56px;height:56px;background:#B8B8A0;border-radius:6px 6px 0 0;">&nbsp;</div>
+        <div class="weaf-bar-label">Chantix</div>
+      </div>
+      <div class="weaf-bar-col">
+        <div class="weaf-bar-pct weaf-bar-pct--nordic">93%</div>
+        <div style="width:100%;min-height:146px;height:146px;background:#2D5A27;border-radius:6px 6px 0 0;">&nbsp;</div>
+        <div class="weaf-bar-label weaf-bar-label--nordic">Nordic Goods</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ INGREDIENTS ═══ -->
+  <section class="ing-section">
+    <div class="ing-inner">
+      <h2 class="ing-title">4 Ingredients Your Lungs Will Love</h2>
+      <div class="ing-list">
+        <div class="ing-item">
+          <img class="ing-img" src="images/ing-mullein.webp" alt="Mullein Extract">
+          <div class="ing-info">
+            <div class="ing-name">Mullein Extract</div>
+            <div class="ing-desc">Delivers a smooth, full-bodied draw that satisfies the throat hit craving. Reduces mucus and coughing.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <img class="ing-img" src="images/ing-mint.webp" alt="Mint Leaves">
+          <div class="ing-info">
+            <div class="ing-name">Mint Leaves</div>
+            <div class="ing-desc">Cool, clean inhale that resets your headspace. Replaces the sharpness of tobacco with something your breath actually thanks you for.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <img class="ing-img" src="images/ing-thyme.webp" alt="Thyme">
+          <div class="ing-info">
+            <div class="ing-name">Thyme</div>
+            <div class="ing-desc">Thyme produces a soft taste exhale that closes the loop and tells your mind the ritual is done.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <img class="ing-img" src="images/ing-verbena.webp" alt="Verbena">
+          <div class="ing-info">
+            <div class="ing-name">Verbena</div>
+            <div class="ing-desc">Light and calming. Takes the edge off the moment the way a cigarette used to, without any of the baggage.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ing-cta">
+        <button class="ing-cta-btn">TRY IT RISK FREE</button>
+        <span class="ing-cta-sub">30-Day Money Back Guarantee</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ JOURNEY / TIMELINE ═══ -->
+  <section class="journey-section">
+    <div class="journey-inner">
+      <div class="journey-layout">
+        <!-- Left: photo, desktop only -->
+        <div class="journey-photo-col">
+          <img class="journey-photo" src="images/journey-photo.webp" alt="Woman using herbal diffuser">
+        </div>
+        <!-- Right: title + timeline -->
+        <div class="journey-content-col">
+          <h2 class="journey-title">The Ritual Replacement Journey</h2>
+          <div class="journey-list">
+            <div class="journey-item">
+              <div class="journey-dot journey-dot--active"></div>
+              <div class="journey-content">
+                <div class="journey-day">DAY 1</div>
+                <div class="journey-text">You take your first draw and something clicks. <strong>The throat hit is real.</strong> The your taste cravings are satisfied.</div>
+              </div>
+            </div>
+            <div class="journey-item">
+              <div class="journey-dot"></div>
+              <div class="journey-content">
+                <div class="journey-day">DAY 7</div>
+                <div class="journey-text"><strong>The cravings are losing their grip.</strong> The Diffuser is giving you everything the cigarettes used to: the draw, the inhale, the exhale, the five-minute break.</div>
+              </div>
+            </div>
+            <div class="journey-item">
+              <div class="journey-dot"></div>
+              <div class="journey-content">
+                <div class="journey-day">DAY 30</div>
+                <div class="journey-text">Your body is waking up. You're breathing deeper without trying. The morning cough is fading. Food tastes better. You're sleeping through the night. Your skin looks clearer. <strong>The people around you start to notice.</strong></div>
+              </div>
+            </div>
+            <div class="journey-item">
+              <div class="journey-dot"></div>
+              <div class="journey-content">
+                <div class="journey-day">DAY 60</div>
+                <div class="journey-text">You don't even think about cigarettes anymore. Not when you're stressed. Not after a meal. Not at the bar. Your lungs feel open. Your energy is back. You feel like yourself again.<br><br><strong>The habit that used to control you is gone.</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="journey-cta">
+            <button class="journey-cta-btn">TRY IT RISK FREE &nbsp;→</button>
+            <span class="journey-cta-sub">30-Day Money Back Guarantee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+<style>
+  :root {
+    --faq-font-h1: 'ITC Garamond Std Book Narrow', 'EB Garamond', 'Garamond', Georgia, serif;
+    --faq-font-question: 'Spline Sans', sans-serif;
+    --faq-font-answer: 'Inter', sans-serif;
+    --faq-bg: #F7F5EF;
+    --faq-card-bg: #FFFFFF;
+    --faq-text-dark: #1A1A1A;
+    --faq-text-body: #3D3D3D;
+    --faq-border: #E8E4DD;
+  }
+
+  .faq-section {
+    width: 100%;
+    padding: 40px 0 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+    background: #FFFAF1;
+  }
+
+  .faq-section *, .faq-section *::before, .faq-section *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .faq-section h1, .faq-section h2, .faq-section p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-title {
+    font-family: var(--faq-font-h1);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--faq-text-dark);
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .faq-item {
+    background: var(--faq-card-bg);
+    border: 1px solid var(--faq-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    cursor: pointer;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--faq-font-question);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--faq-text-dark);
+    line-height: 1.35;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .faq-question:hover {
+    background: rgba(0,0,0,0.015);
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    font-family: var(--faq-font-question);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--faq-text-dark);
+    line-height: 1;
+    transition: transform 0.25s ease;
+    user-select: none;
+  }
+
+  .faq-item.faq-open .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-item.faq-open .faq-answer-wrap {
+    max-height: 400px;
+  }
+
+  .faq-answer {
+    padding: 0 18px 18px;
+    font-family: var(--faq-font-answer);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--faq-text-body);
+    line-height: 1.6;
+  }
+
+  @media (min-width: 641px) {
+    .faq-section { padding: 60px 24px 70px; max-width: 800px; margin: 0 auto; }
+    .faq-title { font-size: 36px; margin-bottom: 32px; }
+    .faq-question { padding: 18px 22px; font-size: 17px; }
+    .faq-answer { padding: 0 22px 20px; font-size: 16px; }
+    .faq-list { gap: 10px; }
+  }
+</style>
+
+<section class="faq-section">
+
+  <h1 class="faq-title">Common Questions,<br>And Answers</h1>
+
+  <div class="faq-list" id="faqList">
+
+    <div class="faq-item faq-open">
+      <button class="faq-question">
+        <span>Who is this for?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Anyone who wants to quit smoking or vaping for good — whether you've tried before and failed, or you're just starting to think about it. If you miss the ritual more than the nicotine, this was built for you.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Will I get addicted to this instead?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">No. There are zero addictive substances in the Herbal Diffuser — no nicotine, no tobacco, no synthetic chemicals. Most people naturally use it less and less as their cravings fade. There is nothing to wean off.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Is this just a vape with a different name?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">No. Vapes deliver nicotine and keep you addicted. The Herbal Diffuser contains zero nicotine and no electronics — no battery, no coil, no liquid. It uses natural herbs to replicate the sensory experience of smoking without any of the dependency.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>I've tried everything and nothing worked. Why would this be different?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Every method you've tried before addressed the chemical addiction — the nicotine. None of them replaced the ritual: the hand-to-mouth motion, the inhale, the exhale, the five-minute break. That is the half of the addiction they all ignore. This is the first product built specifically to replace it.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Is it safe? What's actually in it?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Four natural ingredients: mullein extract for the throat hit, mint leaves for freshness, thyme for taste, and verbena for a calming exhale. No nicotine, no tobacco, no tar, no synthetic additives. Every ingredient has a long history of traditional use.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Does this produce a vapor cloud?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">No. The Herbal Diffuser is fully natural — there is no heated vapor, no battery, and no damaging chemicals. It replicates the sensation of smoking without the harmful ingredients and smoke. What you experience is a smooth, flavoured inhale and exhale using nothing but natural herbs.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Can I use it alongside patches or gum?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Yes — and many people find this is the most effective approach. Patches and gum handle the nicotine withdrawal. The Herbal Diffuser handles the ritual and the behavioural side that patches and gum cannot touch. Together they cover both halves of the addiction.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>How long does one pack last?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Each pack of Herbal Diffusers lasts approximately the same as three packs of cigarettes. Most people find one pack covers them for two to three weeks, depending on how often they reach for it.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>What if it doesn't work for me?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">We offer a full money-back guarantee. If you don't feel a difference, you get your money back — no questions asked. We'd rather you try it risk-free than never try at all.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>How quickly will I notice a difference?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer-wrap">
+        <div class="faq-answer">Most people feel the difference immediately — the craving hits, they reach for the diffuser instead of a cigarette, and the urge passes. The first few days are the hardest, but having something physical to reach for makes them dramatically easier.</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+  <div class="section-divider"></div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Spline+Sans:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .reviews-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  .reviews-section h2 {
+    font-family: 'ITC Garamond Std Book Narrow', 'EB Garamond', 'Garamond', Georgia, serif;
+    font-size: 42px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+
+  .reviews-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 32px;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .reviews-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    color: #f5c518;
+    font-size: 20px;
+  }
+
+  .reviews-count {
+    font-size: 15px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .write-review-btn {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #333;
+    transition: background 0.2s;
+  }
+  .write-review-btn:hover { background: #f5f5f5; }
+
+  .reviews-grid {
+    columns: 4;
+    column-gap: 16px;
+  }
+
+  .review-card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .review-image {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .review-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .reviewer-info {
+    padding: 8px 0 0 0;
+  }
+
+  .reviewer-name {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    color: #4CAF50;
+    font-weight: 400;
+  }
+  .verified-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: #4CAF50;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 1px;
+    margin: 4px 0 6px;
+  }
+  .review-stars .star { font-size: 16px; }
+
+  .review-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #333;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 10px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    .reviews-grid { columns: 3; }
+  }
+  @media (max-width: 768px) {
+    .reviews-grid { columns: 2; }
+    .reviews-section h2 { font-size: 32px; }
+  }
+  @media (max-width: 480px) {
+    .reviews-grid { columns: 1; column-gap: 0; }
+    .reviews-section h2 { font-size: 28px; }
+    .review-card { margin-bottom: 20px; }
+  }
+</style>
+
+<div class="reviews-section">
+  <h2>See why thousands are making the switch.</h2>
+
+  <div class="reviews-header">
+    <div class="reviews-rating">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <span class="reviews-count">2,847 Reviews</span>
+    </div>
+    <button class="write-review-btn">Write a review</button>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-1.webp" alt="Sarah K. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Sarah K. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">22 years of smoking. Tried patches three times, gum twice, Champix once. Nothing stuck. This is the first thing that made me stop reaching for a cigarette because my hands and lungs didn't know the difference.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-2.webp" alt="Marcus T. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Marcus T. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">I didn't think I'd make it past day 3. I'm on month 5 now. The only thing that changed was having something to hold and inhale when the craving hit. That was the piece every other method was missing.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-3.webp" alt="David R. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">David R. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">Every quit product made me feel like a patient. This made me feel like a smoker who just doesn't smoke poison anymore. I still take my breaks, I still step outside. I just don't hate myself after.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-4.webp" alt="Priya N. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Priya N. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">My kids asked me to stop. I tried for them a hundred times. 14 weeks clean now. My daughter told me I don't smell like smoke anymore. I cried in the car after she said that.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-5.webp" alt="James W. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">James W. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">Used the patch AND this together. Patch handled the nicotine. This handled everything else. First time in 18 years I made it past two weeks. I'm on month 3 and I don't even think about it anymore.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-6.webp" alt="Ana P. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Ana P. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">I read Allen Carr's book twice. It made sense in my head but my body still wanted the cigarette. This gives my body what it wants without the poison. That's the difference nobody talks about.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-7.webp" alt="Tom H. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Tom H. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">Pack a day for 30 years. My doctor said quit or face the consequences. Cold turkey lasted 4 days. Patches lasted 3 weeks. This lasted. Because it actually replaces the thing I was addicted to doing.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-8.webp" alt="Rachel G. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Rachel G. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">I was spending £12 a day on cigarettes. That's over £4,000 a year to slowly kill myself. Now I spend a fraction of that and my lungs feel clear for the first time in a decade.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-9.webp" alt="Mike D. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Mike D. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">Switched from vaping to this. Thought it would be harder but it wasn't. The throat hit is real, the exhale is real. The only thing missing is the nicotine. And after a week I didn't miss that either.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-10.webp" alt="Linda C. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Linda C. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">I was terrified it would taste awful or feel fake. It doesn't. The mint is genuinely pleasant and the exhale feels exactly like smoking. I keep forgetting I'm not actually smoking.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-11.webp" alt="Chris B. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Chris B. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">My wife bought me this for my birthday. I thought it was a gag gift. Two months later I haven't bought a single pack. She says it's the best present she ever gave me. Hard to argue.</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-image-wrapper">
+        <img class="review-image" src="images/review-12.webp" alt="Emma S. review" loading="lazy">
+      </div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Emma S. <span class="verified-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></div>
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">I was the person who said "I'll quit when I'm ready." I was never going to be ready. Ordering this was the smallest step I could take. Six weeks later I can breathe properly for the first time in 12 years.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<script>
+// ── URL PARAMS ──
+const _urlParams = new URLSearchParams(window.location.search);
+const _discountCode = _urlParams.get('discount') || 'QUIT50';
+const _expiresTs = parseInt(_urlParams.get('expires_ts')) || 0;
+
+// ── INJECT DISCOUNT CODE everywhere ──
+document.getElementById('announceCode').textContent = _discountCode;
+document.getElementById('discountCode').textContent = ' ' + _discountCode + ' ';
+
+// ── META PIXEL EVENTS ──
+if(typeof fbq !== 'undefined') fbq('track', 'ViewContent', {
+  content_name: 'Herbal Air Diffuser',
+  content_type: 'product',
+  content_ids: ['47965648716001'],
+  currency: 'USD',
+  value: 64.36,
+});
+
+// ── CAROUSEL ──
+let current = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const thumbs = document.querySelectorAll('.thumb-item');
+const track = document.getElementById('track');
+
+function goTo(idx) {
+  if (idx < 0) idx = slides.length - 1;
+  if (idx >= slides.length) idx = 0;
+  current = idx;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+}
+document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+thumbs.forEach(t => t.addEventListener('click', () => goTo(+t.dataset.idx)));
+let startX = 0;
+track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1); });
+
+// ── COUNTDOWN ──
+const _deadline = (_expiresTs && _expiresTs > Date.now())
+  ? _expiresTs
+  : Date.now() + 20 * 60 * 1000;
+
+function updateTimer() {
+  const remaining = Math.max(0, _deadline - Date.now());
+  const m = Math.floor(remaining / 60000);
+  const s = Math.floor((remaining % 60000) / 1000);
+  document.getElementById('mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('secs').textContent = String(s).padStart(2, '0');
+  if (remaining <= 0) clearInterval(_timerInterval);
+}
+updateTimer();
+const _timerInterval = setInterval(updateTimer, 1000);
+
+// ── PACKAGE SELECTOR ──
+const pkgValues = { 'pkg-0': { qty: 4, price: 64.36 }, 'pkg-1': { qty: 6, price: 96.54 }, 'pkg-2': { qty: 2, price: 32.18 } };
+
+document.querySelectorAll('.pkg-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.pkg-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+  });
+});
+
+// ── ACCORDION (product) ──
+document.querySelectorAll('.acc-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.acc-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── FAQ ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('faq-open');
+  });
+});
+
+// ── CHECKOUT ──
+const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
+
+function getSelectedPkg() {
+  const selected = document.querySelector('.pkg-option.selected');
+  const id = selected ? selected.id : 'pkg-0';
+  return pkgValues[id] || pkgValues['pkg-0'];
+}
+
+function getCheckoutUrl() {
+  const pkg = getSelectedPkg();
+  let url = CART_BASE + ':' + pkg.qty + '?discount=' + encodeURIComponent(_discountCode);
+  if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
+  if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
+  if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
+  if (_urlParams.get('utm_content'))  url += '&utm_content='  + encodeURIComponent(_urlParams.get('utm_content'));
+  if (_urlParams.get('utm_term'))     url += '&utm_term='     + encodeURIComponent(_urlParams.get('utm_term'));
+  const quizVersion = _urlParams.get('quiz_version');
+  if (quizVersion) url += '&attributes[quiz_version]=' + encodeURIComponent(quizVersion);
+  return url;
+}
+
+document.getElementById('cta').addEventListener('click', function() {
+  const pkg = getSelectedPkg();
+
+  // AddToCart
+  if(typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
+    content_name: 'Herbal Air Diffuser',
+    content_type: 'product',
+    content_ids: ['47965648716001'],
+    currency: 'USD',
+    value: pkg.price,
+    num_items: pkg.qty,
+  });
+
+  if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
+    content_name: 'Herbal Air Diffuser',
+    content_type: 'product',
+    content_ids: ['47965648716001'],
+    currency: 'USD',
+    value: pkg.price,
+    num_items: pkg.qty,
+    coupon: _discountCode,
+  });
+
+  window.location.href = getCheckoutUrl();
+});
+
+// Section CTA buttons → scroll to top
+document.querySelectorAll('.weaf-cta-btn, .ing-cta-btn, .journey-cta-btn, .faq-cta-btn').forEach(btn => {
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+});
+</script>
+</body>
+</html>
