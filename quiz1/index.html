@@ -800,11 +800,15 @@ function rPopR4Headline() {
 
 function rClaim() {
   const code = 'QUIT50';
+  const version = 'quiz1';
   trackQ('R4_cta_click');
-  ga4Event('cta_click', { discount_code: code, destination: 'pdp' });
+  ga4Event('cta_click', { discount_code: code, destination: 'pdp', quiz_version: version });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
-  window.location.href = 'https://nordicgoods.co/pages/herbal-air-diffuser?utm_source=quiz&utm_medium=funnel&utm_campaign=quit_smoking&gender=' + encodeURIComponent(ans.gender||'') + '&motivation=' + ans.motivation;
+const existingParams = new URLSearchParams(window.location.search);
+existingParams.set('utm_content', 'quiz1');
+existingParams.set('discount', 'QUIT50');
+window.location.href = 'https://nordicgoods.co/pages/herbal-air-diffuser?' + existingParams.toString();
 }
 
 // ── INIT ─────────────────────────────────────────────────────────
