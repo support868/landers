@@ -488,9 +488,7 @@
 
       <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:16px;padding:20px;margin-bottom:20px;">
         <p style="font-size:13px;font-weight:800;color:#111;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">Your Recovery Timeline</p>
-        <div style="position:relative;height:180px;">
-          <canvas id="recoveryChart" style="width:100%;height:180px;"></canvas>
-        </div>
+        <div id="recoveryChart" style="width:100%;"></div>
       </div>
 
       <div style="border-radius:16px;overflow:hidden;margin-bottom:20px;border:1.5px solid #D8DDD5;">
@@ -748,7 +746,7 @@ function rGoTo(n){
   if(rNames[n]) trackQ(rNames[n]);
   if(n===3) metaStandard('ViewContent',{content_name:'herbal_diffuser',content_type:'product'});
   if(n===1) setTimeout(rAnimateSlider,400);
-  if(n===4) setTimeout(rAnimateChart, 50);
+  if(n===4) rAnimateChart();
 }
 
 // ── POPULATE ALL RESULT SCREENS ───────────────────────
@@ -839,7 +837,7 @@ const r4Headlines={
   kids:'Make Your Family Proud in 4 Weeks',
   partner:'Make Your Family Proud in 4 Weeks',
   hiding:'Stop Hiding. Start Living in 4 Weeks',
-  dontthink:'Time To Face It And Fix It in 4 Weeks',
+  dontthink:'Reclaim Your Health And Life in 4 Weeks',
 };
 const r4Priority=['control','healthscare','winded','cough','kids','partner','hiding','dontthink'];
 const r4Milestones={
@@ -916,108 +914,121 @@ function rPopulateR4Review(){
 }
 
 function rAnimateChart(){
-  const canvas=document.getElementById('recoveryChart');
-  if(!canvas) return;
-  if(window._chartRAF) cancelAnimationFrame(window._chartRAF);
+  const container = document.getElementById('recoveryChart');
+  if(!container) return;
 
-  const W=canvas.offsetWidth||canvas.parentElement?.offsetWidth||320;
-  const H=180;
-  const dpr=window.devicePixelRatio||1;
-  canvas.width=W*dpr; canvas.height=H*dpr;
-  canvas.style.width=W+'px'; canvas.style.height=H+'px';
-  const ctx=canvas.getContext('2d');
-  ctx.scale(dpr,dpr);
+  const labels = window._r4Milestones || ['Week 1 Done','Week 2 Done','Week 3 Done','Smoke Free'];
+  const weeks  = ['Week 1','Week 2','Week 3','Week 4'];
 
-    const labels=window._r4Milestones||['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
-    const weeks=['Week 1','Week 2','Week 3','Week 4'];
-    const xPos=[0.08,0.38,0.68,0.95];
-    const yPos=[0.80,0.55,0.28,0.10];
-    const pts=xPos.map((x,i)=>({x:x*W,y:yPos[i]*(H-30)+5}));
+  // Chart geometry
+  const W = 320, H = 200;
+  const PAD = { top:48, right:16, bottom:28, left:16 };
+  const CW = W - PAD.left - PAD.right;
+  const CH = H - PAD.top  - PAD.bottom;
 
-    let totalLen=0; const segLens=[];
-    for(let i=0;i<pts.length-1;i++){
-      const dx=pts[i+1].x-pts[i].x,dy=pts[i+1].y-pts[i].y;
-      const l=Math.sqrt(dx*dx+dy*dy); segLens.push(l); totalLen+=l;
+  // Data points: x as fraction of CW, y as fraction of CH (0=top, 1=bottom)
+  const pts = [
+    { xf:0.02, yf:0.90 },
+    { xf:0.35, yf:0.58 },
+    { xf:0.68, yf:0.25 },
+    { xf:0.98, yf:0.04 },
+  ];
+
+  // Colours: red → green across 4 points
+  const colors = ['#e74c3c','#f39c12','#2ecc71','#27ae60'];
+
+  // Convert to absolute coords
+  const abs = pts.map(p => ({
+    x: PAD.left + p.xf * CW,
+    y: PAD.top  + p.yf * CH,
+  }));
+
+  // Build smooth cubic bezier path through all points
+  function buildPath(points){
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for(let i=0;i<points.length-1;i++){
+      const p0=points[i], p1=points[i+1];
+      const cpx1=p0.x+(p1.x-p0.x)*0.5, cpy1=p0.y;
+      const cpx2=p0.x+(p1.x-p0.x)*0.5, cpy2=p1.y;
+      d += ` C ${cpx1} ${cpy1} ${cpx2} ${cpy2} ${p1.x} ${p1.y}`;
     }
+    return d;
+  }
 
-    function getCurvePoint(t){
-      let dist=t*totalLen,acc=0;
-      for(let i=0;i<segLens.length;i++){
-        if(dist<=acc+segLens[i]){
-          const lt=(dist-acc)/segLens[i];
-          const p0=pts[i],p1=pts[i+1];
-          const cp1x=p0.x+(p1.x-p0.x)*0.4,cp1y=p0.y;
-          const cp2x=p0.x+(p1.x-p0.x)*0.6,cp2y=p1.y;
-          const mt=1-lt;
-          return{x:mt*mt*mt*p0.x+3*mt*mt*lt*cp1x+3*mt*lt*lt*cp2x+lt*lt*lt*p1.x,y:mt*mt*mt*p0.y+3*mt*mt*lt*cp1y+3*mt*lt*lt*cp2y+lt*lt*lt*p1.y};
+  const pathD = buildPath(abs);
+
+  // Estimate total path length for stroke animation
+  // Use a rough formula: sum of segment distances * 1.15 for curve overhead
+  let pathLen = 0;
+  for(let i=0;i<abs.length-1;i++){
+    const dx=abs[i+1].x-abs[i].x, dy=abs[i+1].y-abs[i].y;
+    pathLen += Math.sqrt(dx*dx+dy*dy)*1.15;
+  }
+  pathLen = Math.round(pathLen);
+
+  // Label box above/below each point
+  function labelBox(lbl, cx, cy, color, idx){
+    const bw=72, bh=32, br=6;
+    const above = cy > PAD.top + CH*0.5;
+    const by = above ? cy - bh - 10 : cy + 10;
+    const bx = Math.min(Math.max(cx - bw/2, PAD.left), W - PAD.right - bw);
+    const ax = Math.min(Math.max(cx, bx+8), bx+bw-8);
+    const lines = lbl.split(' ');
+    const mid = Math.ceil(lines.length/2);
+    const line1 = lines.slice(0,mid).join(' ');
+    const line2 = lines.slice(mid).join(' ');
+    const delay = 0.4 + idx * 0.45;
+    return `
+      <g class="chart-label" style="opacity:0;animation:chartFadeIn 0.35s ease ${delay}s forwards;">
+        <rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="${br}" fill="${color}"/>
+        <polygon points="${ax-4},${above?by+bh:by} ${ax+4},${above?by+bh:by} ${ax},${above?by+bh+6:by-6}" fill="${color}"/>
+        ${line2
+          ? `<text x="${bx+bw/2}" y="${by+bh/2-6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line1}</text>
+             <text x="${bx+bw/2}" y="${by+bh/2+6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line2}</text>`
+          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="700">${line1}</text>`
         }
-        acc+=segLens[i];
+      </g>`;
+  }
+
+  const dotsSVG = abs.map((p,i) => {
+    const delay = 0.35 + i*0.45;
+    return `<circle cx="${p.x}" cy="${p.y}" r="6" fill="${colors[i]}" stroke="#fff" stroke-width="2.5"
+      style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>`;
+  }).join('');
+
+  const weeksSVG = abs.map((p,i) =>
+    `<text x="${p.x}" y="${H-6}" text-anchor="middle" fill="#bbb" font-family="Nunito,sans-serif" font-size="10" font-weight="600">${weeks[i]}</text>`
+  ).join('');
+
+  const labelsSVG = abs.map((p,i) => labelBox(labels[i], p.x, p.y, colors[i], i)).join('');
+
+  // Gradient for the line
+  const gradStops = colors.map((c,i) => `<stop offset="${i/(colors.length-1)*100}%" stop-color="${c}"/>`).join('');
+
+  container.innerHTML = `
+    <style>
+      @keyframes chartDraw {
+        from { stroke-dashoffset: ${pathLen}; }
+        to   { stroke-dashoffset: 0; }
       }
-      return pts[pts.length-1];
-    }
-
-    function drawLabel(lbl,px,py,color){
-      const bw=76,bh=36,br=7;
-      let bx=px-bw/2,by;
-      const above=py>H/2;
-      by=above?py-bh-12:py+12;
-      if(bx<2)bx=2; if(bx+bw>W-2)bx=W-bw-2;
-      ctx.fillStyle=color;
-      ctx.beginPath();
-      ctx.moveTo(bx+br,by);ctx.lineTo(bx+bw-br,by);ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+br);
-      ctx.lineTo(bx+bw,by+bh-br);ctx.quadraticCurveTo(bx+bw,by+bh,bx+bw-br,by+bh);
-      ctx.lineTo(bx+br,by+bh);ctx.quadraticCurveTo(bx,by+bh,bx,by+bh-br);
-      ctx.lineTo(bx,by+br);ctx.quadraticCurveTo(bx,by,bx+br,by);
-      ctx.closePath();ctx.fill();
-      const ax=Math.min(Math.max(px,bx+8),bx+bw-8);
-      ctx.beginPath();
-      if(above){ctx.moveTo(ax-5,by+bh);ctx.lineTo(ax+5,by+bh);ctx.lineTo(ax,by+bh+7);}
-      else{ctx.moveTo(ax-5,by);ctx.lineTo(ax+5,by);ctx.lineTo(ax,by-7);}
-      ctx.fillStyle=color;ctx.fill();
-      ctx.fillStyle='#fff';ctx.font='700 10px Nunito,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-      const words=lbl.split(' ');
-      if(words.length<=2){ctx.fillText(lbl,bx+bw/2,by+bh/2);}
-      else{const mid=Math.ceil(words.length/2);ctx.fillText(words.slice(0,mid).join(' '),bx+bw/2,by+bh/2-8);ctx.fillText(words.slice(mid).join(' '),bx+bw/2,by+bh/2+8);}
-    }
-
-    let progress=0; const duration=2000; let start=null;
-    function ease(t){return t<0.5?2*t*t:-1+(4-2*t)*t;}
-
-    function draw(ts){
-      if(!start)start=ts;
-      progress=Math.min(ease((ts-start)/duration),1);
-      ctx.clearRect(0,0,W,H);
-      ctx.font='600 11px Nunito,sans-serif';ctx.fillStyle='#bbb';ctx.textAlign='center';ctx.textBaseline='top';
-      xPos.forEach((x,i)=>ctx.fillText(weeks[i],x*W,H-18));
-      const steps=200;
-      for(let i=0;i<steps-1;i++){
-        const t0=(i/steps)*progress,t1=((i+1)/steps)*progress;
-        if(t0>=progress)break;
-        const p0=getCurvePoint(t0),p1=getCurvePoint(t1);
-        const frac=i/steps;
-        const r=Math.round(0xe7+(0x2D-0xe7)*frac);
-        const g=Math.round(0x4c+(0x4A-0x4c)*frac);
-        const b=Math.round(0x3c+(0x3E-0x3c)*frac);
-        ctx.strokeStyle='rgb('+r+','+g+','+b+')';
-        ctx.lineWidth=4;ctx.lineCap='round';
-        ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.lineTo(p1.x,p1.y);ctx.stroke();
+      @keyframes chartFadeIn {
+        from { opacity:0; transform:translateY(4px); }
+        to   { opacity:1; transform:translateY(0); }
       }
-      pts.forEach((pt,idx)=>{
-        const mT=idx/(pts.length-1);
-        if(progress>=mT){
-          const frac=mT;
-          const r=Math.round(0xe7+(0x2D-0xe7)*frac);
-          const g=Math.round(0x4c+(0x4A-0x4c)*frac);
-          const b=Math.round(0x3c+(0x3E-0x3c)*frac);
-          const col='rgb('+r+','+g+','+b+')';
-          ctx.beginPath();ctx.arc(pt.x,pt.y,7,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
-          ctx.beginPath();ctx.arc(pt.x,pt.y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
-          drawLabel(labels[idx],pt.x,pt.y,col);
-        }
-      });
-      if(progress<1){window._chartRAF=requestAnimationFrame(draw);}
-    }
-    window._chartRAF=requestAnimationFrame(draw);
+    </style>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          ${gradStops}
+        </linearGradient>
+      </defs>
+      ${weeksSVG}
+      <path d="${pathD}" fill="none" stroke="url(#lineGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+        stroke-dasharray="${pathLen}" stroke-dashoffset="${pathLen}"
+        style="animation:chartDraw 1.6s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;"/>
+      ${dotsSVG}
+      ${labelsSVG}
+    </svg>`;
 }
 
 // ── R5 ────────────────────────────────────────────────
