@@ -478,7 +478,7 @@ button { cursor: pointer; font-family: inherit; }
 </header>
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="announce"><p>DISCOUNT QUIT50: BUY 3 GET 3 FREE</p></div>
+<div class="announce"><p>DISCOUNT <span id="announceCode">QUIT50</span>: BUY 3 GET 3 FREE</p></div>
 
 <main class="main">
 
@@ -549,7 +549,7 @@ button { cursor: pointer; font-family: inherit; }
         </div>
         <div class="discount-box">
           <div class="discount-text-col">
-            <div class="discount-label">DISCOUNT APPLIED:<span> QUIT50 </span></div>
+            <div class="discount-label">DISCOUNT APPLIED:<span id="discountCode"> QUIT50 </span></div>
             <div class="discount-sub">Get <strong>50% OFF</strong> Limited Time ONLY</div>
           </div>
           <div class="timer-row">
@@ -2799,6 +2799,15 @@ button { cursor: pointer; font-family: inherit; }
 </main>
 
 <script>
+// ── URL PARAMS ──
+const _urlParams = new URLSearchParams(window.location.search);
+const _discountCode = _urlParams.get('discount') || 'QUIT50';
+const _expiresTs = parseInt(_urlParams.get('expires_ts')) || 0;
+
+// ── INJECT DISCOUNT CODE everywhere ──
+document.getElementById('announceCode').textContent = _discountCode;
+document.getElementById('discountCode').textContent = ' ' + _discountCode + ' ';
+
 // ── CAROUSEL ──
 let current = 0;
 const slides = document.querySelectorAll('.carousel-slide');
@@ -2820,14 +2829,21 @@ track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { 
 track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1); });
 
 // ── COUNTDOWN ──
-let totalSecs = 15 * 60 + 41;
+// Use expires_ts from quiz if present and in the future, otherwise 20 min from now
+const _deadline = (_expiresTs && _expiresTs > Date.now())
+  ? _expiresTs
+  : Date.now() + 20 * 60 * 1000;
+
 function updateTimer() {
-  const m = Math.floor(totalSecs / 60), s = totalSecs % 60;
+  const remaining = Math.max(0, _deadline - Date.now());
+  const m = Math.floor(remaining / 60000);
+  const s = Math.floor((remaining % 60000) / 1000);
   document.getElementById('mins').textContent = String(m).padStart(2, '0');
   document.getElementById('secs').textContent = String(s).padStart(2, '0');
-  totalSecs--; if (totalSecs < 0) totalSecs = 19 * 60 + 1;
+  if (remaining <= 0) clearInterval(_timerInterval);
 }
-updateTimer(); setInterval(updateTimer, 1000);
+updateTimer();
+const _timerInterval = setInterval(updateTimer, 1000);
 
 // ── PACKAGE SELECTOR ──
 document.querySelectorAll('.pkg-option').forEach(opt => {
@@ -2855,27 +2871,24 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// ── Package qty map ──
+// ── CHECKOUT ──
 const qtyMap = { 'pkg-0': 4, 'pkg-1': 6, 'pkg-2': 2 };
 const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
-const DISCOUNT = 'QUIT50';
 
 function getCheckoutUrl() {
   const selected = document.querySelector('.pkg-option.selected');
   const qty = selected ? qtyMap[selected.id] : 4;
-  return CART_BASE + ':' + qty + '?discount=' + DISCOUNT;
+  return CART_BASE + ':' + qty + '?discount=' + encodeURIComponent(_discountCode);
 }
 
-// Main CTA button
 document.getElementById('cta').addEventListener('click', function() {
   window.location.href = getCheckoutUrl();
 });
 
-// Section CTA buttons → scroll to top then let user click main CTA
+// Section CTA buttons → scroll to top
 document.querySelectorAll('.weaf-cta-btn, .ing-cta-btn, .journey-cta-btn, .faq-cta-btn').forEach(btn => {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
 </script>
 </body>
 </html>
-
