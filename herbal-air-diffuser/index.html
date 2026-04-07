@@ -467,6 +467,18 @@ button { cursor: pointer; font-family: inherit; }
 }
 .section-pad { padding: 0 10px; }
 </style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2338204330017730');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2338204330017730&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -2809,8 +2821,7 @@ document.getElementById('announceCode').textContent = _discountCode;
 document.getElementById('discountCode').textContent = ' ' + _discountCode + ' ';
 
 // ── META PIXEL EVENTS ──
-// ViewContent — fires on PDP load
-fbq('track', 'ViewContent', {
+if(typeof fbq !== 'undefined') fbq('track', 'ViewContent', {
   content_name: 'Herbal Air Diffuser',
   content_type: 'product',
   content_ids: ['47965648716001'],
@@ -2892,9 +2903,8 @@ function getSelectedPkg() {
 }
 
 function getCheckoutUrl() {
-  const selected = document.querySelector('.pkg-option.selected');
-  const qty = selected ? qtyMap[selected.id] : 4;
-  let url = CART_BASE + ':' + qty + '?discount=' + encodeURIComponent(_discountCode);
+  const pkg = getSelectedPkg();
+  let url = CART_BASE + ':' + pkg.qty + '?discount=' + encodeURIComponent(_discountCode);
   if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
   if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
   if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
@@ -2909,7 +2919,7 @@ document.getElementById('cta').addEventListener('click', function() {
   const pkg = getSelectedPkg();
 
   // AddToCart
-  fbq('track', 'AddToCart', {
+  if(typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
     content_name: 'Herbal Air Diffuser',
     content_type: 'product',
     content_ids: ['47965648716001'],
@@ -2918,8 +2928,7 @@ document.getElementById('cta').addEventListener('click', function() {
     num_items: pkg.qty,
   });
 
-  // InitiateCheckout
-  fbq('track', 'InitiateCheckout', {
+  if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
     content_name: 'Herbal Air Diffuser',
     content_type: 'product',
     content_ids: ['47965648716001'],

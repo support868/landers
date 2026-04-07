@@ -920,8 +920,8 @@ function rAnimateChart(){
   const labels = window._r4Milestones || ['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
   const weeks  = ['Week 1','Week 2','Week 3','Week 4'];
 
-  const W = 320, H = 230;
-  const PAD = { top:52, right:20, bottom:32, left:20 };
+  const W = 320, H = 220;
+  const PAD = { top:46, right:12, bottom:30, left:12 };
   const CW = W - PAD.left - PAD.right;
   const CH = H - PAD.top  - PAD.bottom;
 
@@ -969,13 +969,16 @@ function rAnimateChart(){
     return `<line x1="${PAD.left}" y1="${y}" x2="${W-PAD.right}" y2="${y}" stroke="#f0f0f0" stroke-width="1"/>`;
   }).join('');
 
-  // Label bubbles — bigger boxes and font
+  // Label bubbles — compact, no overlap
   function labelBox(lbl, cx, cy, color, idx){
-    const bw=80, bh=40, br=8;
+    const bw=58, bh=30, br=6;
     const above = cy > PAD.top + CH * 0.5;
-    const by = above ? cy - bh - 12 : cy + 12;
-    const bx = Math.min(Math.max(cx - bw/2, PAD.left - 4), W - PAD.right - bw + 4);
-    const ax = Math.min(Math.max(cx, bx+10), bx+bw-10);
+    const by = above ? cy - bh - 10 : cy + 10;
+    // Pin bx strictly to its quadrant so boxes never touch
+    const quadrantW = CW / 4;
+    const qCenter = PAD.left + (idx + 0.5) * quadrantW;
+    const bx = Math.min(Math.max(qCenter - bw/2, PAD.left - 2), W - PAD.right - bw + 2);
+    const ax = Math.min(Math.max(cx, bx+8), bx+bw-8);
     const words = lbl.split(' ');
     const mid = Math.ceil(words.length/2);
     const line1 = words.slice(0,mid).join(' ');
@@ -984,11 +987,11 @@ function rAnimateChart(){
     return `
       <g style="opacity:0;animation:chartFadeIn 0.35s ease ${delay}s forwards;">
         <rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="${br}" fill="${color}"/>
-        <polygon points="${ax-5},${above?by+bh:by} ${ax+5},${above?by+bh:by} ${ax},${above?by+bh+7:by-7}" fill="${color}"/>
+        <polygon points="${ax-4},${above?by+bh:by} ${ax+4},${above?by+bh:by} ${ax},${above?by+bh+5:by-5}" fill="${color}"/>
         ${line2
-          ? `<text x="${bx+bw/2}" y="${by+bh/2-7}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line1}</text>
-             <text x="${bx+bw/2}" y="${by+bh/2+7}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line2}</text>`
-          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="11" font-weight="800">${line1}</text>`
+          ? `<text x="${bx+bw/2}" y="${by+bh/2-6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line1}</text>
+             <text x="${bx+bw/2}" y="${by+bh/2+6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line2}</text>`
+          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line1}</text>`
         }
       </g>`;
   }
