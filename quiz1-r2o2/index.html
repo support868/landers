@@ -1095,7 +1095,7 @@ function rClaim(){
   metaStandard('CompleteRegistration',{content_name:'quit_smoking_quiz',status:true});
   metaCustom('QuizCTAClick',{discount_code:code,gender:ans.gender,motivation:ans.motivation});
   const existingParams=new URLSearchParams(window.location.search);
-  existingParams.set('quiz_version',QUIZ_CONFIG.version);
+  existingParams.set('utm_content', QUIZ_CONFIG.version);
   existingParams.set('discount',code);
   existingParams.set('expires_ts',expiresTs);
   window.location.href=QUIZ_CONFIG.redirectUrl+'?'+existingParams.toString();
