@@ -568,7 +568,7 @@ fbq('track','PageView');
         <div class="discount-box">
           <div class="discount-text-col">
             <div class="discount-label">DISCOUNT APPLIED:<span id="discountCode"> QUIT50 </span></div>
-            <div class="discount-sub">Get <strong>3 Flavor Packs FREE</strong></div>
+            <div class="discount-sub">Get <strong>3 Flavor Packs FREE</strong> Limited Time ONLY</div>
           </div>
           <div class="timer-row">
             <div class="timer-unit"><span class="timer-num" id="mins">15</span><span class="timer-label">MIN</span></div>
@@ -3004,18 +3004,18 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/';
 
 const FLAVOR_IDS = {
-  crispmint:  '9436527034593',
-  orange:     '9436527100129',
-  mango:      '9436527132897',
-  blueberry:  '9436527231201',
-  coffee:     '9436527329505',
-  strawberry: '9436527493345'
+  crispmint:  '48192195395809',
+  orange:     '48192196247777',
+  mango:      '48192196444385',
+  blueberry:  '48192196542689',
+  coffee:     '48192196706529',
+  strawberry: '48192197198049'
 };
 
 function getCheckoutUrl() {
   // Build cart items: device first, then each selected flavor with its qty
   const selected = window.getSelectedFlavors();
-  let items = '9436526772449:1'; // device
+  let items = '48192194281697:1'; // device
   Object.keys(selected).forEach(function(flavor) {
     items += ',' + FLAVOR_IDS[flavor] + ':' + selected[flavor];
   });
