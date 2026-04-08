@@ -139,7 +139,7 @@ button { cursor: pointer; font-family: inherit; }
 .ob-inner-divider { height: 1px; background: var(--border-light); margin: 0 12px; }
 .ob-flavor-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px 6px; flex-wrap: wrap; box-sizing: border-box; }
 .ob-flavor-label { font-family: var(--font-inter); font-size: 17px; font-weight: 700; color: var(--text-dark); }
-.ob-free-badge { background: var(--yellow); border: 1.5px solid #D4B800; font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: #333; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.ob-free-badge { background: var(--yellow); border: 1.5px solid #D4B800; font-family: var(--font-inter); font-size: 13px; font-weight: 700; color: #333; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
 .ob-flavor-was { font-family: var(--font-inter); font-size: 17px; font-weight: 700; color: var(--text-muted); text-decoration: line-through; }
 .ob-progress-row { display: flex; align-items: center; gap: 8px; padding: 0 12px 10px; box-sizing: border-box; }
 .ob-progress-count { font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-muted); flex: 0 0 auto; }
@@ -580,12 +580,12 @@ fbq('track','PageView');
 
           <!-- Device row -->
           <div class="ob-device-row">
-            <div class="ob-device-img">
-              <img src="images/device-icon.webp" alt="Herbal Air Device" style="width:100%;height:100%;object-fit:contain;border-radius:7px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;">
+              <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:23px;width:auto;object-fit:contain;display:block;">
+              <span style="font-family:var(--font-inter);font-size:14px;font-weight:600;color:var(--text-muted);white-space:nowrap;">Cedar Wood &amp; Metal</span>
             </div>
             <div class="ob-device-info">
-              <div class="ob-device-name">Lifetime Device</div>
-              <div class="ob-device-desc">Metal &amp; cedar wood</div>
+              <div class="ob-device-name" style="font-size:22px;">Lifetime Device</div>
             </div>
             <div class="ob-device-price">$49.00</div>
           </div>
