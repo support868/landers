@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Herbal Diffuser to Quit Smoking - Same Ritual. Zero Poison. – Nordic Goods</title>
+<title>Herbal Air Device to Quit Smoking - Same Ritual. Zero Poison. – Nordic Goods</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -112,6 +112,96 @@ button { cursor: pointer; font-family: inherit; }
 .feature-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--green-dark); }
 .feature-text { font-family: var(--font-inter); font-size: 14px; font-weight: 400; color: var(--text-body); letter-spacing: -0.5px; line-height: 14px; }
 
+/* ── OFFER BOX ── */
+.offer-box { border: 1px solid var(--border-light); border-radius: 10px; background: #fff; overflow: hidden; margin-bottom: 0; box-sizing: border-box; }
+.ob-device-row { display: flex; align-items: center; gap: 12px; padding: 12px 12px 10px; box-sizing: border-box; }
+.ob-device-img { width: 46px; height: 46px; flex: 0 0 46px; background: var(--green-light); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.ob-device-info { flex: 1; min-width: 0; }
+.ob-device-name { font-family: var(--font-inter); font-size: 14px; font-weight: 700; color: var(--text-dark); line-height: 1.2; }
+.ob-device-desc { font-family: var(--font-inter); font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.ob-device-price { font-family: var(--font-inter); font-size: 16px; font-weight: 700; color: var(--text-dark); flex: 0 0 auto; }
+.ob-inner-divider { height: 1px; background: var(--border-light); margin: 0 12px; }
+.ob-flavor-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px 6px; flex-wrap: wrap; box-sizing: border-box; }
+.ob-flavor-label { font-family: var(--font-inter); font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.ob-free-badge { background: var(--yellow); border: 1.5px solid #D4B800; font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: #333; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.ob-flavor-was { font-family: var(--font-inter); font-size: 17px; font-weight: 700; color: var(--text-muted); text-decoration: line-through; }
+.ob-progress-row { display: flex; align-items: center; gap: 8px; padding: 0 12px 10px; box-sizing: border-box; }
+.ob-progress-count { font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-muted); flex: 0 0 auto; }
+.ob-progress-wrap { flex: 1; min-width: 0; height: 5px; background: #E8E4DD; border-radius: 3px; overflow: hidden; }
+.ob-progress-fill { height: 100%; background: var(--green); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
+
+/* THE FIX: equal-width columns, no blowout */
+.ob-flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 0 10px 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.ob-flavor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ob-flavor-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+}
+.ob-flavor-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.ob-sel-btn {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: #fff;
+  border: 2px solid var(--border);
+  box-shadow: 0 3px 0 var(--border);
+  border-radius: 6px;
+  padding: 6px 2px;
+  margin-top: 4px;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: box-shadow 0.12s, transform 0.12s;
+}
+.ob-sel-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--border); }
+.ob-flavor-card.has-qty .ob-sel-btn { display: none; }
+.ob-counter {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  border: 2px solid var(--green);
+  box-shadow: 0 3px 0 var(--green-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.ob-cnt-btn { flex: 0 0 26px; height: 26px; background: var(--green-light); border: none; font-size: 14px; font-weight: 700; color: var(--green-dark); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.ob-cnt-btn:active { background: #c4ddb4; }
+.ob-cnt-num { flex: 1; min-width: 0; font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--text-dark); text-align: center; }
+
+/* ── FLAVOR ALERT ── */
+.flavor-alert { display: none; align-items: center; gap: 7px; background: #FBE7E7; border: 1px solid #f0c0c0; border-radius: 6px; padding: 8px 12px; margin-top: 6px; font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: var(--red-dark); animation: alertShake 0.35s ease; }
+.flavor-alert.visible { display: flex; }
+@keyframes alertShake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-4px);} 40%{transform:translateX(4px);} 60%{transform:translateX(-3px);} 80%{transform:translateX(3px);} }
+
 /* ── DISCOUNT BOX ── */
 .discount-box {
   background: var(--green-light);
@@ -157,7 +247,7 @@ button { cursor: pointer; font-family: inherit; }
 /* ── CTA BUTTON ── */
 .cta-btn {
   width: 100%; background: var(--green); color: #fff; border: none; border-radius: 5px;
-  padding: 12px; margin-top: 8px;
+  padding: 12px; margin-top: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25); gap: 0;
 }
@@ -501,7 +591,7 @@ fbq('track','PageView');
     <div class="carousel-col">
       <div class="carousel-wrap">
         <div class="carousel-track" id="track">
-          <div class="carousel-slide"><img src="images/hero.webp" alt="Herbal Diffuser" loading="eager"></div>
+          <div class="carousel-slide"><img src="images/hero.webp" alt="Herbal Air Device HERO" loading="eager"></div>
           <div class="carousel-slide"><img src="images/benefits.webp" alt="Benefits" loading="lazy"></div>
           <div class="carousel-slide"><img src="images/reviews.webp" alt="Reviews" loading="lazy"></div>
           <div class="carousel-slide"><img src="images/ritual.webp" alt="Ritual" loading="lazy"></div>
@@ -552,7 +642,7 @@ fbq('track','PageView');
           <span class="rating-num"><strong>4.6</strong></span>
           <span class="rating-count">2,847+ Reviews</span>
         </div>
-        <h1 class="product-title">Herbal Air Diffuser</h1>
+        <h1 class="product-title">Herbal Air Device</h1>
         <div class="product-tagline">Same Ritual. Zero Poison.</div>
         <div class="feature-list">
           <div class="feature-item"><svg class="feature-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg><span class="feature-text">Natural Lung-Healing Ingredients</span></div>
@@ -562,7 +652,7 @@ fbq('track','PageView');
         <div class="discount-box">
           <div class="discount-text-col">
             <div class="discount-label">DISCOUNT APPLIED:<span id="discountCode"> QUIT50 </span></div>
-            <div class="discount-sub">Get <strong>50% OFF</strong> Limited Time ONLY</div>
+            <div class="discount-sub">Get <strong>3 FREE Flavor Packs</strong> Limited Time ONLY</div>
           </div>
           <div class="timer-row">
             <div class="timer-unit"><span class="timer-num" id="mins">15</span><span class="timer-label">MIN</span></div>
@@ -570,33 +660,104 @@ fbq('track','PageView');
             <div class="timer-unit"><span class="timer-num" id="secs">41</span><span class="timer-label">SEC</span></div>
           </div>
         </div>
-        <div class="package-selector" id="packages">
-          <div class="pkg-option selected" id="pkg-0">
-            <div class="pkg-badge">MOST POPULAR</div>
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-1.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 2 Get 2 FREE</div><div class="pkg-savings">YOU SAVE $95.44!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$64.36</div><div class="pkg-compare">$159.80</div></div>
+        <!-- ── OFFER BOX ── -->
+        <div class="offer-box">
+
+          <div class="ob-device-row">
+            <div class="ob-device-img">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;color:var(--green-dark);"><rect x="9" y="2" width="6" height="20" rx="2"/><line x1="12" y1="6" x2="12" y2="10"/><circle cx="12" cy="13" r="1.5"/></svg>
+            </div>
+            <div class="ob-device-info">
+              <div class="ob-device-name">Herbal Air Device</div>
+              <div class="ob-device-desc">Metal &amp; cedar wood · Adjustable airflow</div>
+            </div>
+            <div class="ob-device-price">$49.00</div>
+          </div>
+
+          <div class="ob-inner-divider"></div>
+
+          <div class="ob-flavor-head">
+            <span class="ob-flavor-label">Choose Your 3 Free Flavor Packs</span>
+            <span class="ob-free-badge">FREE</span>
+            <span class="ob-flavor-was">$33</span>
+          </div>
+
+          <div class="ob-progress-row">
+            <span class="ob-progress-count" id="flavorCount">0/3</span>
+            <div class="ob-progress-wrap">
+              <div class="ob-progress-fill" id="flavorProgressFill"></div>
             </div>
           </div>
-          <div class="pkg-option" id="pkg-1">
-            <div class="pkg-badge">BEST VALUE</div>
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-2.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 3 Get 3 FREE</div><div class="pkg-savings">YOU SAVE $143.16!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$96.54</div><div class="pkg-compare">$239.70</div></div>
+
+          <div class="ob-flavor-grid" id="flavorGrid">
+
+            <div class="ob-flavor-card" data-flavor="crispmint">
+              <div class="ob-flavor-img"><img src="images/flavor-crispmint.webp" alt="Crisp Mint"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('crispmint')">SELECT</button>
+              <div class="ob-counter" id="counter-crispmint" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('crispmint',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-crispmint">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('crispmint',1)">+</button>
+              </div>
             </div>
-          </div>
-          <div class="pkg-option" id="pkg-2" style="margin-top:5px;">
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-3.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 1 Get 1 FREE</div><div class="pkg-savings">YOU SAVE $47.81!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$32.18</div><div class="pkg-compare">$79.99</div></div>
+
+            <div class="ob-flavor-card" data-flavor="orange">
+              <div class="ob-flavor-img"><img src="images/flavor-orange.webp" alt="Fresh Orange"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('orange')">SELECT</button>
+              <div class="ob-counter" id="counter-orange" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('orange',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-orange">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('orange',1)">+</button>
+              </div>
             </div>
+
+            <div class="ob-flavor-card" data-flavor="mango">
+              <div class="ob-flavor-img"><img src="images/flavor-mango.webp" alt="Mango"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('mango')">SELECT</button>
+              <div class="ob-counter" id="counter-mango" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('mango',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-mango">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('mango',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="blueberry">
+              <div class="ob-flavor-img"><img src="images/flavor-blueberry.webp" alt="Blueberry"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('blueberry')">SELECT</button>
+              <div class="ob-counter" id="counter-blueberry" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('blueberry',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-blueberry">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('blueberry',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="coffee">
+              <div class="ob-flavor-img"><img src="images/flavor-coffee.webp" alt="Coffee"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('coffee')">SELECT</button>
+              <div class="ob-counter" id="counter-coffee" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('coffee',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-coffee">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('coffee',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="strawberry">
+              <div class="ob-flavor-img"><img src="images/flavor-strawberry.webp" alt="Strawberries"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('strawberry')">SELECT</button>
+              <div class="ob-counter" id="counter-strawberry" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('strawberry',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-strawberry">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('strawberry',1)">+</button>
+              </div>
+            </div>
+
           </div>
+
+        </div><!-- end offer-box -->
+
+        <div class="flavor-alert" id="flavorAlert">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
+          Please select your 3 FREE flavor cores before continuing.
         </div>
         <button class="cta-btn" id="cta">
           <span class="cta-main">CLAIM OFFER</span>
@@ -2915,7 +3076,39 @@ function getCheckoutUrl() {
   return url;
 }
 
+// ── FLAVOR PICKER ──
+const _FM=3;
+const _fq={crispmint:0,orange:0,mango:0,blueberry:0,coffee:0,strawberry:0};
+function _ft(){return Object.values(_fq).reduce((a,b)=>a+b,0);}
+function _fp(){
+  const t=_ft();
+  const fill=document.getElementById('flavorProgressFill');
+  const count=document.getElementById('flavorCount');
+  if(fill)fill.style.width=Math.min(t/_FM*100,100)+'%';
+  if(count)count.textContent=t+'/3';
+  if(t===_FM){const a=document.getElementById('flavorAlert');if(a)a.classList.remove('visible');}
+}
+function _fc(f){
+  const card=document.querySelector('[data-flavor="'+f+'"]');
+  if(!card)return;
+  const btn=card.querySelector('.ob-sel-btn');
+  const ctr=document.getElementById('counter-'+f);
+  if(_fq[f]>0){btn.style.display='none';ctr.style.display='flex';document.getElementById('qty-'+f).textContent=_fq[f];card.classList.add('has-qty');}
+  else{btn.style.display='block';ctr.style.display='none';card.classList.remove('has-qty');}
+}
+function selectFlavor(f){if(_ft()>=_FM)return;_fq[f]=1;_fc(f);_fp();}
+function changeQty(f,d){
+  const nv=_fq[f]+d;
+  if(nv<=0){_fq[f]=0;}else if(_ft()-_fq[f]+nv>_FM){return;}else{_fq[f]=nv;}
+  _fc(f);_fp();
+}
+
 document.getElementById('cta').addEventListener('click', function() {
+  if(_ft()<_FM){
+    const a=document.getElementById('flavorAlert');
+    if(a){a.classList.remove('visible');void a.offsetWidth;a.classList.add('visible');}
+    return;
+  }
   const pkg = getSelectedPkg();
 
   // AddToCart
@@ -2929,7 +3122,7 @@ document.getElementById('cta').addEventListener('click', function() {
   });
 
   if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
-    content_name: 'Herbal Air Diffuser',
+    content_name: 'Herbal Air Device',
     content_type: 'product',
     content_ids: ['47965648716001'],
     currency: 'USD',
