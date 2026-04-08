@@ -580,12 +580,12 @@ fbq('track','PageView');
 
           <!-- Device row -->
           <div class="ob-device-row">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;">
-              <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:23px;width:auto;object-fit:contain;display:block;">
-              <span style="font-family:var(--font-inter);font-size:14px;font-weight:600;color:var(--text-muted);white-space:nowrap;">Cedar Wood &amp; Metal</span>
+            <div style="flex-shrink:1;min-width:0;max-width:40%;">
+              <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:clamp(12px,4vw,23px);width:auto;object-fit:contain;display:block;">
             </div>
             <div class="ob-device-info">
               <div class="ob-device-name" style="font-size:22px;">Lifetime Device</div>
+              <div style="font-family:var(--font-inter);font-size:14px;font-weight:600;color:var(--text-muted);">Cedar Wood &amp; Metal</div>
             </div>
             <div class="ob-device-price">$49.00</div>
           </div>
