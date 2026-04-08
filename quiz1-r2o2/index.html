@@ -1052,6 +1052,7 @@ async function r5ClaimSpot(){
   const btn=document.getElementById('r5GenerateBtn');
   btn.textContent='Unlocking...';
   btn.disabled=true;
+  trackQ('R5_generate_code');
   try{
     const res=await fetch(QUIZ_CONFIG.workerUrl,{
       method:'POST',

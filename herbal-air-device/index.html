@@ -112,6 +112,22 @@ button { cursor: pointer; font-family: inherit; }
 .feature-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--green-dark); }
 .feature-text { font-family: var(--font-inter); font-size: 14px; font-weight: 400; color: var(--text-body); letter-spacing: -0.5px; line-height: 14px; }
 
+/* ── DISCOUNT BOX ── */
+.discount-box {
+  background: var(--green-light);
+  border-top: 2px solid var(--green); border-bottom: 2px solid var(--green);
+  padding: 5px 12px; margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: center; flex-direction: row; gap: 16px;
+}
+.discount-text-col { display: flex; flex-direction: column; align-items: center; }
+.discount-label { font-family: var(--font-inter); font-size: 16px; font-weight: 700; line-height: 28px; text-align: center; }
+.discount-label span { color: var(--red); }
+.discount-sub { font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--green-dark); line-height: 12px; }
+.timer-row { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.timer-unit { display: flex; flex-direction: column; align-items: center; }
+.timer-num { font-size: 18px; font-weight: 400; line-height: 24px; }
+.timer-label { font-size: 12px; font-weight: 500; line-height: 12px; }
+
 /* ── OFFER BOX ── */
 .offer-box { border: 1px solid var(--border-light); border-radius: 10px; background: #fff; overflow: hidden; margin-bottom: 0; box-sizing: border-box; }
 .ob-device-row { display: flex; align-items: center; gap: 12px; padding: 12px 12px 10px; box-sizing: border-box; }
@@ -129,125 +145,25 @@ button { cursor: pointer; font-family: inherit; }
 .ob-progress-count { font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-muted); flex: 0 0 auto; }
 .ob-progress-wrap { flex: 1; min-width: 0; height: 5px; background: #E8E4DD; border-radius: 3px; overflow: hidden; }
 .ob-progress-fill { height: 100%; background: var(--green); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
-
-/* THE FIX: equal-width columns, no blowout */
-.ob-flavor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-  padding: 0 10px 12px;
-  box-sizing: border-box;
-  width: 100%;
-}
-.ob-flavor-card {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-.ob-flavor-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  display: block;
-  box-sizing: border-box;
-}
-.ob-flavor-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-.ob-sel-btn {
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  background: #fff;
-  border: 2px solid var(--border);
-  box-shadow: 0 3px 0 var(--border);
-  border-radius: 6px;
-  padding: 6px 2px;
-  margin-top: 4px;
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-dark);
-  cursor: pointer;
-  letter-spacing: 0.4px;
-  transition: box-shadow 0.12s, transform 0.12s;
-}
+.ob-flavor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 0 10px 12px; box-sizing: border-box; width: 100%; }
+.ob-flavor-card { display: flex; flex-direction: column; align-items: stretch; min-width: 0; width: 100%; box-sizing: border-box; }
+.ob-flavor-img { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; display: block; box-sizing: border-box; }
+.ob-flavor-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.ob-sel-btn { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; border: 2px solid var(--border); box-shadow: 0 3px 0 var(--border); border-radius: 6px; padding: 6px 2px; margin-top: 4px; font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-dark); cursor: pointer; letter-spacing: 0.4px; transition: box-shadow 0.12s, transform 0.12s; }
 .ob-sel-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--border); }
 .ob-flavor-card.has-qty .ob-sel-btn { display: none; }
-.ob-counter {
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  margin-top: 4px;
-  border: 2px solid var(--green);
-  box-shadow: 0 3px 0 var(--green-dark);
-  border-radius: 6px;
-  overflow: hidden;
-  background: #fff;
-}
+.ob-counter { width: 100%; min-width: 0; box-sizing: border-box; display: flex; align-items: center; margin-top: 4px; border: 2px solid var(--green); box-shadow: 0 3px 0 var(--green-dark); border-radius: 6px; overflow: hidden; background: #fff; }
 .ob-cnt-btn { flex: 0 0 26px; height: 26px; background: var(--green-light); border: none; font-size: 14px; font-weight: 700; color: var(--green-dark); cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .ob-cnt-btn:active { background: #c4ddb4; }
 .ob-cnt-num { flex: 1; min-width: 0; font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--text-dark); text-align: center; }
-
-/* ── FLAVOR ALERT ── */
-.flavor-alert { display: none; align-items: center; gap: 7px; background: #FBE7E7; border: 1px solid #f0c0c0; border-radius: 6px; padding: 8px 12px; margin-top: 6px; font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: var(--red-dark); animation: alertShake 0.35s ease; }
-.flavor-alert.visible { display: flex; }
-@keyframes alertShake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-4px);} 40%{transform:translateX(4px);} 60%{transform:translateX(-3px);} 80%{transform:translateX(3px);} }
-
-/* ── DISCOUNT BOX ── */
-.discount-box {
-  background: var(--green-light);
-  border-top: 2px solid var(--green); border-bottom: 2px solid var(--green);
-  padding: 5px 12px; margin-bottom: 6px;
-  display: flex; align-items: center; justify-content: center; flex-direction: row; gap: 16px;
-}
-.discount-text-col { display: flex; flex-direction: column; align-items: center; }
-.discount-label { font-family: var(--font-inter); font-size: 16px; font-weight: 700; line-height: 28px; text-align: center; }
-.discount-label span { color: var(--red); }
-.discount-sub { font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--green-dark); line-height: 12px; }
-.timer-row { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-.timer-unit { display: flex; flex-direction: column; align-items: center; }
-.timer-num { font-size: 18px; font-weight: 400; line-height: 24px; }
-.timer-label { font-size: 12px; font-weight: 500; line-height: 12px; }
-
-/* ── PACKAGE SELECTOR ── */
-.package-selector { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-.pkg-option { width: 100%; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
-.pkg-badge {
-  font-family: var(--font); font-size: 14px; font-weight: 700; text-align: center;
-  padding: 3px 20px; border-radius: 13px; border: 2px solid #E2CD1F;
-  background: var(--yellow); color: #000; margin-bottom: -3px;
-  position: relative; z-index: 1; margin-left: 7px; line-height: 17px;
-}
-.pkg-card {
-  width: 100%; background: #fff; border: 1px solid var(--border);
-  border-radius: 9px; box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-  padding: 13px 10px; display: flex; align-items: center; gap: 10px; transition: all 0.3s;
-}
-.pkg-option.selected .pkg-card { background: #F5F5F5; box-shadow: inset 0 4px 4px rgba(0,0,0,0.25); }
-.pkg-radio { width: 20px; height: 20px; border: 1px solid #c0c0c0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.pkg-radio .dot { width: 12px; height: 12px; border-radius: 50%; background: transparent; transition: background 0.2s; }
-.pkg-option.selected .pkg-radio .dot { background: var(--green-dark); }
-.pkg-img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
-.pkg-info { flex: 1; display: flex; flex-direction: column; gap: 0; }
-.pkg-name { font-family: var(--font-inter); font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 20px; }
-.pkg-savings { font-size: 14px; font-weight: 500; color: var(--red); line-height: 16px; }
-.pkg-price-col { display: flex; flex-direction: column; align-items: flex-end; padding-right: 4px; }
-.pkg-price { font-size: 17px; font-weight: 600; color: var(--text-dark); line-height: 16px; }
-.pkg-compare { font-size: 17px; font-weight: 400; color: var(--text-dark); line-height: 20px; text-decoration: line-through; }
+.flavor-alert { display: none; align-items: center; gap: 7px; background: #FBE7E7; border: 1px solid #f0c0c0; border-radius: 6px; padding: 8px 12px; margin-top: 6px; font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: var(--red-dark); }
+.flavor-alert.visible { display: flex; animation: ob-shake 0.35s ease; }
+@keyframes ob-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(3px); } }
 
 /* ── CTA BUTTON ── */
 .cta-btn {
   width: 100%; background: var(--green); color: #fff; border: none; border-radius: 5px;
-  padding: 12px; margin-top: 0;
+  padding: 12px; margin-top: 8px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25); gap: 0;
 }
@@ -591,7 +507,7 @@ fbq('track','PageView');
     <div class="carousel-col">
       <div class="carousel-wrap">
         <div class="carousel-track" id="track">
-          <div class="carousel-slide"><img src="images/hero.webp" alt="Herbal Air Device HERO" loading="eager"></div>
+          <div class="carousel-slide"><img src="images/hero.webp" alt="Herbal Diffuser" loading="eager"></div>
           <div class="carousel-slide"><img src="images/benefits.webp" alt="Benefits" loading="lazy"></div>
           <div class="carousel-slide"><img src="images/reviews.webp" alt="Reviews" loading="lazy"></div>
           <div class="carousel-slide"><img src="images/ritual.webp" alt="Ritual" loading="lazy"></div>
@@ -652,7 +568,7 @@ fbq('track','PageView');
         <div class="discount-box">
           <div class="discount-text-col">
             <div class="discount-label">DISCOUNT APPLIED:<span id="discountCode"> QUIT50 </span></div>
-            <div class="discount-sub">Get <strong>3 FREE Flavor Packs</strong> Limited Time ONLY</div>
+            <div class="discount-sub">Get <strong>50% OFF</strong> Limited Time ONLY</div>
           </div>
           <div class="timer-row">
             <div class="timer-unit"><span class="timer-num" id="mins">15</span><span class="timer-label">MIN</span></div>
@@ -660,12 +576,12 @@ fbq('track','PageView');
             <div class="timer-unit"><span class="timer-num" id="secs">41</span><span class="timer-label">SEC</span></div>
           </div>
         </div>
-        <!-- ── OFFER BOX ── -->
         <div class="offer-box">
 
+          <!-- Device row -->
           <div class="ob-device-row">
             <div class="ob-device-img">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;color:var(--green-dark);"><rect x="9" y="2" width="6" height="20" rx="2"/><line x1="12" y1="6" x2="12" y2="10"/><circle cx="12" cy="13" r="1.5"/></svg>
+              <img src="images/device-icon.webp" alt="Herbal Air Device" style="width:100%;height:100%;object-fit:contain;border-radius:7px;">
             </div>
             <div class="ob-device-info">
               <div class="ob-device-name">Herbal Air Device</div>
@@ -676,12 +592,14 @@ fbq('track','PageView');
 
           <div class="ob-inner-divider"></div>
 
+          <!-- Flavor heading -->
           <div class="ob-flavor-head">
             <span class="ob-flavor-label">Choose Your 3 Free Flavor Packs</span>
             <span class="ob-free-badge">FREE</span>
             <span class="ob-flavor-was">$33</span>
           </div>
 
+          <!-- Progress bar -->
           <div class="ob-progress-row">
             <span class="ob-progress-count" id="flavorCount">0/3</span>
             <div class="ob-progress-wrap">
@@ -689,6 +607,7 @@ fbq('track','PageView');
             </div>
           </div>
 
+          <!-- Flavor grid -->
           <div class="ob-flavor-grid" id="flavorGrid">
 
             <div class="ob-flavor-card" data-flavor="crispmint">
@@ -742,7 +661,7 @@ fbq('track','PageView');
             </div>
 
             <div class="ob-flavor-card" data-flavor="strawberry">
-              <div class="ob-flavor-img"><img src="images/flavor-strawberry.webp" alt="Strawberries"></div>
+              <div class="ob-flavor-img"><img src="images/flavor-strawberry.webp" alt="Strawberry"></div>
               <button class="ob-sel-btn" onclick="selectFlavor('strawberry')">SELECT</button>
               <div class="ob-counter" id="counter-strawberry" style="display:none;">
                 <button class="ob-cnt-btn" onclick="changeQty('strawberry',-1)">−</button>
@@ -753,16 +672,15 @@ fbq('track','PageView');
 
           </div>
 
-        </div><!-- end offer-box -->
-
-        <div class="flavor-alert" id="flavorAlert">
-          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
-          Please select your 3 FREE flavor cores before continuing.
-        </div>
+        </div><!-- end .offer-box -->
         <button class="cta-btn" id="cta">
           <span class="cta-main">CLAIM OFFER</span>
           <span class="cta-sub">30-Day Money Back Guarantee</span>
         </button>
+        <div class="flavor-alert" id="flavorAlert">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
+          Please select your 3 FREE flavor cores before continuing.
+        </div>
         <div class="trust-bar">
           <div class="trust-left"><div class="trust-dot"></div><span class="trust-stock">High Demand, Limited Stock</span></div>
           <div class="trust-right">
@@ -777,11 +695,11 @@ fbq('track','PageView');
         <div class="accordion">
           <div class="acc-item" id="acc-0">
             <button class="acc-trigger"><span class="acc-label">How It Works</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
-            <div class="acc-body"><div class="acc-content">The Herbal Diffuser replaces the full ritual of smoking — the hold, the draw, the inhale and exhale — using only natural herbal ingredients. No nicotine, no tobacco, nothing addictive. Just the sensation your body craves, without the poison.</div></div>
+            <div class="acc-body"><div class="acc-content">The Herbal Air Device replaces the full ritual of smoking — the hold, the draw, the inhale and exhale — using flavored cores that fill the device with natural flavored air. Built from metal and cedar wood. No nicotine, no tobacco, nothing addictive. Just the sensation your body craves, without the poison.</div></div>
           </div>
           <div class="acc-item" id="acc-1">
             <button class="acc-trigger"><span class="acc-label">Full Ingredient List</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
-            <div class="acc-body"><div class="acc-content">Mullein Extract, Mint Leaves, Thyme, Verbena. No nicotine. No tobacco. No additives. No synthetic chemicals.</div></div>
+            <div class="acc-body"><div class="acc-content">Natural flavored cores (available in Mint, Menthol, Citrus, and more). No nicotine. No tobacco. No additives. No synthetic chemicals.</div></div>
           </div>
           <div class="acc-item" id="acc-2">
             <button class="acc-trigger"><span class="acc-label">Refund Policy</span><svg class="acc-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></button>
@@ -2267,7 +2185,7 @@ fbq('track','PageView');
     <div class="weaf-hero-top-row">
       <div class="weaf-hero-content">
         <div class="weaf-hero-header">
-          <h2 class="weaf-hero-name">Nordic Goods Herbal Diffuser</h2>
+          <h2 class="weaf-hero-name">Nordic Goods Herbal Air Device</h2>
           <div class="weaf-hero-tagline">Ritual Replacement</div>
           <div class="weaf-hero-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2331,49 +2249,6 @@ fbq('track','PageView');
 
 <div class="section-divider"></div>
 
-<!-- ═══ INGREDIENTS ═══ -->
-  <section class="ing-section">
-    <div class="ing-inner">
-      <h2 class="ing-title">4 Ingredients Your Lungs Will Love</h2>
-      <div class="ing-list">
-        <div class="ing-item">
-          <img class="ing-img" src="images/ing-mullein.webp" alt="Mullein Extract">
-          <div class="ing-info">
-            <div class="ing-name">Mullein Extract</div>
-            <div class="ing-desc">Delivers a smooth, full-bodied draw that satisfies the throat hit craving. Reduces mucus and coughing.</div>
-          </div>
-        </div>
-        <div class="ing-item">
-          <img class="ing-img" src="images/ing-mint.webp" alt="Mint Leaves">
-          <div class="ing-info">
-            <div class="ing-name">Mint Leaves</div>
-            <div class="ing-desc">Cool, clean inhale that resets your headspace. Replaces the sharpness of tobacco with something your breath actually thanks you for.</div>
-          </div>
-        </div>
-        <div class="ing-item">
-          <img class="ing-img" src="images/ing-thyme.webp" alt="Thyme">
-          <div class="ing-info">
-            <div class="ing-name">Thyme</div>
-            <div class="ing-desc">Thyme produces a soft taste exhale that closes the loop and tells your mind the ritual is done.</div>
-          </div>
-        </div>
-        <div class="ing-item">
-          <img class="ing-img" src="images/ing-verbena.webp" alt="Verbena">
-          <div class="ing-info">
-            <div class="ing-name">Verbena</div>
-            <div class="ing-desc">Light and calming. Takes the edge off the moment the way a cigarette used to, without any of the baggage.</div>
-          </div>
-        </div>
-      </div>
-      <div class="ing-cta">
-        <button class="ing-cta-btn">TRY IT RISK FREE</button>
-        <span class="ing-cta-sub">30-Day Money Back Guarantee</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
   <!-- ═══ JOURNEY / TIMELINE ═══ -->
   <section class="journey-section">
     <div class="journey-inner">
@@ -2397,7 +2272,7 @@ fbq('track','PageView');
               <div class="journey-dot"></div>
               <div class="journey-content">
                 <div class="journey-day">DAY 7</div>
-                <div class="journey-text"><strong>The cravings are losing their grip.</strong> The Diffuser is giving you everything the cigarettes used to: the draw, the inhale, the exhale, the five-minute break.</div>
+                <div class="journey-text"><strong>The cravings are losing their grip.</strong> The Device is giving you everything the cigarettes used to: the draw, the inhale, the exhale, the five-minute break. And it fits in your hand the same way.</div>
               </div>
             </div>
             <div class="journey-item">
@@ -2579,7 +2454,7 @@ fbq('track','PageView');
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer-wrap">
-        <div class="faq-answer">No. Vapes deliver nicotine and keep you addicted. The Herbal Diffuser contains zero nicotine and no electronics — no battery, no coil, no liquid. It uses natural herbs to replicate the sensory experience of smoking without any of the dependency.</div>
+        <div class="faq-answer">No. Vapes deliver nicotine and keep you addicted. The Herbal Air Device contains zero nicotine and no electronics — no battery, no coil, no liquid. You load a flavored core into the metal and cedar wood body, adjust the airflow, and draw naturally scented air. All ritual, zero dependency.</div>
       </div>
     </div>
 
@@ -2599,7 +2474,7 @@ fbq('track','PageView');
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer-wrap">
-        <div class="faq-answer">Four natural ingredients: mullein extract for the throat hit, mint leaves for freshness, thyme for taste, and verbena for a calming exhale. No nicotine, no tobacco, no tar, no synthetic additives. Every ingredient has a long history of traditional use.</div>
+        <div class="faq-answer">Natural flavored cores — available in mint, menthol, citrus, and more. The device itself is metal and cedar wood. No nicotine, no tobacco, no tar, no synthetic additives. No batteries, no heat, no liquid. Just air pulled through a natural flavored core.</div>
       </div>
     </div>
 
@@ -2609,7 +2484,7 @@ fbq('track','PageView');
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer-wrap">
-        <div class="faq-answer">No. The Herbal Diffuser is fully natural — there is no heated vapor, no battery, and no damaging chemicals. It replicates the sensation of smoking without the harmful ingredients and smoke. What you experience is a smooth, flavoured inhale and exhale using nothing but natural herbs.</div>
+        <div class="faq-answer">No. The Herbal Air Device produces no vapor and no smoke — no battery, no heating element, no liquid. You simply draw air through the flavored core. What you experience is a smooth, flavored inhale and exhale using nothing but naturally scented air.</div>
       </div>
     </div>
 
@@ -2629,7 +2504,7 @@ fbq('track','PageView');
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer-wrap">
-        <div class="faq-answer">Each pack of Herbal Diffusers lasts approximately the same as three packs of cigarettes. Most people find one pack covers them for two to three weeks, depending on how often they reach for it.</div>
+        <div class="faq-answer">Each core pack lasts around 10 days. Three packs covers a full month smoke-free — and at a fraction of what you were spending on cigarettes. Most smokers save over $150 a month just by switching.</div>
       </div>
     </div>
 
@@ -2649,7 +2524,7 @@ fbq('track','PageView');
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer-wrap">
-        <div class="faq-answer">Most people feel the difference immediately — the craving hits, they reach for the diffuser instead of a cigarette, and the urge passes. The first few days are the hardest, but having something physical to reach for makes them dramatically easier.</div>
+        <div class="faq-answer">Most people feel the difference immediately — the craving hits, they reach for the device instead of a cigarette, and the urge passes. The first few days are the hardest, but having something physical to reach for makes them dramatically easier.</div>
       </div>
     </div>
 
@@ -2983,7 +2858,7 @@ document.getElementById('discountCode').textContent = ' ' + _discountCode + ' ';
 
 // ── META PIXEL EVENTS ──
 if(typeof fbq !== 'undefined') fbq('track', 'ViewContent', {
-  content_name: 'Herbal Air Diffuser',
+  content_name: 'Herbal Air Device',
   content_type: 'product',
   content_ids: ['47965648716001'],
   currency: 'USD',
@@ -3026,15 +2901,86 @@ function updateTimer() {
 updateTimer();
 const _timerInterval = setInterval(updateTimer, 1000);
 
-// ── PACKAGE SELECTOR ──
-const pkgValues = { 'pkg-0': { qty: 4, price: 64.36 }, 'pkg-1': { qty: 6, price: 96.54 }, 'pkg-2': { qty: 2, price: 32.18 } };
+// ── FLAVOR SELECTOR ──
+(function() {
+  var MAX = 3;
+  var qtys = { crispmint:0, orange:0, mango:0, blueberry:0, coffee:0, strawberry:0 };
 
-document.querySelectorAll('.pkg-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    document.querySelectorAll('.pkg-option').forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-  });
-});
+  function total() {
+    return Object.values(qtys).reduce(function(a,b){ return a+b; }, 0);
+  }
+
+  function updateProgress() {
+    var t = total();
+    var fill  = document.getElementById('flavorProgressFill');
+    var count = document.getElementById('flavorCount');
+    if (fill)  fill.style.width = Math.min(t / MAX * 100, 100) + '%';
+    if (count) count.textContent = t + '/3';
+    if (t === MAX) {
+      var alertEl = document.getElementById('flavorAlert');
+      if (alertEl) alertEl.classList.remove('visible');
+    }
+  }
+
+  function updateCard(f) {
+    var card = document.querySelector('[data-flavor="' + f + '"]');
+    if (!card) return;
+    var btn = card.querySelector('.ob-sel-btn');
+    var ctr = document.getElementById('counter-' + f);
+    var qty = document.getElementById('qty-' + f);
+    if (qtys[f] > 0) {
+      btn.style.display = 'none';
+      ctr.style.display = 'flex';
+      qty.textContent = qtys[f];
+      card.classList.add('has-qty');
+    } else {
+      btn.style.display = 'block';
+      ctr.style.display = 'none';
+      card.classList.remove('has-qty');
+    }
+  }
+
+  window.selectFlavor = function(f) {
+    if (total() >= MAX) return;
+    qtys[f] = 1;
+    updateCard(f);
+    updateProgress();
+  };
+
+  window.changeQty = function(f, delta) {
+    var nv = qtys[f] + delta;
+    if (nv <= 0) {
+      qtys[f] = 0;
+    } else if (total() - qtys[f] + nv > MAX) {
+      return;
+    } else {
+      qtys[f] = nv;
+    }
+    updateCard(f);
+    updateProgress();
+  };
+
+  window.flavorGuard = function() {
+    if (total() < MAX) {
+      var alertEl = document.getElementById('flavorAlert');
+      if (alertEl) {
+        alertEl.classList.remove('visible');
+        void alertEl.offsetWidth;
+        alertEl.classList.add('visible');
+      }
+      return false;
+    }
+    return true;
+  };
+
+  window.getSelectedFlavors = function() {
+    var result = {};
+    Object.keys(qtys).forEach(function(f) {
+      if (qtys[f] > 0) result[f] = qtys[f];
+    });
+    return result;
+  };
+})();
 
 // ── ACCORDION (product) ──
 document.querySelectorAll('.acc-trigger').forEach(btn => {
@@ -3057,15 +3003,8 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // ── CHECKOUT ──
 const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
 
-function getSelectedPkg() {
-  const selected = document.querySelector('.pkg-option.selected');
-  const id = selected ? selected.id : 'pkg-0';
-  return pkgValues[id] || pkgValues['pkg-0'];
-}
-
 function getCheckoutUrl() {
-  const pkg = getSelectedPkg();
-  let url = CART_BASE + ':' + pkg.qty + '?discount=' + encodeURIComponent(_discountCode);
+  let url = CART_BASE + ':1?discount=' + encodeURIComponent(_discountCode);
   if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
   if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
   if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
@@ -3076,49 +3015,17 @@ function getCheckoutUrl() {
   return url;
 }
 
-// ── FLAVOR PICKER ──
-const _FM=3;
-const _fq={crispmint:0,orange:0,mango:0,blueberry:0,coffee:0,strawberry:0};
-function _ft(){return Object.values(_fq).reduce((a,b)=>a+b,0);}
-function _fp(){
-  const t=_ft();
-  const fill=document.getElementById('flavorProgressFill');
-  const count=document.getElementById('flavorCount');
-  if(fill)fill.style.width=Math.min(t/_FM*100,100)+'%';
-  if(count)count.textContent=t+'/3';
-  if(t===_FM){const a=document.getElementById('flavorAlert');if(a)a.classList.remove('visible');}
-}
-function _fc(f){
-  const card=document.querySelector('[data-flavor="'+f+'"]');
-  if(!card)return;
-  const btn=card.querySelector('.ob-sel-btn');
-  const ctr=document.getElementById('counter-'+f);
-  if(_fq[f]>0){btn.style.display='none';ctr.style.display='flex';document.getElementById('qty-'+f).textContent=_fq[f];card.classList.add('has-qty');}
-  else{btn.style.display='block';ctr.style.display='none';card.classList.remove('has-qty');}
-}
-function selectFlavor(f){if(_ft()>=_FM)return;_fq[f]=1;_fc(f);_fp();}
-function changeQty(f,d){
-  const nv=_fq[f]+d;
-  if(nv<=0){_fq[f]=0;}else if(_ft()-_fq[f]+nv>_FM){return;}else{_fq[f]=nv;}
-  _fc(f);_fp();
-}
-
 document.getElementById('cta').addEventListener('click', function() {
-  if(_ft()<_FM){
-    const a=document.getElementById('flavorAlert');
-    if(a){a.classList.remove('visible');void a.offsetWidth;a.classList.add('visible');}
-    return;
-  }
-  const pkg = getSelectedPkg();
+  if (!window.flavorGuard()) return;
 
   // AddToCart
   if(typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
-    content_name: 'Herbal Air Diffuser',
+    content_name: 'Herbal Air Device',
     content_type: 'product',
     content_ids: ['47965648716001'],
     currency: 'USD',
-    value: pkg.price,
-    num_items: pkg.qty,
+    value: 49.00,
+    num_items: 1,
   });
 
   if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
@@ -3126,8 +3033,8 @@ document.getElementById('cta').addEventListener('click', function() {
     content_type: 'product',
     content_ids: ['47965648716001'],
     currency: 'USD',
-    value: pkg.price,
-    num_items: pkg.qty,
+    value: 49.00,
+    num_items: 1,
     coupon: _discountCode,
   });
 
