@@ -128,31 +128,37 @@ button { cursor: pointer; font-family: inherit; }
 .timer-num { font-size: 18px; font-weight: 400; line-height: 24px; }
 .timer-label { font-size: 12px; font-weight: 500; line-height: 12px; }
 
-/* ── PACKAGE SELECTOR ── */
-.package-selector { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-.pkg-option { width: 100%; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
-.pkg-badge {
-  font-family: var(--font); font-size: 14px; font-weight: 700; text-align: center;
-  padding: 3px 20px; border-radius: 13px; border: 2px solid #E2CD1F;
-  background: var(--yellow); color: #000; margin-bottom: -3px;
-  position: relative; z-index: 1; margin-left: 7px; line-height: 17px;
-}
-.pkg-card {
-  width: 100%; background: #fff; border: 1px solid var(--border);
-  border-radius: 9px; box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-  padding: 13px 10px; display: flex; align-items: center; gap: 10px; transition: all 0.3s;
-}
-.pkg-option.selected .pkg-card { background: #F5F5F5; box-shadow: inset 0 4px 4px rgba(0,0,0,0.25); }
-.pkg-radio { width: 20px; height: 20px; border: 1px solid #c0c0c0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.pkg-radio .dot { width: 12px; height: 12px; border-radius: 50%; background: transparent; transition: background 0.2s; }
-.pkg-option.selected .pkg-radio .dot { background: var(--green-dark); }
-.pkg-img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
-.pkg-info { flex: 1; display: flex; flex-direction: column; gap: 0; }
-.pkg-name { font-family: var(--font-inter); font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 20px; }
-.pkg-savings { font-size: 14px; font-weight: 500; color: var(--red); line-height: 16px; }
-.pkg-price-col { display: flex; flex-direction: column; align-items: flex-end; padding-right: 4px; }
-.pkg-price { font-size: 17px; font-weight: 600; color: var(--text-dark); line-height: 16px; }
-.pkg-compare { font-size: 17px; font-weight: 400; color: var(--text-dark); line-height: 20px; text-decoration: line-through; }
+/* ── OFFER BOX ── */
+.offer-box { border: 1px solid var(--border-light); border-radius: 10px; background: #fff; overflow: hidden; margin-bottom: 0; box-sizing: border-box; }
+.ob-device-row { display: flex; align-items: center; gap: 12px; padding: 12px 12px 10px; box-sizing: border-box; }
+.ob-device-img { width: 46px; height: 46px; flex: 0 0 46px; background: var(--green-light); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.ob-device-info { flex: 1; min-width: 0; }
+.ob-device-name { font-family: var(--font-inter); font-size: 14px; font-weight: 700; color: var(--text-dark); line-height: 1.2; }
+.ob-device-desc { font-family: var(--font-inter); font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.ob-device-price { font-family: var(--font-inter); font-size: 16px; font-weight: 700; color: var(--text-dark); flex: 0 0 auto; }
+.ob-inner-divider { height: 1px; background: var(--border-light); margin: 0 12px; }
+.ob-flavor-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px 6px; flex-wrap: wrap; box-sizing: border-box; }
+.ob-flavor-label { font-family: var(--font-inter); font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.ob-free-badge { background: var(--yellow); border: 1.5px solid #D4B800; font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: #333; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.ob-flavor-was { font-family: var(--font-inter); font-size: 17px; font-weight: 700; color: var(--text-muted); text-decoration: line-through; }
+.ob-progress-row { display: flex; align-items: center; gap: 8px; padding: 0 12px 10px; box-sizing: border-box; }
+.ob-progress-count { font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-muted); flex: 0 0 auto; }
+.ob-progress-wrap { flex: 1; min-width: 0; height: 5px; background: #E8E4DD; border-radius: 3px; overflow: hidden; }
+.ob-progress-fill { height: 100%; background: var(--green); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
+.ob-flavor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 0 10px 12px; box-sizing: border-box; width: 100%; }
+.ob-flavor-card { display: flex; flex-direction: column; align-items: stretch; min-width: 0; width: 100%; box-sizing: border-box; }
+.ob-flavor-img { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; display: block; box-sizing: border-box; }
+.ob-flavor-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.ob-sel-btn { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; border: 2px solid var(--border); box-shadow: 0 3px 0 var(--border); border-radius: 6px; padding: 6px 2px; margin-top: 4px; font-family: var(--font-inter); font-size: 11px; font-weight: 700; color: var(--text-dark); cursor: pointer; letter-spacing: 0.4px; transition: box-shadow 0.12s, transform 0.12s; }
+.ob-sel-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--border); }
+.ob-flavor-card.has-qty .ob-sel-btn { display: none; }
+.ob-counter { width: 100%; min-width: 0; box-sizing: border-box; display: flex; align-items: center; margin-top: 4px; border: 2px solid var(--green); box-shadow: 0 3px 0 var(--green-dark); border-radius: 6px; overflow: hidden; background: #fff; }
+.ob-cnt-btn { flex: 0 0 26px; height: 26px; background: var(--green-light); border: none; font-size: 14px; font-weight: 700; color: var(--green-dark); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.ob-cnt-btn:active { background: #c4ddb4; }
+.ob-cnt-num { flex: 1; min-width: 0; font-family: var(--font-inter); font-size: 12px; font-weight: 700; color: var(--text-dark); text-align: center; }
+.flavor-alert { display: none; align-items: center; gap: 7px; background: #FBE7E7; border: 1px solid #f0c0c0; border-radius: 6px; padding: 8px 12px; margin-top: 6px; font-family: var(--font-inter); font-size: 12px; font-weight: 600; color: var(--red-dark); }
+.flavor-alert.visible { display: flex; animation: ob-shake 0.35s ease; }
+@keyframes ob-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(3px); } }
 
 /* ── CTA BUTTON ── */
 .cta-btn {
@@ -570,38 +576,111 @@ fbq('track','PageView');
             <div class="timer-unit"><span class="timer-num" id="secs">41</span><span class="timer-label">SEC</span></div>
           </div>
         </div>
-        <div class="package-selector" id="packages">
-          <div class="pkg-option selected" id="pkg-0">
-            <div class="pkg-badge">MOST POPULAR</div>
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-1.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 2 Get 2 FREE</div><div class="pkg-savings">YOU SAVE $95.44!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$64.36</div><div class="pkg-compare">$159.80</div></div>
+        <div class="offer-box">
+
+          <!-- Device row -->
+          <div class="ob-device-row">
+            <div class="ob-device-img">
+              <img src="images/device-icon.webp" alt="Herbal Air Device" style="width:100%;height:100%;object-fit:contain;border-radius:7px;">
+            </div>
+            <div class="ob-device-info">
+              <div class="ob-device-name">Herbal Air Device</div>
+              <div class="ob-device-desc">Metal &amp; cedar wood · Adjustable airflow</div>
+            </div>
+            <div class="ob-device-price">$49.00</div>
+          </div>
+
+          <div class="ob-inner-divider"></div>
+
+          <!-- Flavor heading -->
+          <div class="ob-flavor-head">
+            <span class="ob-flavor-label">Choose Your 3 Free Flavor Packs</span>
+            <span class="ob-free-badge">FREE</span>
+            <span class="ob-flavor-was">$33</span>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="ob-progress-row">
+            <span class="ob-progress-count" id="flavorCount">0/3</span>
+            <div class="ob-progress-wrap">
+              <div class="ob-progress-fill" id="flavorProgressFill"></div>
             </div>
           </div>
-          <div class="pkg-option" id="pkg-1">
-            <div class="pkg-badge">BEST VALUE</div>
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-2.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 3 Get 3 FREE</div><div class="pkg-savings">YOU SAVE $143.16!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$96.54</div><div class="pkg-compare">$239.70</div></div>
+
+          <!-- Flavor grid -->
+          <div class="ob-flavor-grid" id="flavorGrid">
+
+            <div class="ob-flavor-card" data-flavor="crispmint">
+              <div class="ob-flavor-img"><img src="images/flavor-crispmint.webp" alt="Crisp Mint"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('crispmint')">SELECT</button>
+              <div class="ob-counter" id="counter-crispmint" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('crispmint',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-crispmint">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('crispmint',1)">+</button>
+              </div>
             </div>
-          </div>
-          <div class="pkg-option" id="pkg-2" style="margin-top:5px;">
-            <div class="pkg-card">
-              <div class="pkg-radio"><div class="dot"></div></div>
-              <img class="pkg-img" src="images/pkg-3.png" alt="">
-              <div class="pkg-info"><div class="pkg-name">Buy 1 Get 1 FREE</div><div class="pkg-savings">YOU SAVE $47.81!</div></div>
-              <div class="pkg-price-col"><div class="pkg-price">$32.18</div><div class="pkg-compare">$79.99</div></div>
+
+            <div class="ob-flavor-card" data-flavor="orange">
+              <div class="ob-flavor-img"><img src="images/flavor-orange.webp" alt="Fresh Orange"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('orange')">SELECT</button>
+              <div class="ob-counter" id="counter-orange" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('orange',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-orange">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('orange',1)">+</button>
+              </div>
             </div>
+
+            <div class="ob-flavor-card" data-flavor="mango">
+              <div class="ob-flavor-img"><img src="images/flavor-mango.webp" alt="Mango"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('mango')">SELECT</button>
+              <div class="ob-counter" id="counter-mango" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('mango',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-mango">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('mango',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="blueberry">
+              <div class="ob-flavor-img"><img src="images/flavor-blueberry.webp" alt="Blueberry"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('blueberry')">SELECT</button>
+              <div class="ob-counter" id="counter-blueberry" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('blueberry',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-blueberry">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('blueberry',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="coffee">
+              <div class="ob-flavor-img"><img src="images/flavor-coffee.webp" alt="Coffee"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('coffee')">SELECT</button>
+              <div class="ob-counter" id="counter-coffee" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('coffee',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-coffee">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('coffee',1)">+</button>
+              </div>
+            </div>
+
+            <div class="ob-flavor-card" data-flavor="strawberry">
+              <div class="ob-flavor-img"><img src="images/flavor-strawberry.webp" alt="Strawberry"></div>
+              <button class="ob-sel-btn" onclick="selectFlavor('strawberry')">SELECT</button>
+              <div class="ob-counter" id="counter-strawberry" style="display:none;">
+                <button class="ob-cnt-btn" onclick="changeQty('strawberry',-1)">−</button>
+                <span class="ob-cnt-num" id="qty-strawberry">1</span>
+                <button class="ob-cnt-btn" onclick="changeQty('strawberry',1)">+</button>
+              </div>
+            </div>
+
           </div>
-        </div>
+
+        </div><!-- end .offer-box -->
         <button class="cta-btn" id="cta">
           <span class="cta-main">CLAIM OFFER</span>
           <span class="cta-sub">30-Day Money Back Guarantee</span>
         </button>
+        <div class="flavor-alert" id="flavorAlert">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
+          Please select your 3 FREE flavor cores before continuing.
+        </div>
         <div class="trust-bar">
           <div class="trust-left"><div class="trust-dot"></div><span class="trust-stock">High Demand, Limited Stock</span></div>
           <div class="trust-right">
@@ -2822,15 +2901,86 @@ function updateTimer() {
 updateTimer();
 const _timerInterval = setInterval(updateTimer, 1000);
 
-// ── PACKAGE SELECTOR ──
-const pkgValues = { 'pkg-0': { qty: 4, price: 64.36 }, 'pkg-1': { qty: 6, price: 96.54 }, 'pkg-2': { qty: 2, price: 32.18 } };
+// ── FLAVOR SELECTOR ──
+(function() {
+  var MAX = 3;
+  var qtys = { crispmint:0, orange:0, mango:0, blueberry:0, coffee:0, strawberry:0 };
 
-document.querySelectorAll('.pkg-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    document.querySelectorAll('.pkg-option').forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-  });
-});
+  function total() {
+    return Object.values(qtys).reduce(function(a,b){ return a+b; }, 0);
+  }
+
+  function updateProgress() {
+    var t = total();
+    var fill  = document.getElementById('flavorProgressFill');
+    var count = document.getElementById('flavorCount');
+    if (fill)  fill.style.width = Math.min(t / MAX * 100, 100) + '%';
+    if (count) count.textContent = t + '/3';
+    if (t === MAX) {
+      var alertEl = document.getElementById('flavorAlert');
+      if (alertEl) alertEl.classList.remove('visible');
+    }
+  }
+
+  function updateCard(f) {
+    var card = document.querySelector('[data-flavor="' + f + '"]');
+    if (!card) return;
+    var btn = card.querySelector('.ob-sel-btn');
+    var ctr = document.getElementById('counter-' + f);
+    var qty = document.getElementById('qty-' + f);
+    if (qtys[f] > 0) {
+      btn.style.display = 'none';
+      ctr.style.display = 'flex';
+      qty.textContent = qtys[f];
+      card.classList.add('has-qty');
+    } else {
+      btn.style.display = 'block';
+      ctr.style.display = 'none';
+      card.classList.remove('has-qty');
+    }
+  }
+
+  window.selectFlavor = function(f) {
+    if (total() >= MAX) return;
+    qtys[f] = 1;
+    updateCard(f);
+    updateProgress();
+  };
+
+  window.changeQty = function(f, delta) {
+    var nv = qtys[f] + delta;
+    if (nv <= 0) {
+      qtys[f] = 0;
+    } else if (total() - qtys[f] + nv > MAX) {
+      return;
+    } else {
+      qtys[f] = nv;
+    }
+    updateCard(f);
+    updateProgress();
+  };
+
+  window.flavorGuard = function() {
+    if (total() < MAX) {
+      var alertEl = document.getElementById('flavorAlert');
+      if (alertEl) {
+        alertEl.classList.remove('visible');
+        void alertEl.offsetWidth;
+        alertEl.classList.add('visible');
+      }
+      return false;
+    }
+    return true;
+  };
+
+  window.getSelectedFlavors = function() {
+    var result = {};
+    Object.keys(qtys).forEach(function(f) {
+      if (qtys[f] > 0) result[f] = qtys[f];
+    });
+    return result;
+  };
+})();
 
 // ── ACCORDION (product) ──
 document.querySelectorAll('.acc-trigger').forEach(btn => {
@@ -2853,15 +3003,8 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // ── CHECKOUT ──
 const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
 
-function getSelectedPkg() {
-  const selected = document.querySelector('.pkg-option.selected');
-  const id = selected ? selected.id : 'pkg-0';
-  return pkgValues[id] || pkgValues['pkg-0'];
-}
-
 function getCheckoutUrl() {
-  const pkg = getSelectedPkg();
-  let url = CART_BASE + ':' + pkg.qty + '?discount=' + encodeURIComponent(_discountCode);
+  let url = CART_BASE + ':1?discount=' + encodeURIComponent(_discountCode);
   if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
   if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
   if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
@@ -2873,7 +3016,7 @@ function getCheckoutUrl() {
 }
 
 document.getElementById('cta').addEventListener('click', function() {
-  const pkg = getSelectedPkg();
+  if (!window.flavorGuard()) return;
 
   // AddToCart
   if(typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
@@ -2881,8 +3024,8 @@ document.getElementById('cta').addEventListener('click', function() {
     content_type: 'product',
     content_ids: ['47965648716001'],
     currency: 'USD',
-    value: pkg.price,
-    num_items: pkg.qty,
+    value: 49.00,
+    num_items: 1,
   });
 
   if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
@@ -2890,8 +3033,8 @@ document.getElementById('cta').addEventListener('click', function() {
     content_type: 'product',
     content_ids: ['47965648716001'],
     currency: 'USD',
-    value: pkg.price,
-    num_items: pkg.qty,
+    value: 49.00,
+    num_items: 1,
     coupon: _discountCode,
   });
 
