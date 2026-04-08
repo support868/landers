@@ -130,7 +130,7 @@ button { cursor: pointer; font-family: inherit; }
 
 /* ── OFFER BOX ── */
 .offer-box { border: 1px solid var(--border-light); border-radius: 10px; background: #fff; overflow: hidden; margin-bottom: 0; box-sizing: border-box; }
-.ob-device-row { display: flex; align-items: center; gap: 12px; padding: 12px 12px 10px; box-sizing: border-box; }
+.ob-device-row { display: flex; align-items: center; gap: 0; padding: 12px 12px 10px; box-sizing: border-box; }
 .ob-device-img { width: 46px; height: 46px; flex: 0 0 46px; background: var(--green-light); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
 .ob-device-info { flex: 1; min-width: 0; }
 .ob-device-name { font-family: var(--font-garamond); font-size: 20px; font-weight: 400; color: var(--text-dark); line-height: 1.2; }
@@ -580,12 +580,12 @@ fbq('track','PageView');
 
           <!-- Device row -->
           <div class="ob-device-row">
-            <div style="flex-shrink:1;min-width:0;max-width:40%;">
-              <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:clamp(12px,4vw,23px);width:auto;object-fit:contain;display:block;">
-            </div>
             <div class="ob-device-info">
               <div class="ob-device-name" style="font-size:22px;">Lifetime Device</div>
               <div style="font-family:var(--font-inter);font-size:14px;font-weight:600;color:var(--text-muted);">Cedar Wood &amp; Metal</div>
+            </div>
+            <div style="flex-shrink:1;min-width:0;max-width:40%;">
+              <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:clamp(12px,4vw,23px);width:auto;object-fit:contain;display:block;">
             </div>
             <div class="ob-device-price">$49.00</div>
           </div>
