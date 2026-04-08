@@ -3001,10 +3001,26 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 
 // ── CHECKOUT ──
-const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/47965648716001';
+const CART_BASE = 'https://ubh303-ma.myshopify.com/cart/';
+
+const FLAVOR_IDS = {
+  crispmint:  '9436527034593',
+  orange:     '9436527100129',
+  mango:      '9436527132897',
+  blueberry:  '9436527231201',
+  coffee:     '9436527329505',
+  strawberry: '9436527493345'
+};
 
 function getCheckoutUrl() {
-  let url = CART_BASE + ':1?discount=' + encodeURIComponent(_discountCode);
+  // Build cart items: device first, then each selected flavor with its qty
+  const selected = window.getSelectedFlavors();
+  let items = '9436526772449:1'; // device
+  Object.keys(selected).forEach(function(flavor) {
+    items += ',' + FLAVOR_IDS[flavor] + ':' + selected[flavor];
+  });
+
+  let url = CART_BASE + items + '?discount=' + encodeURIComponent(_discountCode);
   if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
   if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
   if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
