@@ -6,6 +6,16 @@
 <title>Herbal Air Device to Quit Smoking - Same Ritual. Zero Poison. – Nordic Goods</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ─── GA4 ─────────────────────────────────────────────────── -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81CTN0EXMB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-81CTN0EXMB');
+</script>
+
 <style>
 @font-face {
   font-family: "ITC Garamond Std Book Narrow";
@@ -3043,6 +3053,11 @@ document.getElementById('cta').addEventListener('click', function() {
     value: 49.00,
     num_items: 1,
   });
+  if(typeof gtag !== 'undefined') gtag('event', 'add_to_cart', {
+    currency: 'USD',
+    value: 49.00,
+    items: [{ item_id: '47965648716001', item_name: 'Herbal Air Device', quantity: 1, price: 49.00 }],
+  });
 
   if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {
     content_name: 'Herbal Air Device',
@@ -3052,6 +3067,11 @@ document.getElementById('cta').addEventListener('click', function() {
     value: 49.00,
     num_items: 1,
     coupon: _discountCode,
+  });
+  if(typeof gtag !== 'undefined') gtag('event', 'begin_checkout', {
+    currency: 'USD',
+    value: 49.00,
+    items: [{ item_id: '47965648716001', item_name: 'Herbal Air Device', quantity: 1, price: 49.00 }],
   });
 
   window.location.href = getCheckoutUrl();
