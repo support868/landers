@@ -2915,11 +2915,19 @@ function getSelectedPkg() {
 function getCheckoutUrl() {
   const pkg = getSelectedPkg();
   let url = CART_BASE + ':' + pkg.qty + '?discount=' + encodeURIComponent(_discountCode);
-  if (_urlParams.get('utm_source'))   url += '&utm_source='   + encodeURIComponent(_urlParams.get('utm_source'));
-  if (_urlParams.get('utm_medium'))   url += '&utm_medium='   + encodeURIComponent(_urlParams.get('utm_medium'));
-  if (_urlParams.get('utm_campaign')) url += '&utm_campaign=' + encodeURIComponent(_urlParams.get('utm_campaign'));
-  if (_urlParams.get('utm_content'))  url += '&utm_content='  + encodeURIComponent(_urlParams.get('utm_content'));
-  if (_urlParams.get('utm_term'))     url += '&utm_term='     + encodeURIComponent(_urlParams.get('utm_term'));
+  const utms = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  utms.forEach(function(p) {
+    const v = _urlParams.get(p);
+    if (v) {
+      url += '&' + p + '=' + encodeURIComponent(v);
+      url += '&attributes[' + p + ']=' + encodeURIComponent(v);
+    }
+  });
+  const fbclid = _urlParams.get('fbclid');
+  if (fbclid) {
+    url += '&fbclid=' + encodeURIComponent(fbclid);
+    url += '&attributes[fbclid]=' + encodeURIComponent(fbclid);
+  }
   const quizVersion = _urlParams.get('quiz_version');
   if (quizVersion) url += '&attributes[quiz_version]=' + encodeURIComponent(quizVersion);
   return url;

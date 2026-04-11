@@ -806,9 +806,10 @@ function rClaim() {
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
 const existingParams = new URLSearchParams(window.location.search);
-existingParams.set('utm_content', 'quiz1');
+existingParams.set('quiz_version', 'quiz1');
+existingParams.delete('utm_content');
 existingParams.set('discount', 'QUIT50');
-window.location.href = 'https://nordicgoods.co/pages/herbal-air-diffuser?' + existingParams.toString();
+window.location.href = 'https://try.nordicgoods.co/herbal-air-diffuser?' + existingParams.toString();
 }
 
 // ── INIT ─────────────────────────────────────────────────────────
