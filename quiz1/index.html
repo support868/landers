@@ -537,8 +537,11 @@ const Q_ARRIVAL_NAMES = {
   13: 'Q12_monthly_spend',
   14: 'Q13_motivation',
 };
+const Q_STEP_INDEX = {
+  2:1, 3:2, 4:3, 5:4, 6:5, 7:6, 8:7, 9:8, 10:9, 11:10, 12:11, 13:12, 14:13
+};
 
-function trackQ(eventName) { ga4Event(eventName, {}); }
+function trackQ(eventName, stepIndex) { ga4Event(eventName, { quiz_version: 'quiz1', step_index: String(stepIndex) }); }
 
 function qsGetEl(id) { return document.getElementById('qs-' + id); }
 
@@ -552,7 +555,7 @@ function qsGoTo(n) {
   const urlName = Q_URL_NAMES[n];
   if (urlName) updateURL(urlName);
   const eventName = Q_ARRIVAL_NAMES[n];
-  if (eventName) trackQ(eventName);
+  if (eventName) trackQ(eventName, Q_STEP_INDEX[n]);
   if (n === 7)  qsPopS7();
   if (n === 14) qsStartLoading();
 }
@@ -637,7 +640,7 @@ function qsStartLoading() {
   setTimeout(() => {
     // Q13_motivation fired on arrival at S14 via Q_ARRIVAL_NAMES
     // Q14_loading fires now = loading complete, results about to show
-    trackQ('Q14_loading');
+    trackQ('Q14_loading', 14);
 
     const urlParams = new URLSearchParams(window.location.search);
     const quizData = {
@@ -682,7 +685,7 @@ function qsStartLoading() {
     qsGetEl('r1').classList.add('active');
     qsUpdateHeader();
     updateURL('R1_diagnosis');
-    trackQ('R1_diagnosis');
+    trackQ('R1_diagnosis', 15);
     rPopulateDiagnosis();
     rPopulateReviews();
     rPopulateGoalCards();
@@ -700,7 +703,8 @@ function rGoTo(n) {
   qsUpdateHeader();
   updateURL('R' + n + '_' + ['','diagnosis','solution','reviews','cta'][n]);
   const rNames = { 2: 'R2_solution', 3: 'R3_reviews', 4: 'R4_cta' };
-  if (rNames[n]) trackQ(rNames[n]);
+  const rStepIndex = { 2: 16, 3: 17, 4: 18 };
+  if (rNames[n]) trackQ(rNames[n], rStepIndex[n]);
   if (n === 4) metaStandard('ViewContent', { content_name: 'herbal_diffuser', content_type: 'product' });
   if (n === 1) setTimeout(rAnimateBenefit, 400);
 }
@@ -801,7 +805,7 @@ function rPopR4Headline() {
 function rClaim() {
   const code = 'QUIT50';
   const version = 'quiz1';
-  trackQ('R4_cta_click');
+  trackQ('R4_cta_click', 19);
   ga4Event('cta_click', { discount_code: code, destination: 'pdp', quiz_version: version });
   metaStandard('CompleteRegistration', { content_name: 'quit_smoking_quiz', status: true });
   metaCustom('QuizCTAClick', { discount_code: code, gender: ans.gender, motivation: ans.motivation });
