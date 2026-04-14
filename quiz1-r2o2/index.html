@@ -103,6 +103,7 @@
   .qs-spinner-wrap { position: relative; width: 120px; height: 120px; margin-bottom: 32px; }
   .qs-spinner { width: 120px; height: 120px; border-radius: 50%; border: 6px solid #D4EDCE; border-top-color: #3A7D44; animation: qsSpin 1s linear infinite; }
   @keyframes qsSpin { to { transform: rotate(360deg); } }
+  @keyframes r5spin { to { transform: rotate(360deg); } }
   .qs-spinner-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; color: #2D4A3E; }
   .qs-analysis { width: 100%; margin-bottom: 32px; }
   .qs-step { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; font-weight: 700; color: #bbb; transition: color 0.4s; }
@@ -321,16 +322,17 @@
     <div class="qs-body">
       <h1 class="qs-title">What should we call you?</h1>
       <p class="qs-subtitle">Enter your first name</p>
-      <div style="margin-top:8px;">
+      <div style="margin-top:8px;margin-bottom:16px;">
         <input type="text" id="nameInput" placeholder="Your first name"
           autocomplete="given-name" autocorrect="off" autocapitalize="words"
           style="width:100%;padding:18px 20px;font-size:18px;font-weight:700;font-family:'Nunito',sans-serif;border:1.5px solid #D8DDD5;border-radius:12px;outline:none;color:#111;background:#fff;transition:border-color 0.2s;"
           oninput="this.style.borderColor='#3A7D44'"
           onkeydown="if(event.key==='Enter'){qsSubmitName();}">
       </div>
-    </div>
-    <div class="qs-footer">
       <button class="qs-btn" onclick="qsSubmitName()">See my results <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <div style="text-align:center;margin-top:12px;">
+        <button onclick="qsSkipName()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:17px;font-weight:600;color:#aaa;cursor:pointer;padding:4px 8px;">Skip name</button>
+      </div>
     </div>
   </div>
 
@@ -360,7 +362,7 @@
        R1 — SMOKER PROFILE
   ══════════════════════════════════════════════════ -->
   <div class="qs-screen" id="qs-r1">
-    <div class="qs-body" style="padding-bottom:100px;">
+    <div class="qs-body" style="padding-bottom:20px;">
       <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Your Assessment</p>
       <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 28px;line-height:1.25;" id="r1Headline">Here is your smoker profile</h1>
 
@@ -432,7 +434,7 @@
         <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 14px;" id="r2TriggerPara">You're not just addicted to nicotine, you're addicted to <strong style="color:#2D4A3E;font-weight:800;">everything else.</strong></p>
         <div style="border-top:1.5px solid #D4EDCE;padding-top:14px;">
           <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 8px;"><strong style="color:#111;font-weight:800;">That's why nothing worked before.</strong></p>
-          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0;">Most methods have very low success rates. But it's <strong style="color:#2D4A3E;font-weight:800;">NOT your fault</strong>, they were never made for your addiction type.</p>
+          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0;">It's <strong style="color:#2D4A3E;font-weight:800;">NOT your fault</strong> — most methods were never made for your addiction type.</p>
         </div>
       </div>
 
@@ -459,6 +461,7 @@
       <h1 class="qs-title">The Ritual Replacement Method</h1>
       <p style="text-align:center;font-size:17px;font-weight:700;color:#2D4A3E;margin-bottom:18px;">Same Ritual. Zero Poison.</p>
       <div class="r-product-img"><img src="HERO.webp" alt="Nordic Goods Herbal Diffuser" onerror="this.parentElement.innerHTML='🌿'"></div>
+      <h2 style="font-size:22px;font-weight:900;color:#111;text-align:center;margin:0 0 20px;letter-spacing:0.2px;">Herbal Air Diffuser</h2>
       <div class="r-mech-list">
         <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same hand-to-mouth motion</div>
         <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same inhale and exhale</div>
@@ -482,8 +485,8 @@
        R4 — PERSONAL BENEFITS
   ══════════════════════════════════════════════════ -->
   <div class="qs-screen" id="qs-r4">
-    <div class="qs-body" style="padding-bottom:100px;">
-      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Your Personal Plan</p>
+    <div class="qs-body" style="padding-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Herbal Air Diffuser Plan</p>
       <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 24px;line-height:1.25;" id="r4Headline">Reclaim Your Health And Life in 4 Weeks</h1>
 
       <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:16px;padding:20px;margin-bottom:20px;">
@@ -513,59 +516,49 @@
   <div class="qs-screen" id="qs-r5">
     <div class="qs-body" style="padding-bottom:40px;">
       <p style="font-size:11px;font-weight:700;letter-spacing:2px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 8px;">🔓 Offer Unlocked</p>
-      <h1 style="font-size:28px;font-weight:900;color:#111;text-align:center;margin:0 0 6px;line-height:1.2;" id="r5Name">Congratulations.</h1>
-      <h2 style="font-size:22px;font-weight:900;color:#2D4A3E;text-align:center;margin:0 0 24px;line-height:1.3;">You Qualified For The<br>Quit Guarantee Program.</h2>
+      <h1 style="font-size:26px;font-weight:900;color:#111;text-align:center;margin:0 0 24px;line-height:1.2;white-space:nowrap;">Personal Discount 50% OFF</h1>
 
       <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;margin-bottom:20px;">
-        <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">We created the Quit Guarantee Program for highly motivated smokers who are ready to quit <strong style="color:#2D4A3E;font-weight:800;">right now.</strong></p>
-        <p style="font-size:15px;font-weight:700;color:#111;line-height:1.7;margin:0 0 10px;">Here's how it works:</p>
-        <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;"><strong style="color:#2D4A3E;font-weight:800;">We'll cover 50% of your entire order. However much you buy, we pay for half.</strong></p>
-        <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0;">We do this because we want to make it as easy as possible for you to quit long term. But we can't do it for everyone, so claim your spot now.</p>
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">Based on your quiz results, we can tell you are very motivated to quit right now.</p>
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">That's why we want to offer you a personal discount code so you can grab your Herbal Air Diffusers with <strong style="color:#2D4A3E;font-weight:800;">50% OFF</strong>.</p>
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0;">Click "Apply Discount" to claim it now.</p>
+      </div>
+
+      <div style="background:#FFF8F0;border:1.5px solid #F5C6A0;border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
+        <p style="font-size:15px;font-weight:700;color:#A0522D;margin:0;line-height:1.6;"><strong>Disclaimer:</strong> We can't offer this discount to everyone, so your code is valid ONLY for the next 20 minutes.</p>
       </div>
 
       <div style="background:linear-gradient(135deg,#2D4A3E 0%,#3A7D44 100%);border-radius:16px;padding:24px 20px;margin-bottom:16px;text-align:center;">
-        <p style="font-size:15px;font-weight:800;color:#fff;margin:0 0 4px;">A spot has been reserved for you.</p>
-        <p style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);margin:0 0 18px;">Your code is ready to be unlocked.</p>
-
-        <div id="r5CodeHidden" style="background:rgba(255,255,255,0.1);border:2px dashed rgba(255,255,255,0.3);border-radius:12px;padding:16px 20px;margin-bottom:16px;overflow:hidden;">
-          <p style="font-size:26px;font-weight:900;letter-spacing:6px;color:rgba(255,255,255,0.9);margin:0;filter:blur(8px);user-select:none;pointer-events:none;" id="r5CodeBlurred">SARAH_4827</p>
+        <div id="r5CodeSpinner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px 0;">
+          <div style="width:36px;height:36px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:r5spin 0.8s linear infinite;"></div>
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:0.5px;">Generating Code...</div>
         </div>
-
-        <div id="r5CodeRevealed" style="display:none;background:rgba(255,255,255,0.1);border:2px dashed rgba(255,255,255,0.4);border-radius:12px;padding:14px 20px;margin-bottom:16px;">
-          <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8FD4A0;margin:0 0 6px;">Your Program Discount</p>
-          <p style="font-size:26px;font-weight:900;letter-spacing:4px;color:#fff;margin:0;" id="r5CodeDisplay">SARAH_4827</p>
-        </div>
-
-        <div id="r5TimerWrap" style="display:none;margin-bottom:16px;">
-          <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:4px;">
+        <div id="r5CodeRevealed" style="display:none;">
+          <div style="background:rgba(255,255,255,0.1);border:2px dashed rgba(255,255,255,0.4);border-radius:12px;padding:14px 20px;margin-bottom:16px;">
+            <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8FD4A0;margin:0 0 6px;">Your Personal Code</p>
+            <p style="font-size:26px;font-weight:900;letter-spacing:4px;color:#fff;margin:0;" id="r5CodeDisplay"></p>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
             <span style="font-size:18px;">⏱</span>
-            <span style="font-size:15px;font-weight:700;color:#fff;">Your spot expires in</span>
+            <span style="font-size:15px;font-weight:700;color:#fff;">Expires in</span>
             <span style="font-size:22px;font-weight:900;color:#8FD4A0;min-width:52px;" id="r5Countdown">20:00</span>
           </div>
-          <p style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);margin:8px 0 0;line-height:1.5;">Once it expires, this spot goes to the next qualified smoker.</p>
         </div>
-
-        <button id="r5GenerateBtn" onclick="r5ClaimSpot()" style="width:100%;background:#fff;color:#2D4A3E;border:none;border-radius:50px;padding:16px;font-size:16px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;">
-          Claim My Spot
-        </button>
       </div>
 
-      <div id="r5WarningBox" style="display:none;background:#FFF8F0;border:1.5px solid #F5C6A0;border-radius:12px;padding:14px 16px;margin-bottom:20px;text-align:center;">
-        <p style="font-size:13px;font-weight:700;color:#A0522D;margin:0;">⚠️ This offer is not available on our website.<br>It will not appear again after it expires.</p>
-      </div>
-
-      <div id="r5CtaWrap" style="display:none;">
-        <button onclick="rClaim()" style="width:100%;background:#3A7D44;color:#fff;border:none;border-radius:50px;padding:20px;font-size:18px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;">
-          Claim My 50% Off Now
+      <div style="margin-bottom:16px;">
+        <button onclick="rClaim()" style="width:100%;background:#3A7D44;color:#fff;border:none;border-radius:50px;padding:20px;font-size:18px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;">
+          Apply Discount
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
-          <span style="font-size:13px;font-weight:700;color:#888;">⭐ 4.7/5</span>
-          <span style="font-size:13px;color:#ddd;">·</span>
-          <span style="font-size:13px;font-weight:700;color:#888;">322,671+ Customers</span>
-          <span style="font-size:13px;color:#ddd;">·</span>
-          <span style="font-size:13px;font-weight:700;color:#888;">Free Shipping</span>
-        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:13px;font-weight:700;color:#888;">⭐ 4.7/5</span>
+        <span style="font-size:13px;color:#ddd;">·</span>
+        <span style="font-size:13px;font-weight:700;color:#888;">322,671+ Customers</span>
+        <span style="font-size:13px;color:#ddd;">·</span>
+        <span style="font-size:13px;font-weight:700;color:#888;">Free Shipping</span>
       </div>
     </div>
   </div>
@@ -600,8 +593,7 @@ function metaStandard(n,p){if(typeof fbq!=='undefined')fbq('track',n,p||{});}
 const Q_URL_NAMES={1:'Q1_gender',2:'Q2_age',3:'Q3_goals',4:'Q4_smoking_history',5:'Q5_quit_attempts',6:'Q6_methods',7:'Q7_interstitial',8:'Q8_triggers',9:'Q9_hardest_part',10:'Q10_reframe',11:'Q11_life_impact',12:'Q12_monthly_spend',13:'Q13_motivation',14:'Q14_name',15:'Q15_loading'};
 function updateURL(s){history.replaceState(null,'','?step='+s);}
 const Q_ARRIVAL_NAMES={2:'Q1_gender',3:'Q2_age',4:'Q3_goals',5:'Q4_smoking_history',6:'Q5_quit_attempts',7:'Q6_methods',8:'Q7_interstitial',9:'Q8_triggers',10:'Q9_hardest_part',11:'Q10_life_impact',12:'Q11_monthly_spend',13:'Q12_motivation'};
-const Q_STEP_INDEX={2:1,3:2,4:3,5:4,6:5,7:6,8:7,9:8,10:9,11:10,12:11,13:12};
-function trackQ(n,stepIndex){ga4Event(n,{quiz_version:QUIZ_CONFIG.version,step_index:String(stepIndex)});}
+function trackQ(n){ga4Event(n,{quiz_version:QUIZ_CONFIG.version});}
 function qsGetEl(id){return document.getElementById('qs-'+id);}
 
 function qsGoTo(n){
@@ -612,7 +604,7 @@ function qsGoTo(n){
   el.querySelector('.qs-body')?.scrollTo(0,0);
   qsUpdateHeader();
   if(Q_URL_NAMES[n]) updateURL(Q_URL_NAMES[n]);
-  if(Q_ARRIVAL_NAMES[n]) trackQ(Q_ARRIVAL_NAMES[n],Q_STEP_INDEX[n]);
+  if(Q_ARRIVAL_NAMES[n]) trackQ(Q_ARRIVAL_NAMES[n]);
   if(n===7) qsPopS7();
   if(n===15) qsStartLoading();
 }
@@ -693,8 +685,13 @@ function qsPopS7(){
 
 function qsSubmitName(){
   const val=document.getElementById('nameInput').value.trim();
-  ans.name=val||'Friend';
-  trackQ('Q14_name',13);
+  ans.name=val;
+  trackQ('Q14_name');
+  qsGoTo(15);
+}
+function qsSkipName(){
+  ans.name='';
+  trackQ('Q14_name_skipped');
   qsGoTo(15);
 }
 
@@ -704,7 +701,7 @@ function qsStartLoading(){
   const iv=setInterval(()=>{if(pct>=100){clearInterval(iv);return;}pctEl.textContent=(++pct)+'%';},55);
   ['qsStep1','qsStep2','qsStep3','qsStep4'].forEach((id,i)=>setTimeout(()=>document.getElementById(id).classList.add('done'),(i+1)*1400));
   setTimeout(()=>{
-    trackQ('Q15_loading',14);
+    trackQ('Q15_loading');
     const urlParams=new URLSearchParams(window.location.search);
     const quizData={
       timestamp:new Date().toISOString(),version:QUIZ_CONFIG.version,
@@ -727,7 +724,7 @@ function qsStartLoading(){
     qsGetEl('r1').classList.add('active');
     qsUpdateHeader();
     updateURL('R1_diagnosis');
-    trackQ('R1_diagnosis',15);
+    trackQ('R1_diagnosis');
     rPopulateAll();
     setTimeout(rAnimateSlider,400);
   },6000);
@@ -740,15 +737,17 @@ function rGoTo(n){
   const el=qsGetEl('r'+n);
   el.classList.add('active');
   el.querySelector('.qs-body')?.scrollTo(0,0);
+  document.querySelector('.qs-wrap')?.scrollTo(0,0);
+  window.scrollTo(0,0);
   qsUpdateHeader();
   const urlNames=['','diagnosis','addiction_type','product','personal_benefits','offer'];
   updateURL('R'+n+'_'+(urlNames[n]||n));
   const rNames={2:'R2_addiction_type',3:'R3_product',4:'R4_personal_benefits',5:'R5_offer'};
-  const rStepIndex={2:16,3:17,4:18,5:19};
-  if(rNames[n]) trackQ(rNames[n],rStepIndex[n]);
+  if(rNames[n]) trackQ(rNames[n]);
   if(n===3) metaStandard('ViewContent',{content_name:'herbal_diffuser',content_type:'product'});
   if(n===1) setTimeout(rAnimateSlider,400);
   if(n===4) rAnimateChart();
+  if(n===5) r5ClaimSpot();
 }
 
 // ── POPULATE ALL RESULT SCREENS ───────────────────────
@@ -757,7 +756,6 @@ function rPopulateAll(){
   rPopulateR2();
   rPopulateR4();
   rPopulateR4Review();
-  rPopulateR5Name();
 }
 
 // ── R1 ────────────────────────────────────────────────
@@ -780,8 +778,8 @@ function rMotivationLabel(){
   return '🤔 Building up';
 }
 function rPopulateR1(){
-  const name=ans.name||'Friend';
-  document.getElementById('r1Headline').textContent=name+', here is your smoker profile';
+  const name=ans.name;
+  document.getElementById('r1Headline').textContent=name?name+', here is your smoker profile':'Here is your smoker profile';
   document.getElementById('r1AddType').textContent='🔁 Ritual';
   document.getElementById('r1YearlyCost').textContent=rYearlyCost();
   document.getElementById('r1Motivation').textContent='🔥 High';
@@ -1043,18 +1041,10 @@ function rAnimateChart(){
 }
 
 // ── R5 ────────────────────────────────────────────────
-function rPopulateR5Name(){
-  const name=ans.name||'Friend';
-  document.getElementById('r5Name').textContent='Congratulations, '+name+'.';
-}
-
 let _r5TimerInterval=null;
 
 async function r5ClaimSpot(){
-  const btn=document.getElementById('r5GenerateBtn');
-  btn.textContent='Unlocking...';
-  btn.disabled=true;
-  trackQ('R5_generate_code',20);
+  trackQ('R5_offer_view');
   try{
     const res=await fetch(QUIZ_CONFIG.workerUrl,{
       method:'POST',
@@ -1069,14 +1059,9 @@ async function r5ClaimSpot(){
     ans.discountCode=(ans.name||'QUIT').toUpperCase()+'_'+suffix;
     ans.discountExpiresTs=Date.now()+20*60*1000;
   }
-  document.getElementById('r5CodeBlurred').textContent=ans.discountCode;
   document.getElementById('r5CodeDisplay').textContent=ans.discountCode;
-  document.getElementById('r5CodeHidden').style.display='none';
+  document.getElementById('r5CodeSpinner').style.display='none';
   document.getElementById('r5CodeRevealed').style.display='block';
-  document.getElementById('r5TimerWrap').style.display='block';
-  document.getElementById('r5WarningBox').style.display='block';
-  document.getElementById('r5CtaWrap').style.display='block';
-  btn.style.display='none';
   r5StartCountdown();
 }
 
@@ -1093,7 +1078,7 @@ function r5StartCountdown(){
 function rClaim(){
   const code=ans.discountCode||QUIZ_CONFIG.fallbackCode;
   const expiresTs=ans.discountExpiresTs||'';
-  trackQ('R5_cta_click',21);
+  trackQ('R5_cta_click');
   ga4Event('cta_click',{discount_code:code,destination:'pdp',quiz_version:QUIZ_CONFIG.version});
   metaStandard('CompleteRegistration',{content_name:'quit_smoking_quiz',status:true});
   metaCustom('QuizCTAClick',{discount_code:code,gender:ans.gender,motivation:ans.motivation});
