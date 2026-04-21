@@ -470,14 +470,7 @@
       </div>
       <div class="r-divider-lbl">— What you leave behind —</div>
       <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Tobacco</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
-      <div class="r-prod-desc">The <strong>Nordic Goods Herbal Diffuser</strong> replicates the ritual of smoking — without the poison. Instead of addictive chemicals, it's infused with natural <strong>mullein herbal</strong> — a lung-healing herb used for over 2,000 years.</div>
-      <div class="r-social-badge">
-        <div><div class="sb-stat">322,671+</div><div class="sb-sub">Smoke-Free Customers</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">⭐ 4.7/5</div><div class="sb-sub">Average Rating</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">93%</div><div class="sb-sub">Success Rate</div></div>
-      </div>
+      <div id="r3Review"></div>
     </div>
     <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
@@ -786,11 +779,31 @@ function rGoTo(n){
 function rPopulateAll(){
   rPopulateR1();
   rPopulateR2();
+  rPopulateR3Review();
   rPopulateR4();
   rPopulateR4Review();
 }
 
-// ── R1 ────────────────────────────────────────────────
+// ── R3 ────────────────────────────────────────────────
+function rPopulateR3Review(){
+  const male = ans.gender === 'Male';
+  const name = male ? 'Danny' : 'Sandra';
+  const avatar = male ? '👨' : '👩';
+  const ageMap = {'25–34':29,'35–44':41,'45–54':52,'55–64':62,'65+':68};
+  const age = ageMap[ans.age] || 42;
+  document.getElementById('r3Review').innerHTML = `
+    <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${avatar}</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#111;">${name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${age}</span></div>
+          <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:14px;">★★★★★</span></div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
+      </div>
+      <p style="font-size:15px;font-weight:600;color:#333;line-height:1.65;font-style:italic;margin:0;">"I got my diffuser 2 weeks ago, and I haven't touched a cigarette since. Thank you Nordic Goods!"</p>
+    </div>`;
+}
 function rAddType(){
   const t=ans.triggers||[],h=ans.hardestPart||'';
   const ritT=['coffee','meal','driving','breaks','bored'],ritH=['hands','inhale','breaks','anxiety'];
