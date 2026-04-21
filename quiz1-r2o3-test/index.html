@@ -330,9 +330,7 @@
           onkeydown="if(event.key==='Enter'){qsSubmitName();}">
       </div>
       <button class="qs-btn" onclick="qsSubmitName()">See my results <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
-      <div style="text-align:center;margin-top:12px;">
-        <button onclick="qsSkipName()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:17px;font-weight:600;color:#aaa;cursor:pointer;padding:4px 8px;">Skip name</button>
-      </div>
+
     </div>
   </div>
 
@@ -689,11 +687,36 @@ function qsSubmitName(){
   trackQ('Q14_name');
   qsGoTo(15);
 }
-function qsSkipName(){
+// ── EXIT-INTENT SKIP — mobile back button only (name screen) ──
+let _exitIntentFired=false;
+
+function _nameExitSkip(){
+  if(_exitIntentFired) return;
+  if(qsCurrent!==14) return;
+  _exitIntentFired=true;
+  ga4Event('name_screen_exit_skip',{quiz_version:QUIZ_CONFIG.version,method:'back_button'});
   ans.name='';
-  trackQ('Q14_name_skipped');
   qsGoTo(15);
 }
+
+function _nameScreenPushState(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    history.pushState({nameScreen:true},'',location.href);
+  }
+}
+
+window.addEventListener('popstate',function(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    _nameExitSkip();
+  }
+});
+
+const _origQsGoTo=qsGoTo;
+qsGoTo=function(n){
+  _origQsGoTo(n);
+  if(n===14) setTimeout(_nameScreenPushState,50);
+  if(n!==14) _exitIntentFired=false;
+};
 
 function qsStartLoading(){
   let pct=0;
@@ -1056,7 +1079,7 @@ async function r5ClaimSpot(){
     ans.discountExpiresTs=data.expires_ts;
   }catch(e){
     const suffix=Array.from({length:4},()=>Math.floor(Math.random()*10)).join('');
-    ans.discountCode=(ans.name||'QUIT').toUpperCase()+'_'+suffix;
+    ans.discountCode=ans.name?(ans.name.toUpperCase()+'_'+suffix):QUIZ_CONFIG.fallbackCode;
     ans.discountExpiresTs=Date.now()+20*60*1000;
   }
   document.getElementById('r5CodeDisplay').textContent=ans.discountCode;
