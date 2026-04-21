@@ -718,6 +718,12 @@ qsGoTo=function(n){
   if(n!==14) _exitIntentFired=false;
 };
 
+function qsSkipName(){
+  ans.name='';
+  trackQ('Q14_name_skipped');
+  qsGoTo(15);
+}
+
 function qsStartLoading(){
   let pct=0;
   const pctEl=document.getElementById('qsSpinPct');
@@ -1068,19 +1074,23 @@ let _r5TimerInterval=null;
 
 async function r5ClaimSpot(){
   trackQ('R5_offer_view');
-  try{
-    const res=await fetch(QUIZ_CONFIG.workerUrl,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({first_name:ans.name}),
-    });
-    const data=await res.json();
-    ans.discountCode=data.code;
-    ans.discountExpiresTs=data.expires_ts;
-  }catch(e){
-    const suffix=Array.from({length:4},()=>Math.floor(Math.random()*10)).join('');
-    ans.discountCode=ans.name?(ans.name.toUpperCase()+'_'+suffix):QUIZ_CONFIG.fallbackCode;
+  if(!ans.name){
+    ans.discountCode=QUIZ_CONFIG.fallbackCode;
     ans.discountExpiresTs=Date.now()+20*60*1000;
+  } else {
+    try{
+      const res=await fetch(QUIZ_CONFIG.workerUrl,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({first_name:ans.name}),
+      });
+      const data=await res.json();
+      ans.discountCode=data.code;
+      ans.discountExpiresTs=data.expires_ts;
+    }catch(e){
+      ans.discountCode=QUIZ_CONFIG.fallbackCode;
+      ans.discountExpiresTs=Date.now()+20*60*1000;
+    }
   }
   document.getElementById('r5CodeDisplay').textContent=ans.discountCode;
   document.getElementById('r5CodeSpinner').style.display='none';
