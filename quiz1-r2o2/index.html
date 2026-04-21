@@ -333,6 +333,7 @@
       <div style="text-align:center;margin-top:12px;">
         <button onclick="qsSkipName()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:17px;font-weight:600;color:#aaa;cursor:pointer;padding:4px 8px;">Skip name</button>
       </div>
+
     </div>
   </div>
 
@@ -468,15 +469,8 @@
         <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same breaks, same calm, same satisfaction</div>
       </div>
       <div class="r-divider-lbl">— What you leave behind —</div>
-      <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Tobacco</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
-      <div class="r-prod-desc">The <strong>Nordic Goods Herbal Diffuser</strong> replicates the ritual of smoking — without the poison. Instead of addictive chemicals, it's infused with natural <strong>mullein herbal</strong> — a lung-healing herb used for over 2,000 years.</div>
-      <div class="r-social-badge">
-        <div><div class="sb-stat">322,671+</div><div class="sb-sub">Smoke-Free Customers</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">⭐ 4.7/5</div><div class="sb-sub">Average Rating</div></div>
-        <div class="sb-div"></div>
-        <div><div class="sb-stat">93%</div><div class="sb-sub">Success Rate</div></div>
-      </div>
+      <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Chemicals</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
+      <div id="r3Review"></div>
     </div>
     <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
   </div>
@@ -516,7 +510,7 @@
   <div class="qs-screen" id="qs-r5">
     <div class="qs-body" style="padding-bottom:40px;">
       <p style="font-size:11px;font-weight:700;letter-spacing:2px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 8px;">🔓 Offer Unlocked</p>
-      <h1 style="font-size:26px;font-weight:900;color:#111;text-align:center;margin:0 0 24px;line-height:1.2;white-space:nowrap;">Personal Discount 50% OFF</h1>
+      <h1 style="font-size:clamp(18px,6vw,26px);font-weight:900;color:#111;text-align:center;margin:0 0 24px;line-height:1.2;">Personal Discount 50% OFF</h1>
 
       <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;margin-bottom:20px;">
         <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">Based on your quiz results, we can tell you are very motivated to quit right now.</p>
@@ -689,6 +683,37 @@ function qsSubmitName(){
   trackQ('Q14_name');
   qsGoTo(15);
 }
+// ── EXIT-INTENT SKIP — mobile back button only (name screen) ──
+let _exitIntentFired=false;
+
+function _nameExitSkip(){
+  if(_exitIntentFired) return;
+  if(qsCurrent!==14) return;
+  _exitIntentFired=true;
+  ga4Event('name_screen_exit_skip',{quiz_version:QUIZ_CONFIG.version,method:'back_button'});
+  ans.name='';
+  qsGoTo(15);
+}
+
+function _nameScreenPushState(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    history.pushState({nameScreen:true},'',location.href);
+  }
+}
+
+window.addEventListener('popstate',function(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    _nameExitSkip();
+  }
+});
+
+const _origQsGoTo=qsGoTo;
+qsGoTo=function(n){
+  _origQsGoTo(n);
+  if(n===14) setTimeout(_nameScreenPushState,50);
+  if(n!==14) _exitIntentFired=false;
+};
+
 function qsSkipName(){
   ans.name='';
   trackQ('Q14_name_skipped');
@@ -754,11 +779,31 @@ function rGoTo(n){
 function rPopulateAll(){
   rPopulateR1();
   rPopulateR2();
+  rPopulateR3Review();
   rPopulateR4();
   rPopulateR4Review();
 }
 
-// ── R1 ────────────────────────────────────────────────
+// ── R3 ────────────────────────────────────────────────
+function rPopulateR3Review(){
+  const male = ans.gender === 'Male';
+  const name = male ? 'Danny' : 'Sandra';
+  const avatar = male ? '👨' : '👩';
+  const ageMap = {'25–34':29,'35–44':41,'45–54':52,'55–64':62,'65+':68};
+  const age = ageMap[ans.age] || 42;
+  document.getElementById('r3Review').innerHTML = `
+    <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${avatar}</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#111;">${name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${age}</span></div>
+          <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:17px;">★★★★★</span></div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
+      </div>
+      <p style="font-size:17px;font-weight:600;color:#333;line-height:1.65;margin:0;">"I got my diffuser 2 weeks ago, and I haven't touched a cigarette since. Thank you Nordic Goods!"</p>
+    </div>`;
+}
 function rAddType(){
   const t=ans.triggers||[],h=ans.hardestPart||'';
   const ritT=['coffee','meal','driving','breaks','bored'],ritH=['hands','inhale','breaks','anxiety'];
@@ -905,11 +950,11 @@ function rPopulateR4Review(){
       <div style="width:40px;height:40px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${gKey==='male'?'👨':'👩'}</div>
       <div>
         <div style="font-size:14px;font-weight:800;color:#111;">${rev.name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${rev.age}</span></div>
-        <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:13px;">★★★★★</span></div>
+        <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:17px;">★★★★★</span></div>
       </div>
       <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
     </div>
-    <p style="font-size:14px;font-weight:600;color:#333;line-height:1.65;font-style:italic;">"${rev.text}"</p>
+    <p style="font-size:17px;font-weight:600;color:#333;line-height:1.65;">"${rev.text}"</p>
   `;
 }
 
@@ -1045,19 +1090,23 @@ let _r5TimerInterval=null;
 
 async function r5ClaimSpot(){
   trackQ('R5_offer_view');
-  try{
-    const res=await fetch(QUIZ_CONFIG.workerUrl,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({first_name:ans.name}),
-    });
-    const data=await res.json();
-    ans.discountCode=data.code;
-    ans.discountExpiresTs=data.expires_ts;
-  }catch(e){
-    const suffix=Array.from({length:4},()=>Math.floor(Math.random()*10)).join('');
-    ans.discountCode=(ans.name||'QUIT').toUpperCase()+'_'+suffix;
+  if(!ans.name){
+    ans.discountCode=QUIZ_CONFIG.fallbackCode;
     ans.discountExpiresTs=Date.now()+20*60*1000;
+  } else {
+    try{
+      const res=await fetch(QUIZ_CONFIG.workerUrl,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({first_name:ans.name}),
+      });
+      const data=await res.json();
+      ans.discountCode=data.code;
+      ans.discountExpiresTs=data.expires_ts;
+    }catch(e){
+      ans.discountCode=QUIZ_CONFIG.fallbackCode;
+      ans.discountExpiresTs=Date.now()+20*60*1000;
+    }
   }
   document.getElementById('r5CodeDisplay').textContent=ans.discountCode;
   document.getElementById('r5CodeSpinner').style.display='none';
