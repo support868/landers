@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quit Smoking Quiz</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81CTN0EXMB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-81CTN0EXMB');
+</script>
+
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2338204330017730');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2338204330017730&ev=PageView&noscript=1"/></noscript>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vs2usyur8r");
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: #f0f0f0; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+  .qs-wrap { background: #ffffff; width: 100%; max-width: 480px; min-height: 100vh; display: flex; flex-direction: column; margin: 0 auto; position: relative; }
+  .qs-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 12px; border-bottom: 1px solid #D8DDD5; background: #fff; flex-shrink: 0; }
+  .qs-back { display: flex; align-items: center; gap: 4px; color: #3A7D44; font-size: 15px; font-weight: 600; cursor: pointer; background: none; border: none; font-family: 'Nunito', sans-serif; padding: 0; }
+  .qs-back svg { width: 16px; height: 16px; }
+  .qs-back:disabled { opacity: 0; pointer-events: none; }
+  .qs-prog-label { font-size: 13px; color: #2D4A3E; font-weight: 600; }
+  .qs-progress { height: 3px; background: #D8DDD5; flex-shrink: 0; }
+  .qs-progress-fill { height: 100%; background: #3A7D44; transition: width 0.4s ease; }
+  .qs-screen { display: none; flex-direction: column; flex: 1; animation: qsFadeIn 0.25s ease; }
+  .qs-screen.active { display: flex; }
+  @keyframes qsFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  .qs-body { flex: 1; padding: 32px 24px 24px; display: flex; flex-direction: column; overflow-y: auto; }
+  .qs-footer { padding: 0 24px 32px; flex-shrink: 0; }
+  .qs-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; color: #3A7D44; text-transform: uppercase; text-align: center; margin-bottom: 6px; }
+  .qs-title { font-size: 24px; font-weight: 800; color: #111; text-align: center; margin-bottom: 8px; line-height: 1.25; }
+  .qs-subtitle { text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #2D4A3E; text-transform: uppercase; margin-bottom: 24px; }
+  .qs-options { display: flex; flex-direction: column; gap: 10px; }
+  .qs-option { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1.5px solid #D8DDD5; border-radius: 12px; cursor: pointer; background: #fff; transition: all 0.15s ease; user-select: none; }
+  .qs-option:hover { border-color: #3A7D44; background: #F0F7F1; }
+  .qs-option.selected { background: #D4EDCE; border-color: #3A7D44; }
+  .qs-option.center { justify-content: center; }
+  .qs-option.center .qs-opt-label { text-align: center; }
+  .qs-icon-wrap { width: 40px; height: 40px; background: #D4EDCE; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; transition: background 0.15s; }
+  .qs-option.selected .qs-icon-wrap { background: #b8dfc0; }
+  .qs-opt-label { flex: 1; font-size: 15px; font-weight: 700; color: #111; }
+  .qs-option.selected .qs-opt-label { color: #2D4A3E; }
+  .qs-checkbox { width: 22px; height: 22px; border-radius: 5px; border: 2px solid #D8DDD5; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s ease; }
+  .qs-option.selected .qs-checkbox { background: #3A7D44; border-color: #3A7D44; }
+  .qs-checkbox svg { width: 12px; height: 12px; color: #fff; opacity: 0; transition: opacity 0.15s; }
+  .qs-option.selected .qs-checkbox svg { opacity: 1; }
+  .qs-btn { width: 100%; background: #2D4A3E; color: #fff; border: none; border-radius: 50px; padding: 18px; font-size: 17px; font-weight: 800; font-family: 'Nunito', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; letter-spacing: 0.3px; }
+  .qs-btn:hover { background: #1e3329; }
+  .qs-btn svg { width: 20px; height: 20px; }
+  .qs-btn.bright { background: #3A7D44; }
+  .qs-btn.bright:hover { background: #2D4A3E; }
+  .qs-splash-question { font-size: 36px; font-weight: 900; color: #111; text-align: left; line-height: 1.15; margin-bottom: 12px; }
+  .qs-splash-question span { color: #2D4A3E; }
+  .qs-splash-sub { font-size: 22px; font-weight: 600; color: #444; text-align: left; margin-bottom: 32px; line-height: 1.4; }
+  .qs-gender-prompt { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #2D4A3E; text-transform: uppercase; text-align: left; margin-bottom: 16px; }
+  .qs-gender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  .qs-gender-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 28px 16px; border: 2px solid #D8DDD5; border-radius: 16px; cursor: pointer; background: #fff; transition: all 0.15s ease; user-select: none; }
+  .qs-gender-tile:hover { border-color: #3A7D44; background: #F0F7F1; }
+  .qs-gender-tile.selected { background: #D4EDCE; border-color: #3A7D44; }
+  .qs-gender-tile .g-icon { font-size: 44px; }
+  .qs-gender-tile .g-label { font-size: 18px; font-weight: 900; color: #111; }
+  .qs-splash-trust { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 16px; font-weight: 700; color: #888; text-align: center; }
+  .qs-splash-trust .trust-stars { font-size: 22px; }
+  .qs-splash-trust span { color: #2D4A3E; font-weight: 900; font-size: 18px; }
+  .qs-info-card { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 16px; padding: 24px 20px; margin-bottom: 20px; }
+  .qs-stat-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #D4EDCE; font-size: 14px; font-weight: 600; color: #333; line-height: 1.4; }
+  .qs-stat-row:last-child { border-bottom: none; }
+  .qs-highlight-box { background: #2D4A3E; border-radius: 12px; padding: 18px 20px; margin-bottom: 24px; color: #fff; font-size: 15px; font-weight: 700; line-height: 1.5; text-align: center; }
+  .qs-highlight-box span { color: #8FD4A0; }
+  .qs-info-img { width: 100%; height: 180px; border-radius: 16px; margin-bottom: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #111 0%, #2D4A3E 100%); font-size: 50px; flex-shrink: 0; }
+  .qs-info-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .qs-truth-block { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 16px; padding: 24px 20px; margin-bottom: 20px; font-size: 15px; color: #222; line-height: 1.7; font-weight: 600; }
+  .qs-truth-block p { margin-bottom: 12px; }
+  .qs-truth-block p:last-child { margin-bottom: 0; }
+  .qs-truth-block strong { color: #2D4A3E; font-weight: 800; }
+  .qs-loading { display: flex; flex-direction: column; align-items: center; padding: 40px 24px 32px; flex: 1; }
+  .qs-loading-title { font-size: 22px; font-weight: 900; color: #111; text-align: center; margin-bottom: 32px; line-height: 1.3; }
+  .qs-spinner-wrap { position: relative; width: 120px; height: 120px; margin-bottom: 32px; }
+  .qs-spinner { width: 120px; height: 120px; border-radius: 50%; border: 6px solid #D4EDCE; border-top-color: #3A7D44; animation: qsSpin 1s linear infinite; }
+  @keyframes qsSpin { to { transform: rotate(360deg); } }
+  @keyframes r5spin { to { transform: rotate(360deg); } }
+  .qs-spinner-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; color: #2D4A3E; }
+  .qs-analysis { width: 100%; margin-bottom: 32px; }
+  .qs-step { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; font-weight: 700; color: #bbb; transition: color 0.4s; }
+  .qs-step:last-child { border-bottom: none; }
+  .qs-step.done { color: #2D4A3E; }
+  .qs-step-icon { font-size: 18px; width: 24px; text-align: center; }
+  .qs-sp-box { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 16px; padding: 20px; width: 100%; text-align: center; margin-top: auto; }
+  .qs-sp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #2D4A3E; text-transform: uppercase; margin-bottom: 8px; }
+  .qs-sp-stat { font-size: 28px; font-weight: 900; color: #111; margin-bottom: 4px; }
+  .qs-sp-sub { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 10px; }
+  .qs-sp-rating { font-size: 13px; font-weight: 700; color: #2D4A3E; }
+  .r-product-img { width: 100%; aspect-ratio: 1/1; border-radius: 16px; margin-bottom: 20px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2D4A3E 0%, #3A7D44 60%, #1e3329 100%); font-size: 64px; }
+  .r-product-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .r-mech-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .r-mech-row { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; color: #111; }
+  .r-mech-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .r-mech-icon.chk { background: #D4EDCE; }
+  .r-divider-lbl { text-align: center; font-size: 13px; font-weight: 800; color: #2D4A3E; margin: 4px 0 12px; letter-spacing: 0.5px; }
+  .r-zero-bar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; background: #fdf0ef; border: 2px solid #c0392b; color: #a93226; border-radius: 50px; padding: 13px 20px; font-size: 13px; font-weight: 800; margin-bottom: 20px; letter-spacing: 0.2px; }
+  .r-zero-bar .zb-dot { opacity: 0.4; font-size: 16px; }
+  .r-prod-desc { background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 14px; padding: 18px; margin-bottom: 20px; font-size: 14px; font-weight: 600; color: #333; line-height: 1.7; }
+  .r-prod-desc strong { color: #2D4A3E; font-weight: 800; }
+  .r-social-badge { display: flex; align-items: center; justify-content: center; gap: 12px; background: #F7FBF7; border: 1.5px solid #D4EDCE; border-radius: 12px; padding: 14px; margin-bottom: 20px; }
+  .r-social-badge .sb-stat { font-size: 18px; font-weight: 900; color: #111; }
+  .r-social-badge .sb-sub { font-size: 12px; font-weight: 600; color: #555; }
+  .r-social-badge .sb-div { width: 1px; height: 36px; background: #D4EDCE; }
+</style>
+</head>
+<body>
+<div class="qs-wrap">
+
+  <div class="qs-header">
+    <button class="qs-back" id="qsBackBtn" onclick="qsGoBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="qs-prog-label" id="qsProgLabel">1 of 14</div>
+  </div>
+  <div class="qs-progress"><div class="qs-progress-fill" id="qsProgFill" style="width:7.14%"></div></div>
+
+  <div class="qs-screen active" id="qs-1">
+    <div class="qs-body" style="padding-top:36px;">
+      <p class="qs-splash-question">What type of <span>smoker</span> are you?</p>
+      <p class="qs-splash-sub">Take the 2-minute quiz to find your "Addiction Type" and get a personalized quitting plan.</p>
+      <p class="qs-gender-prompt">Select your gender to begin</p>
+      <div class="qs-gender-grid">
+        <div class="qs-gender-tile" onclick="qsGender(this,'Male')"><span class="g-icon">🚹</span><span class="g-label">Male</span></div>
+        <div class="qs-gender-tile" onclick="qsGender(this,'Female')"><span class="g-icon">🚺</span><span class="g-label">Female</span></div>
+      </div>
+      <div class="qs-splash-trust"><span class="trust-stars">⭐⭐⭐⭐⭐</span>&nbsp;<span>32,371+</span> people already quit</div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-2">
+    <div class="qs-body">
+      <h1 class="qs-title">What's your age range?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option center" onclick="qsSingle(this,'age','25–34')"><span class="qs-opt-label">25–34</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'age','35–44')"><span class="qs-opt-label">35–44</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'age','45–54')"><span class="qs-opt-label">45–54</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'age','55–64')"><span class="qs-opt-label">55–64</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'age','65+')"><span class="qs-opt-label">65+</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-3">
+    <div class="qs-body">
+      <h1 class="qs-title">What motivates you most to quit smoking?</h1>
+      <p class="qs-subtitle">Select all that apply</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsMulti(this,'goals','breathe')"><div class="qs-icon-wrap">🫁</div><span class="qs-opt-label">Breathe better and stop coughing</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','family')"><div class="qs-icon-wrap">👨‍👩‍👧</div><span class="qs-opt-label">Be around longer for my family</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','money')"><div class="qs-icon-wrap">💰</div><span class="qs-opt-label">Stop wasting money on cigarettes</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','freedom')"><div class="qs-icon-wrap">🔓</div><span class="qs-opt-label">Break free from addiction</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','smell')"><div class="qs-icon-wrap">🌬️</div><span class="qs-opt-label">Stop smelling like smoke</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','fitness')"><div class="qs-icon-wrap">🏃</div><span class="qs-opt-label">Get my energy and fitness back</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'goals','prove')"><div class="qs-icon-wrap">🧠</div><span class="qs-opt-label">Prove to myself I can actually do this</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsRequireMulti('goals',4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <div class="qs-screen" id="qs-4">
+    <div class="qs-body">
+      <h1 class="qs-title">How long have you been smoking?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option center" onclick="qsSingle(this,'smokingHistory','Less than 5 years')"><span class="qs-opt-label">Less than 5 years</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'smokingHistory','5–10 years')"><span class="qs-opt-label">5–10 years</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'smokingHistory','10–20 years')"><span class="qs-opt-label">10–20 years</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'smokingHistory','20+ years')"><span class="qs-opt-label">20+ years</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-5">
+    <div class="qs-body">
+      <h1 class="qs-title">How many times have you tried to quit?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option center" onclick="qsSingle(this,'quitAttempts','Never seriously tried')"><span class="qs-opt-label">Never seriously tried</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'quitAttempts','1–2 times')"><span class="qs-opt-label">1–2 times</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'quitAttempts','3–5 times')"><span class="qs-opt-label">3–5 times</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'quitAttempts','6–10 times')"><span class="qs-opt-label">6–10 times</span></div>
+        <div class="qs-option center" onclick="qsSingle(this,'quitAttempts','I lost count')"><span class="qs-opt-label">I've lost count</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-6">
+    <div class="qs-body">
+      <h1 class="qs-title">Which of these have you tried?</h1>
+      <p class="qs-subtitle">Select all that apply</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','patches')"><div class="qs-icon-wrap">🩹</div><span class="qs-opt-label">Nicotine patches</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','gum')"><div class="qs-icon-wrap">🫧</div><span class="qs-opt-label">Nicotine gum</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','chantix')"><div class="qs-icon-wrap">💊</div><span class="qs-opt-label">Chantix / Wellbutrin</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','vaping')"><div class="qs-icon-wrap">🌬️</div><span class="qs-opt-label">Vaping / e-cigarettes</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','willpower')"><div class="qs-icon-wrap">💪</div><span class="qs-opt-label">Cold turkey / willpower</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','allencarr')"><div class="qs-icon-wrap">📖</div><span class="qs-opt-label">Allen Carr's Easy Way</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'methodsTried','none')"><div class="qs-icon-wrap">❌</div><span class="qs-opt-label">None of the above</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsRequireMulti('methodsTried',7)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <div class="qs-screen" id="qs-7">
+    <div class="qs-body">
+      <h1 class="qs-title" style="text-align:left;margin-bottom:20px;">Here's what the quit-smoking industry doesn't advertise:</h1>
+      <div class="qs-info-card" id="qs-s7-stats"></div>
+      <div class="qs-highlight-box">Thankfully there's a new quitting method with a <span>93% success rate</span> that thousands are switching to.</div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsGoTo(8)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <div class="qs-screen" id="qs-8">
+    <div class="qs-body">
+      <h1 class="qs-title">When do you crave a cigarette the MOST?</h1>
+      <p class="qs-subtitle">Select all that apply</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsMulti(this,'triggers','coffee')"><div class="qs-icon-wrap">☕</div><span class="qs-opt-label">With morning coffee</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','stress')"><div class="qs-icon-wrap">😤</div><span class="qs-opt-label">When I'm stressed</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','meal')"><div class="qs-icon-wrap">🍽️</div><span class="qs-opt-label">After a meal</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','driving')"><div class="qs-icon-wrap">🚗</div><span class="qs-opt-label">While driving</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','social')"><div class="qs-icon-wrap">🍺</div><span class="qs-opt-label">When drinking socially</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','breaks')"><div class="qs-icon-wrap">⏰</div><span class="qs-opt-label">On work breaks</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'triggers','bored')"><div class="qs-icon-wrap">📱</div><span class="qs-opt-label">When I'm bored / need something to do with my hands</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsRequireMulti('triggers',9)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <div class="qs-screen" id="qs-9">
+    <div class="qs-body">
+      <h1 class="qs-title">After you quit (or tried to quit), what was the HARDEST part?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsSingle(this,'hardestPart','hands')"><div class="qs-icon-wrap">🤲</div><span class="qs-opt-label">Not knowing what to do with my hands</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'hardestPart','inhale')"><div class="qs-icon-wrap">😮‍💨</div><span class="qs-opt-label">Missing the inhale/exhale</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'hardestPart','breaks')"><div class="qs-icon-wrap">🚪</div><span class="qs-opt-label">Losing my "excuse" for breaks</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'hardestPart','anxiety')"><div class="qs-icon-wrap">😰</div><span class="qs-opt-label">The anxiety without my ritual</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'hardestPart','withdrawal')"><div class="qs-icon-wrap">💊</div><span class="qs-opt-label">The nicotine withdrawal symptoms</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-10">
+    <div class="qs-body">
+      <h1 class="qs-title">How has smoking affected your life?</h1>
+      <p class="qs-subtitle">Select all that apply</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','winded')"><div class="qs-icon-wrap">😮‍💨</div><span class="qs-opt-label">I get winded doing basic things</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','cough')"><div class="qs-icon-wrap">🫁</div><span class="qs-opt-label">I have a persistent cough or chest tightness</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','healthscare')"><div class="qs-icon-wrap">🏥</div><span class="qs-opt-label">I've had a health scare</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','kids')"><div class="qs-icon-wrap">👶</div><span class="qs-opt-label">My kids or grandkids worry about me</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','partner')"><div class="qs-icon-wrap">💑</div><span class="qs-opt-label">My partner or family have asked me to quit</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','hiding')"><div class="qs-icon-wrap">🙈</div><span class="qs-opt-label">I hide my smoking from people I care about</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','control')"><div class="qs-icon-wrap">😔</div><span class="qs-opt-label">I feel like cigarettes control my life</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="qs-option" onclick="qsMulti(this,'lifeImpact','dontthink')"><div class="qs-icon-wrap">🤷</div><span class="qs-opt-label">I try not to think about it</span><div class="qs-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="qsRequireMulti('lifeImpact',12)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <div class="qs-screen" id="qs-12">
+    <div class="qs-body">
+      <h1 class="qs-title">How much do you spend on cigarettes per month?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsSingle(this,'monthlySpend',150)"><div class="qs-icon-wrap">💵</div><span class="qs-opt-label">$100–200</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'monthlySpend',250)"><div class="qs-icon-wrap">💵</div><span class="qs-opt-label">$200–300</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'monthlySpend',350)"><div class="qs-icon-wrap">💵</div><span class="qs-opt-label">$300–400</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'monthlySpend',450)"><div class="qs-icon-wrap">💰</div><span class="qs-opt-label">$400+</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'monthlySpend',0)"><div class="qs-icon-wrap">🤷</div><span class="qs-opt-label">I don't want to think about it</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-13">
+    <div class="qs-body">
+      <h1 class="qs-title">How motivated are you to quit smoking for good?</h1>
+      <p class="qs-subtitle">Select one</p>
+      <div class="qs-options">
+        <div class="qs-option" onclick="qsSingle(this,'motivation',10)"><div class="qs-icon-wrap">🔥</div><span class="qs-opt-label">I want to quit NOW</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'motivation',8)"><div class="qs-icon-wrap">💪</div><span class="qs-opt-label">Very ready</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'motivation',6)"><div class="qs-icon-wrap">👍</div><span class="qs-opt-label">Pretty motivated</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'motivation',4)"><div class="qs-icon-wrap">🤔</div><span class="qs-opt-label">Still figuring it out</span></div>
+        <div class="qs-option" onclick="qsSingle(this,'motivation',2)"><div class="qs-icon-wrap">👀</div><span class="qs-opt-label">Just curious</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-14">
+    <div class="qs-body">
+      <h1 class="qs-title">What should we call you?</h1>
+      <p class="qs-subtitle">Enter your first name</p>
+      <div style="margin-top:8px;margin-bottom:16px;">
+        <input type="text" id="nameInput" placeholder="Your first name"
+          autocomplete="given-name" autocorrect="off" autocapitalize="words"
+          style="width:100%;padding:18px 20px;font-size:18px;font-weight:700;font-family:'Nunito',sans-serif;border:1.5px solid #D8DDD5;border-radius:12px;outline:none;color:#111;background:#fff;transition:border-color 0.2s;"
+          oninput="this.style.borderColor='#3A7D44'"
+          onkeydown="if(event.key==='Enter'){qsSubmitName();}">
+      </div>
+      <button class="qs-btn" onclick="qsSubmitName()">See my results <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <div style="text-align:center;margin-top:12px;">
+        <button onclick="qsSkipName()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:17px;font-weight:600;color:#aaa;cursor:pointer;padding:4px 8px;">Skip name</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="qs-screen" id="qs-15">
+    <div class="qs-loading">
+      <h2 class="qs-loading-title">Building your personal quitting plan...</h2>
+      <div class="qs-spinner-wrap">
+        <div class="qs-spinner"></div>
+        <div class="qs-spinner-pct" id="qsSpinPct">0%</div>
+      </div>
+      <div class="qs-analysis">
+        <div class="qs-step" id="qsStep1"><span class="qs-step-icon">🔍</span> Analyzing your smoking pattern...</div>
+        <div class="qs-step" id="qsStep2"><span class="qs-step-icon">📊</span> Calculating your health risk level...</div>
+        <div class="qs-step" id="qsStep3"><span class="qs-step-icon">🧬</span> Identifying your addiction type...</div>
+        <div class="qs-step" id="qsStep4"><span class="qs-step-icon">📋</span> Building your personal quitting plan...</div>
+      </div>
+      <div class="qs-sp-box">
+        <div class="qs-sp-eyebrow">You're not alone</div>
+        <div class="qs-sp-stat">32,371+</div>
+        <div class="qs-sp-sub">smokers have already quit with<br>Nordic Goods</div>
+        <div class="qs-sp-rating">⭐ 4.7/5 average rating &nbsp;|&nbsp; 93% success rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R1 — SMOKER PROFILE
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r1">
+    <div class="qs-body" style="padding-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Your Assessment</p>
+      <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 28px;line-height:1.25;" id="r1Headline">Here is your smoker profile</h1>
+
+      <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <span style="font-size:17px;font-weight:800;color:#111;">Quitting Benefits Potential</span>
+          <span style="font-size:13px;font-weight:800;color:#2D4A3E;background:#D4EDCE;padding:4px 12px;border-radius:20px;">HIGH</span>
+        </div>
+        <div style="position:relative;padding-top:36px;margin-bottom:8px;">
+          <div id="sliderBadge" style="position:absolute;top:0;left:0%;transform:translateX(-50%);transition:left 1.4s cubic-bezier(0.22,1,0.36,1);">
+            <div style="background:#2D4A3E;color:#fff;font-size:12px;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap;">You</div>
+            <div style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #2D4A3E;margin:0 auto;"></div>
+          </div>
+          <div style="height:10px;border-radius:5px;background:linear-gradient(to right,#e74c3c,#f39c12,#f1c40f,#2ecc71,#27ae60);position:relative;">
+            <div id="sliderThumb" style="position:absolute;top:50%;left:0%;transform:translate(-50%,-50%);width:18px;height:18px;background:#2D4A3E;border:3px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.3);transition:left 1.4s cubic-bezier(0.22,1,0.36,1);"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;">
+            <span style="font-size:11px;color:#999;font-weight:600;">Low</span>
+            <span style="font-size:11px;color:#999;font-weight:600;">Medium</span>
+            <span style="font-size:11px;color:#999;font-weight:600;">High</span>
+            <span style="font-size:11px;color:#999;font-weight:600;">Very High</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#FFF8F0;border:1.5px solid #F5C6A0;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:16px;font-weight:800;color:#A0522D;margin:0 0 10px;">⚠️ Your smoking habit is having a serious impact on your health.</p>
+        <p style="font-size:15px;font-weight:600;color:#7A3B1E;margin:0;line-height:1.6;">The good news: quitting now will unlock significant health improvements, including much deeper breathing, no more coughing, massive boost in energy and better sleep.</p>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+          <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:14px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;color:#999;text-transform:uppercase;margin-bottom:6px;">Addiction Type</div>
+            <div style="font-size:16px;font-weight:900;color:#2D4A3E;" id="r1AddType">🔁 Ritual</div>
+          </div>
+          <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:14px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;color:#999;text-transform:uppercase;margin-bottom:6px;">Health Risk</div>
+            <div style="font-size:16px;font-weight:900;color:#a93226;">⚠️ Serious</div>
+          </div>
+          <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:14px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;color:#999;text-transform:uppercase;margin-bottom:6px;">Yearly Spend</div>
+            <div style="font-size:16px;font-weight:900;color:#a93226;" id="r1YearlyCost">💰 $3,600/yr</div>
+          </div>
+          <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:14px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;color:#999;text-transform:uppercase;margin-bottom:6px;">Quit Motivation</div>
+            <div style="font-size:16px;font-weight:900;color:#2D4A3E;" id="r1Motivation">🔥 Very High</div>
+          </div>
+        </div>
+        <div style="flex:1;border-radius:14px;overflow:hidden;min-height:280px;">
+          <img id="r1BeforeImg" src="before-f.webp" alt="Before"
+            style="width:100%;height:280px;object-fit:cover;display:block;"
+            onerror="this.parentElement.style.background='#F0F7F1';this.style.display='none';">
+        </div>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(2)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R2 — ADDICTION TYPE
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r2">
+    <div class="qs-body" style="padding-bottom:100px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Your Addiction Type</p>
+      <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 24px;line-height:1.25;">You Have a <span style="font-weight:900;text-decoration:underline;text-decoration-color:#3A7D44;text-underline-offset:4px;color:#2D4A3E;">Ritual Addiction</span></h1>
+
+      <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 14px;" id="r2TriggerPara">You're not just addicted to nicotine, you're addicted to <strong style="color:#2D4A3E;font-weight:800;">everything else.</strong></p>
+        <div style="border-top:1.5px solid #D4EDCE;padding-top:14px;">
+          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0 0 8px;"><strong style="color:#111;font-weight:800;">That's why nothing worked before.</strong></p>
+          <p style="font-size:15px;font-weight:600;color:#222;line-height:1.7;margin:0;">It's <strong style="color:#2D4A3E;font-weight:800;">NOT your fault</strong> — most methods were never made for your addiction type.</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px;font-weight:800;color:#111;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px;">Methods you tried and why they failed</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;" id="r2MethodsList"></div>
+
+      <div style="background:linear-gradient(135deg,#2D4A3E 0%,#3A7D44 100%);border-radius:16px;padding:22px 20px;text-align:center;">
+        <p style="font-size:13px;font-weight:700;color:#8FD4A0;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 8px;">The good news</p>
+        <p style="font-size:17px;font-weight:800;color:#fff;line-height:1.5;margin:0;">There's a quitting method with a <span style="color:#8FD4A0;font-size:22px;font-weight:900;">93%</span> success rate for your addiction type.</p>
+      </div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(3)">See Your Top Quitting Method <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R2 — ADDICTION TYPE
+  ══════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════
+       R3 — PRODUCT (unchanged)
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r3">
+    <div class="qs-body">
+      <p class="qs-eyebrow">The #1 Method for Your Addiction Type</p>
+      <h1 class="qs-title">The Ritual Replacement Method</h1>
+      <p style="text-align:center;font-size:17px;font-weight:700;color:#2D4A3E;margin-bottom:18px;">Same Ritual. Zero Poison.</p>
+      <div class="r-product-img"><img src="HERO.webp" alt="Nordic Goods Herbal Device" onerror="this.parentElement.innerHTML='🌿'"></div>
+      <h2 style="font-size:22px;font-weight:900;color:#111;text-align:center;margin:0 0 20px;letter-spacing:0.2px;">Herbal Air Device</h2>
+      <div class="r-mech-list">
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same hand-to-mouth motion</div>
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same inhale and exhale</div>
+        <div class="r-mech-row"><div class="r-mech-icon chk">✓</div> Same breaks, same calm, same satisfaction</div>
+      </div>
+      <div class="r-divider-lbl">— What you leave behind —</div>
+      <div class="r-zero-bar"><span>✗ Zero Nicotine</span><span class="zb-dot">·</span><span>✗ Zero Chemicals</span><span class="zb-dot">·</span><span>✗ Zero Addiction</span></div>
+      <div id="r3Review"></div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn" onclick="rGoTo(4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R4 — PERSONAL BENEFITS
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r4">
+    <div class="qs-body" style="padding-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 6px;">Herbal Air Device Plan</p>
+      <h1 style="font-size:24px;font-weight:800;color:#111;text-align:center;margin:0 0 24px;line-height:1.25;" id="r4Headline">Reclaim Your Health And Life in 4 Weeks</h1>
+
+      <div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:13px;font-weight:800;color:#111;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">Your Recovery Timeline</p>
+        <div id="recoveryChart" style="width:100%;"></div>
+      </div>
+
+      <div style="border-radius:16px;overflow:hidden;margin-bottom:20px;border:1.5px solid #D8DDD5;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="padding:8px;text-align:center;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:#eee;color:#888;">Before</div>
+          <div style="padding:8px;text-align:center;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:#D4EDCE;color:#2D4A3E;">After</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;height:200px;">
+          <div style="overflow:hidden;"><img id="r4BeforeImg" src="before-f.webp" alt="Before" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.parentElement.style.cssText='background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:48px';this.parentElement.textContent='🫁'"></div>
+          <div style="overflow:hidden;"><img id="r4AfterImg" src="after-f.webp" alt="After" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.parentElement.style.cssText='background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:48px';this.parentElement.textContent='💚'"></div>
+        </div>
+      </div>
+
+      <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:16px;margin-bottom:20px;" id="r4Review"></div>
+    </div>
+    <div class="qs-footer"><button class="qs-btn bright" onclick="rGoTo(5)">I'm Ready To Quit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       R5 — OFFER
+  ══════════════════════════════════════════════════ -->
+  <div class="qs-screen" id="qs-r5">
+    <div class="qs-body" style="padding-bottom:40px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:2px;color:#3A7D44;text-transform:uppercase;text-align:center;margin:0 0 8px;">🔓 Offer Unlocked</p>
+      <h1 style="font-size:clamp(18px,6vw,26px);font-weight:900;color:#111;text-align:center;margin:0 0 24px;line-height:1.2;">Personal Discount 50% OFF</h1>
+
+      <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">Based on your quiz results, we can tell you are very motivated to quit right now.</p>
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0 0 12px;">That's why we're offering you a personal discount code to get <strong style="color:#2D4A3E;font-weight:800;">3 FREE</strong> flavor packs with your device.</p>
+        <p style="font-size:17px;font-weight:600;color:#222;line-height:1.7;margin:0;">Click "Apply Discount" to claim it now.</p>
+      </div>
+
+      <div style="background:#FFF8F0;border:1.5px solid #F5C6A0;border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
+        <p style="font-size:15px;font-weight:700;color:#A0522D;margin:0;line-height:1.6;"><strong>Disclaimer:</strong> We can't offer this discount to everyone, so your code is valid ONLY for the next 20 minutes.</p>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#2D4A3E 0%,#3A7D44 100%);border-radius:16px;padding:24px 20px;margin-bottom:16px;text-align:center;">
+        <div id="r5CodeSpinner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px 0;">
+          <div style="width:36px;height:36px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:r5spin 0.8s linear infinite;"></div>
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:0.5px;">Generating Code...</div>
+        </div>
+        <div id="r5CodeRevealed" style="display:none;">
+          <div style="background:rgba(255,255,255,0.1);border:2px dashed rgba(255,255,255,0.4);border-radius:12px;padding:14px 20px;margin-bottom:16px;">
+            <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8FD4A0;margin:0 0 6px;">Your Personal Code</p>
+            <p style="font-size:26px;font-weight:900;letter-spacing:4px;color:#fff;margin:0;" id="r5CodeDisplay"></p>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+            <span style="font-size:18px;">⏱</span>
+            <span style="font-size:15px;font-weight:700;color:#fff;">Expires in</span>
+            <span style="font-size:22px;font-weight:900;color:#8FD4A0;min-width:52px;" id="r5Countdown">20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <button onclick="rClaim()" style="width:100%;background:#3A7D44;color:#fff;border:none;border-radius:50px;padding:20px;font-size:18px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;">
+          Apply Discount
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:13px;font-weight:700;color:#888;">⭐ 4.7/5</span>
+        <span style="font-size:13px;color:#ddd;">·</span>
+        <span style="font-size:13px;font-weight:700;color:#888;">32,731+ Customers</span>
+        <span style="font-size:13px;color:#ddd;">·</span>
+        <span style="font-size:13px;font-weight:700;color:#888;">Free Shipping</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.qs-wrap -->
+
+<script>
+// ═══════════════════════════════════════════
+const QUIZ_CONFIG = {
+  version:     'quiz2',
+  sheetUrl:    'https://script.google.com/macros/s/AKfycbyhB_4EHo73PBrC9vMDd3rYPrElzn1xOzUN1dLFNG6XTOHxEl4qJ-ExzqpsbUPTge_K/exec',
+  redirectUrl: 'https://try.nordicgoods.co/herbal-air-device',
+  workerUrl:   'https://discount-generator-50.dry-thunder-8d18.workers.dev',
+  fallbackCode:'QUIT50',
+};
+// ═══════════════════════════════════════════
+
+const ans = {
+  gender:null, age:null, goals:[], smokingHistory:null,
+  quitAttempts:null, methodsTried:[], triggers:[],
+  hardestPart:null, lifeImpact:[], monthlySpend:null, motivation:5,
+  name:'', discountCode:null, discountExpiresTs:null,
+};
+
+let qsCurrent = 1;
+const QS_TOTAL = 15;
+
+function ga4Event(n,p){if(typeof gtag!=='undefined')gtag('event',n,p);}
+function metaCustom(n,p){if(typeof fbq!=='undefined')fbq('trackCustom',n,p);}
+function metaStandard(n,p){if(typeof fbq!=='undefined')fbq('track',n,p||{});}
+
+const Q_URL_NAMES={1:'Q1_gender',2:'Q2_age',3:'Q3_goals',4:'Q4_smoking_history',5:'Q5_quit_attempts',6:'Q6_methods',7:'Q7_interstitial',8:'Q8_triggers',9:'Q9_hardest_part',10:'Q10_reframe',11:'Q11_life_impact',12:'Q12_monthly_spend',13:'Q13_motivation',14:'Q14_name',15:'Q15_loading'};
+function updateURL(s){history.replaceState(null,'','?step='+s);}
+const Q_ARRIVAL_NAMES={2:'Q1_gender',3:'Q2_age',4:'Q3_goals',5:'Q4_smoking_history',6:'Q5_quit_attempts',7:'Q6_methods',8:'Q7_interstitial',9:'Q8_triggers',10:'Q9_hardest_part',11:'Q10_life_impact',12:'Q11_monthly_spend',13:'Q12_motivation'};
+function trackQ(n){ga4Event(n,{quiz_version:QUIZ_CONFIG.version});}
+function qsGetEl(id){return document.getElementById('qs-'+id);}
+
+function qsGoTo(n){
+  qsGetEl(qsCurrent).classList.remove('active');
+  qsCurrent=n;
+  const el=qsGetEl(n);
+  el.classList.add('active');
+  el.querySelector('.qs-body')?.scrollTo(0,0);
+  qsUpdateHeader();
+  if(Q_URL_NAMES[n]) updateURL(Q_URL_NAMES[n]);
+  if(Q_ARRIVAL_NAMES[n]) trackQ(Q_ARRIVAL_NAMES[n]);
+  if(n===7) qsPopS7();
+  if(n===15) qsStartLoading();
+}
+
+function qsGoBack(){
+  if(typeof qsCurrent==='string'){
+    const n=parseInt(qsCurrent.replace('r',''));
+    if(n<=1) return;
+    rGoTo(n-1);
+  } else {
+    if(qsCurrent<=1) return;
+    ga4Event('quiz_back',{from_screen:qsCurrent});
+    qsGoTo(qsCurrent-1);
+  }
+}
+
+function qsUpdateHeader(){
+  const isResult=typeof qsCurrent==='string';
+  const back=document.getElementById('qsBackBtn');
+  const lbl=document.getElementById('qsProgLabel');
+  const fill=document.getElementById('qsProgFill');
+  if(isResult){
+    const n=parseInt(qsCurrent.replace('r',''));
+    lbl.textContent='Results '+n+' of 5';
+    fill.style.width=(n/5*100)+'%';
+    back.disabled=(n===1);
+  } else {
+    lbl.textContent=qsCurrent+' of '+QS_TOTAL;
+    fill.style.width=(qsCurrent/QS_TOTAL*100)+'%';
+    back.disabled=(qsCurrent===1||qsCurrent===15);
+  }
+}
+
+function qsSingle(el,key,value){
+  el.closest('.qs-options').querySelectorAll('.qs-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  ans[key]=value;
+  setTimeout(()=>qsGoTo(qsCurrent+1),320);
+}
+function qsGender(el,value){
+  document.querySelectorAll('.qs-gender-tile').forEach(t=>t.classList.remove('selected'));
+  el.classList.add('selected');
+  ans.gender=value;
+  setTimeout(()=>qsGoTo(2),320);
+}
+function qsMulti(el,key,value){
+  el.classList.toggle('selected');
+  const arr=ans[key], idx=arr.indexOf(value);
+  idx===-1?arr.push(value):arr.splice(idx,1);
+}
+function qsRequireMulti(key,next){
+  if(ans[key].length===0){qsShake();return;}
+  qsGoTo(next);
+}
+function qsShake(){
+  const body=qsGetEl(qsCurrent).querySelector('.qs-body');
+  body.style.transition='transform 0.08s ease';
+  [6,-6,4,-4,0].forEach((x,i)=>setTimeout(()=>body.style.transform=`translateX(${x}px)`,i*60));
+  setTimeout(()=>{body.style.transform='';body.style.transition='';},360);
+}
+
+const qsMethodStats={
+  patches:{label:'Nicotine patches',rate:'7%',icon:'🩹',note:'Replaces nicotine only, ignores the ritual entirely'},
+  gum:{label:'Nicotine gum',rate:'6%',icon:'🫧',note:'Same as patches, zero ritual replacement'},
+  chantix:{label:'Chantix / Wellbutrin',rate:'18%',icon:'💊',note:'Reduces cravings but leaves the ritual untouched'},
+  vaping:{label:'Vaping / e-cigarettes',rate:'12%',icon:'🌬️',note:'Trades one addiction for another, still addicted'},
+  willpower:{label:'Cold turkey / willpower',rate:'5%',icon:'💪',note:'Fights nicotine and ritual at once, fails at both'},
+  allencarr:{label:"Allen Carr's Easy Way",rate:'15%',icon:'📖',note:'Mindset shift only, no physical ritual replacement'},
+};
+
+function qsPopS7(){
+  const tried=ans.methodsTried.filter(m=>m!=='none');
+  const keys=tried.length?tried:Object.keys(qsMethodStats);
+  let html=keys.map(k=>{const m=qsMethodStats[k];if(!m)return'';return`<div class="qs-stat-row"><span>❌</span><span>${m.label} — <strong>${m.rate} success rate</strong></span></div>`;}).join('');
+  html+=`<div class="qs-stat-row" style="border-top:2px solid #D4EDCE;margin-top:4px;padding-top:14px;color:#2D4A3E;font-weight:700;">These methods all make the same mistake. They don't solve the actual root cause of the addiction.</div>`;
+  document.getElementById('qs-s7-stats').innerHTML=html;
+}
+
+function qsSubmitName(){
+  const val=document.getElementById('nameInput').value.trim();
+  ans.name=val;
+  trackQ('Q14_name');
+  qsGoTo(15);
+}
+// ── EXIT-INTENT SKIP — mobile back button only (name screen) ──
+let _exitIntentFired=false;
+
+function _nameExitSkip(){
+  if(_exitIntentFired) return;
+  if(qsCurrent!==14) return;
+  _exitIntentFired=true;
+  ga4Event('name_screen_exit_skip',{quiz_version:QUIZ_CONFIG.version,method:'back_button'});
+  ans.name='';
+  qsGoTo(15);
+}
+
+function _nameScreenPushState(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    history.pushState({nameScreen:true},'',location.href);
+  }
+}
+
+window.addEventListener('popstate',function(){
+  if(qsCurrent===14&&!_exitIntentFired){
+    _nameExitSkip();
+  }
+});
+
+const _origQsGoTo=qsGoTo;
+qsGoTo=function(n){
+  _origQsGoTo(n);
+  if(n===14) setTimeout(_nameScreenPushState,50);
+  if(n!==14) _exitIntentFired=false;
+};
+
+function qsSkipName(){
+  ans.name='';
+  trackQ('Q14_name_skipped');
+  qsGoTo(15);
+}
+
+function qsStartLoading(){
+  let pct=0;
+  const pctEl=document.getElementById('qsSpinPct');
+  const iv=setInterval(()=>{if(pct>=100){clearInterval(iv);return;}pctEl.textContent=(++pct)+'%';},55);
+  ['qsStep1','qsStep2','qsStep3','qsStep4'].forEach((id,i)=>setTimeout(()=>document.getElementById(id).classList.add('done'),(i+1)*1400));
+  setTimeout(()=>{
+    trackQ('Q15_loading');
+    const urlParams=new URLSearchParams(window.location.search);
+    const quizData={
+      timestamp:new Date().toISOString(),version:QUIZ_CONFIG.version,
+      name:ans.name,gender:ans.gender,age:ans.age,goals:ans.goals.join(','),
+      smoking_history:ans.smokingHistory,quit_attempts:ans.quitAttempts,
+      methods_tried:ans.methodsTried.join(','),triggers:ans.triggers.join(','),
+      hardest_part:ans.hardestPart,life_impact:ans.lifeImpact.join(','),
+      monthly_spend:ans.monthlySpend,motivation:ans.motivation,
+      page_url:window.location.href,referrer:document.referrer||'',
+      utm_source:urlParams.get('utm_source')||'',utm_medium:urlParams.get('utm_medium')||'',
+      utm_campaign:urlParams.get('utm_campaign')||'',utm_content:urlParams.get('utm_content')||'',
+      utm_term:urlParams.get('utm_term')||'',
+    };
+    ga4Event('quiz_complete',{gender:quizData.gender,age:quizData.age,smoking_history:quizData.smoking_history,quit_attempts:quizData.quit_attempts,hardest_part:quizData.hardest_part,monthly_spend:quizData.monthly_spend,motivation:quizData.motivation,goals:quizData.goals,methods_tried:quizData.methods_tried,triggers:quizData.triggers,life_impact:quizData.life_impact});
+    metaStandard('Lead',{content_name:'quit_smoking_quiz'});
+    metaCustom('QuizComplete',{gender:ans.gender,age:ans.age,motivation:ans.motivation,monthly_spend:ans.monthlySpend});
+    fetch(QUIZ_CONFIG.sheetUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(quizData)}).catch(()=>{});
+    qsGetEl(15).classList.remove('active');
+    qsCurrent='r1';
+    qsGetEl('r1').classList.add('active');
+    qsUpdateHeader();
+    updateURL('R1_diagnosis');
+    trackQ('R1_diagnosis');
+    rPopulateAll();
+    setTimeout(rAnimateSlider,400);
+  },6000);
+}
+
+// ── RESULT ROUTING ────────────────────────────────────
+function rGoTo(n){
+  qsGetEl(qsCurrent).classList.remove('active');
+  qsCurrent='r'+n;
+  const el=qsGetEl('r'+n);
+  el.classList.add('active');
+  el.querySelector('.qs-body')?.scrollTo(0,0);
+  document.querySelector('.qs-wrap')?.scrollTo(0,0);
+  window.scrollTo(0,0);
+  qsUpdateHeader();
+  const urlNames=['','diagnosis','addiction_type','product','personal_benefits','offer'];
+  updateURL('R'+n+'_'+(urlNames[n]||n));
+  const rNames={2:'R2_addiction_type',3:'R3_product',4:'R4_personal_benefits',5:'R5_offer'};
+  if(rNames[n]) trackQ(rNames[n]);
+  if(n===3) metaStandard('ViewContent',{content_name:'herbal_diffuser',content_type:'product'});
+  if(n===1) setTimeout(rAnimateSlider,400);
+  if(n===4) rAnimateChart();
+  if(n===5) r5ClaimSpot();
+}
+
+// ── POPULATE ALL RESULT SCREENS ───────────────────────
+function rPopulateAll(){
+  rPopulateR1();
+  rPopulateR2();
+  rPopulateR3Review();
+  rPopulateR4();
+  rPopulateR4Review();
+}
+
+// ── R3 ────────────────────────────────────────────────
+function rPopulateR3Review(){
+  const male = ans.gender === 'Male';
+  const name = male ? 'Danny' : 'Sandra';
+  const avatar = male ? '👨' : '👩';
+  const ageMap = {'25–34':29,'35–44':41,'45–54':52,'55–64':62,'65+':68};
+  const age = ageMap[ans.age] || 42;
+  document.getElementById('r3Review').innerHTML = `
+    <div style="background:#F7FBF7;border:1.5px solid #D4EDCE;border-radius:16px;padding:20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${avatar}</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#111;">${name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${age}</span></div>
+          <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:17px;">★★★★★</span></div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
+      </div>
+      <p style="font-size:17px;font-weight:600;color:#333;line-height:1.65;margin:0;">"I got my device 2 weeks ago, and I haven't touched a cigarette since. Thank you Nordic Goods!"</p>
+    </div>`;
+}
+function rAddType(){
+  const t=ans.triggers||[],h=ans.hardestPart||'';
+  const ritT=['coffee','meal','driving','breaks','bored'],ritH=['hands','inhale','breaks','anxiety'];
+  const rS=t.filter(x=>ritT.includes(x)).length+(ritH.includes(h)?2:0);
+  const cS=(h==='withdrawal'?3:0)+t.filter(x=>['stress','social'].includes(x)).length;
+  if(rS>cS) return '🔁 Ritual'; if(cS>rS) return '⚗️ Chemical'; return '🔁 Ritual + Chemical';
+}
+function rYearlyCost(){
+  const s=ans.monthlySpend; if(!s||s===0) return '💰 $1,200/yr';
+  return '💰 $'+(s*12).toLocaleString()+'/yr';
+}
+function rMotivationLabel(){
+  const m=ans.motivation||5;
+  if(m>=9) return '🔥 I want to quit NOW';
+  if(m>=7) return '🔥 Very High';
+  if(m>=5) return '👍 High';
+  return '🤔 Building up';
+}
+function rPopulateR1(){
+  const name=ans.name;
+  document.getElementById('r1Headline').textContent=name?name+', here is your smoker profile':'Here is your smoker profile';
+  document.getElementById('r1AddType').textContent='🔁 Ritual';
+  document.getElementById('r1YearlyCost').textContent=rYearlyCost();
+  document.getElementById('r1Motivation').textContent='🔥 High';
+  document.getElementById('r1BeforeImg').src=ans.gender==='Male'?'before-m.webp':'before-f.webp';
+}
+function rAnimateSlider(){
+  document.getElementById('sliderBadge').style.left='79%';
+  document.getElementById('sliderThumb').style.left='79%';
+}
+
+// ── R2 ────────────────────────────────────────────────
+const r2TriggerLines={
+  meal:"the feeling of lighting one after a nice meal.",
+  coffee:"the feeling of lighting one with your morning coffee.",
+  stress:"the feeling of all your stress melting away.",
+  bored:"the feeling of having something to do when you're bored.",
+  driving:"the feeling of lighting one while driving.",
+  social:"the feeling of bonding over a cigarette.",
+  breaks:"the feeling of taking 5 minutes away from work to chill.",
+};
+function rPopulateR2(){
+  const firstTrigger=(ans.triggers||[]).find(t=>r2TriggerLines[t]);
+  const triggerLine=firstTrigger?r2TriggerLines[firstTrigger]:'the feeling of complete calm and relief.';
+  document.getElementById('r2TriggerPara').innerHTML=
+    `You're not just addicted to nicotine, you're addicted to <strong style="color:#2D4A3E;font-weight:800;">everything else.</strong> The deep inhale, the hand-to-mouth motion, the relaxing exhale and the <strong style="color:#2D4A3E;font-weight:800;">${triggerLine}</strong>`;
+
+  const tried=(ans.methodsTried||[]).filter(m=>m!=='none'&&qsMethodStats[m]);
+  const keys=tried.length?tried:['patches','willpower','vaping'];
+  document.getElementById('r2MethodsList').innerHTML=keys.map(k=>{
+    const m=qsMethodStats[k];
+    const pct=parseFloat(m.rate);
+    const isHigh=pct>=15;
+    const badgeColor=isHigh?'#ca6f1e':'#a93226';
+    const badgeBg=isHigh?'#fef9f0':'#fdf0ef';
+    const barColor=isHigh?'#f39c12':'#e74c3c';
+    return `<div style="background:#fff;border:1.5px solid #D8DDD5;border-radius:14px;padding:14px 16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-size:14px;font-weight:800;color:#111;">${m.icon} ${m.label}</span>
+        <span style="font-size:13px;font-weight:800;color:${badgeColor};background:${badgeBg};padding:3px 10px;border-radius:20px;">${m.rate} success</span>
+      </div>
+      <div style="height:7px;background:#f0f0f0;border-radius:4px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:${barColor};border-radius:4px;"></div>
+      </div>
+      <p style="font-size:12px;font-weight:600;color:#888;margin:6px 0 0;line-height:1.5;">${m.note}</p>
+    </div>`;
+  }).join('');
+}
+
+// ── R4 ────────────────────────────────────────────────
+const r4Headlines={
+  control:'Reclaim Your Health And Life in 4 Weeks',
+  healthscare:'Turn Your Health Around in 4 Weeks',
+  winded:'Breathe Freely Again in 4 Weeks',
+  cough:'Wake Up Without Coughing in 4 Weeks',
+  kids:'Make Your Family Proud in 4 Weeks',
+  partner:'Make Your Family Proud in 4 Weeks',
+  hiding:'Stop Hiding. Start Living in 4 Weeks',
+  dontthink:'Reclaim Your Health And Life in 4 Weeks',
+};
+const r4Priority=['control','healthscare','winded','cough','kids','partner','hiding','dontthink'];
+const r4Milestones={
+  control:['Find Your Triggers','Break The Habit','Take Back Control','Smoke Free'],
+  healthscare:['Find Your Triggers','Risk Reducing','Health Recovering','Smoke Free'],
+  winded:['Find Your Triggers','Breathe Easier','Feel The Difference','Smoke Free'],
+  cough:['Find Your Triggers','Cough Reduces','Lungs Healing','Smoke Free'],
+  kids:['Find Your Triggers','Feel Stronger','Be Present','Smoke Free'],
+  partner:['Find Your Triggers','Build New Habits','Feel The Change','Smoke Free'],
+  hiding:['Find Your Triggers','No More Shame','Living Freely','Smoke Free'],
+  dontthink:['Find Your Triggers','Face The Facts','Own Your Health','Smoke Free'],
+};
+function rPopulateR4(){
+  const impact=ans.lifeImpact||[];
+  const key=r4Priority.find(k=>impact.includes(k))||'control';
+  document.getElementById('r4Headline').textContent=r4Headlines[key];
+  document.getElementById('r4BeforeImg').src=ans.gender==='Male'?'before-m.webp':'before-f.webp';
+  document.getElementById('r4AfterImg').src=ans.gender==='Male'?'after-m.webp':'after-f.webp';
+  window._r4Milestones=r4Milestones[key];
+}
+
+// ── R4 review data ───────────────────────────────────
+const r4Reviews={
+  control:{
+    male:  {name:'James T.',age:'54',text:'I felt like cigarettes owned me for 20 years. Four weeks in and I\'m the one in control. I can\'t explain how different that feels.'},
+    female:{name:'Susan M.',age:'51',text:'I used to plan my day around when I could smoke. Now I don\'t even think about it. Getting my life back has been everything.'},
+  },
+  healthscare:{
+    male:  {name:'David R.',age:'58',text:'My doctor gave me a serious warning. Three weeks after switching I went back and he couldn\'t believe the difference in my breathing.'},
+    female:{name:'Karen L.',age:'55',text:'After my health scare I knew I had to do something. This was the first thing that actually worked. My numbers have improved dramatically.'},
+  },
+  winded:{
+    male:  {name:'Marcus B.',age:'47',text:'I used to get winded walking up one flight of stairs. After a month I ran a 5K. I genuinely did not think that was possible.'},
+    female:{name:'Rachel G.',age:'44',text:'I stopped being embarrassed on walks with my kids. I can keep up now. That alone was worth everything.'},
+  },
+  cough:{
+    male:  {name:'Tom H.',age:'52',text:'The morning cough was so bad my wife slept in another room. It\'s completely gone. We laugh about it now.'},
+    female:{name:'Linda C.',age:'49',text:'I\'d had a cough for so long I thought it was just who I was. Three weeks clean and it was gone. I cried the first morning I woke up without it.'},
+  },
+  kids:{
+    male:  {name:'Chris W.',age:'43',text:'My son told me he was scared I was going to die. That was it for me. 11 weeks smoke-free. He\'s proud of me now and that means more than anything.'},
+    female:{name:'Priya N.',age:'41',text:'My daughter told me I don\'t smell like smoke anymore. I cried in the car after she said that. 14 weeks clean.'},
+  },
+  partner:{
+    male:  {name:'Mike D.',age:'46',text:'My wife had asked me to quit for years. I finally did. She said it\'s the best thing I\'ve ever done for our marriage. Hard to argue.'},
+    female:{name:'Emma S.',age:'39',text:'My partner never complained but I could see the worry in his eyes. Quitting was the best gift I ever gave him — and myself.'},
+  },
+  hiding:{
+    male:  {name:'Paul K.',age:'38',text:'I was sneaking cigarettes like a teenager. The shame was exhausting. Now I don\'t have anything to hide and I feel lighter in a way I didn\'t expect.'},
+    female:{name:'Ana P.',age:'36',text:'I was hiding it from everyone. The relief of not having that secret anymore is almost as good as being able to breathe again.'},
+  },
+  dontthink:{
+    male:  {name:'Steve J.',age:'50',text:'I kept telling myself I\'d deal with it later. My doctor made it clear there was no later. Best decision I ever made was finally facing it.'},
+    female:{name:'Claire B.',age:'48',text:'I avoided thinking about it for years. Taking that first step was the hardest part. Everything after that got easier week by week.'},
+  },
+};
+
+function rPopulateR4Review(){
+  const impact=ans.lifeImpact||[];
+  const key=r4Priority.find(k=>impact.includes(k))||'control';
+  const gKey=ans.gender==='Male'?'male':'female';
+  const rev=r4Reviews[key][gKey];
+  document.getElementById('r4Review').innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div style="width:40px;height:40px;border-radius:50%;background:#D4EDCE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${gKey==='male'?'👨':'👩'}</div>
+      <div>
+        <div style="font-size:14px;font-weight:800;color:#111;">${rev.name} <span style="font-size:12px;font-weight:600;color:#888;">· Age ${rev.age}</span></div>
+        <div style="display:flex;gap:2px;margin-top:2px;"><span style="color:#f5a623;font-size:17px;">★★★★★</span></div>
+      </div>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;color:#3A7D44;background:#D4EDCE;padding:3px 10px;border-radius:20px;">Verified</span>
+    </div>
+    <p style="font-size:17px;font-weight:600;color:#333;line-height:1.65;">"${rev.text}"</p>
+  `;
+}
+
+function rAnimateChart(){
+  const container = document.getElementById('recoveryChart');
+  if(!container) return;
+
+  const labels = window._r4Milestones || ['Find Your Triggers','Reduce Cravings','Smoke Free','New Life Begins'];
+  const weeks  = ['Week 1','Week 2','Week 3','Week 4'];
+
+  const W = 320, H = 220;
+  const PAD = { top:46, right:12, bottom:30, left:12 };
+  const CW = W - PAD.left - PAD.right;
+  const CH = H - PAD.top  - PAD.bottom;
+
+  // Steeper S-curve: flat start, steep middle, flat top
+  const pts = [
+    { xf:0.02, yf:0.92 },
+    { xf:0.33, yf:0.78 },
+    { xf:0.67, yf:0.22 },
+    { xf:0.98, yf:0.05 },
+  ];
+
+  const colors = ['#e74c3c','#f39c12','#8bc34a','#27ae60'];
+
+  const abs = pts.map(p => ({
+    x: PAD.left + p.xf * CW,
+    y: PAD.top  + p.yf * CH,
+  }));
+
+  // Tighter control points for steeper S-shape
+  function buildPath(points){
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for(let i=0;i<points.length-1;i++){
+      const p0=points[i], p1=points[i+1];
+      const tension = 0.42;
+      const cpx1=p0.x+(p1.x-p0.x)*tension, cpy1=p0.y;
+      const cpx2=p0.x+(p1.x-p0.x)*(1-tension), cpy2=p1.y;
+      d += ` C ${cpx1} ${cpy1} ${cpx2} ${cpy2} ${p1.x} ${p1.y}`;
+    }
+    return d;
+  }
+
+  const pathD = buildPath(abs);
+
+  let pathLen = 0;
+  for(let i=0;i<abs.length-1;i++){
+    const dx=abs[i+1].x-abs[i].x, dy=abs[i+1].y-abs[i].y;
+    pathLen += Math.sqrt(dx*dx+dy*dy)*1.2;
+  }
+  pathLen = Math.round(pathLen);
+
+  // Grid lines (3 horizontal)
+  const gridY = [0.25, 0.5, 0.75];
+  const gridSVG = gridY.map(f => {
+    const y = PAD.top + f * CH;
+    return `<line x1="${PAD.left}" y1="${y}" x2="${W-PAD.right}" y2="${y}" stroke="#f0f0f0" stroke-width="1"/>`;
+  }).join('');
+
+  // Label bubbles — compact, no overlap
+  function labelBox(lbl, cx, cy, color, idx){
+    const bw=58, bh=30, br=6;
+    const above = cy > PAD.top + CH * 0.5;
+    const by = above ? cy - bh - 10 : cy + 10;
+    // Pin bx strictly to its quadrant so boxes never touch
+    const quadrantW = CW / 4;
+    const qCenter = PAD.left + (idx + 0.5) * quadrantW;
+    const bx = Math.min(Math.max(qCenter - bw/2, PAD.left - 2), W - PAD.right - bw + 2);
+    const ax = Math.min(Math.max(cx, bx+8), bx+bw-8);
+    const words = lbl.split(' ');
+    const mid = Math.ceil(words.length/2);
+    const line1 = words.slice(0,mid).join(' ');
+    const line2 = words.slice(mid).join(' ');
+    const delay = 0.5 + idx * 0.45;
+    return `
+      <g style="opacity:0;animation:chartFadeIn 0.35s ease ${delay}s forwards;">
+        <rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="${br}" fill="${color}"/>
+        <polygon points="${ax-4},${above?by+bh:by} ${ax+4},${above?by+bh:by} ${ax},${above?by+bh+5:by-5}" fill="${color}"/>
+        ${line2
+          ? `<text x="${bx+bw/2}" y="${by+bh/2-6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line1}</text>
+             <text x="${bx+bw/2}" y="${by+bh/2+6}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line2}</text>`
+          : `<text x="${bx+bw/2}" y="${by+bh/2}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Nunito,sans-serif" font-size="9" font-weight="800">${line1}</text>`
+        }
+      </g>`;
+  }
+
+  const dotsSVG = abs.map((p,i) => {
+    const delay = 0.45 + i*0.45;
+    return `
+      <circle cx="${p.x}" cy="${p.y}" r="9" fill="${colors[i]}" opacity="0.25"
+        style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>
+      <circle cx="${p.x}" cy="${p.y}" r="6" fill="${colors[i]}" stroke="#fff" stroke-width="2.5"
+        style="opacity:0;animation:chartFadeIn 0.3s ease ${delay}s forwards;"/>`;
+  }).join('');
+
+  const weeksSVG = abs.map((p,i) =>
+    `<text x="${p.x}" y="${H-8}" text-anchor="middle" fill="#aaa" font-family="Nunito,sans-serif" font-size="11" font-weight="700">${weeks[i]}</text>`
+  ).join('');
+
+  const labelsSVG = abs.map((p,i) => labelBox(labels[i], p.x, p.y, colors[i], i)).join('');
+
+  const gradStops = colors.map((c,i) => `<stop offset="${i/(colors.length-1)*100}%" stop-color="${c}"/>`).join('');
+
+  container.innerHTML = `
+    <style>
+      @keyframes chartDraw {
+        from { stroke-dashoffset: ${pathLen}; }
+        to   { stroke-dashoffset: 0; }
+      }
+      @keyframes chartFadeIn {
+        from { opacity:0; transform:translateY(5px); }
+        to   { opacity:1; transform:translateY(0); }
+      }
+    </style>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          ${gradStops}
+        </linearGradient>
+      </defs>
+      ${gridSVG}
+      ${weeksSVG}
+      <path d="${pathD}" fill="none" stroke="url(#lineGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"
+        stroke-dasharray="${pathLen}" stroke-dashoffset="${pathLen}"
+        style="animation:chartDraw 1.8s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;"/>
+      ${dotsSVG}
+      ${labelsSVG}
+    </svg>`;
+}
+
+// ── R5 ────────────────────────────────────────────────
+let _r5TimerInterval=null;
+
+async function r5ClaimSpot(){
+  trackQ('R5_offer_view');
+  if(!ans.name){
+    ans.discountCode=QUIZ_CONFIG.fallbackCode;
+    ans.discountExpiresTs=Date.now()+20*60*1000;
+  } else {
+    try{
+      const res=await fetch(QUIZ_CONFIG.workerUrl,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({first_name:ans.name}),
+      });
+      const data=await res.json();
+      ans.discountCode=data.code;
+      ans.discountExpiresTs=data.expires_ts;
+    }catch(e){
+      ans.discountCode=QUIZ_CONFIG.fallbackCode;
+      ans.discountExpiresTs=Date.now()+20*60*1000;
+    }
+  }
+  document.getElementById('r5CodeDisplay').textContent=ans.discountCode;
+  document.getElementById('r5CodeSpinner').style.display='none';
+  document.getElementById('r5CodeRevealed').style.display='block';
+  r5StartCountdown();
+}
+
+function r5StartCountdown(){
+  if(_r5TimerInterval)clearInterval(_r5TimerInterval);
+  _r5TimerInterval=setInterval(()=>{
+    const remaining=ans.discountExpiresTs-Date.now();
+    if(remaining<=0){clearInterval(_r5TimerInterval);document.getElementById('r5Countdown').textContent='Expired';return;}
+    const m=Math.floor(remaining/60000),s=Math.floor((remaining%60000)/1000);
+    document.getElementById('r5Countdown').textContent=m+':'+String(s).padStart(2,'0');
+  },1000);
+}
+
+function rClaim(){
+  const code=ans.discountCode||QUIZ_CONFIG.fallbackCode;
+  const expiresTs=ans.discountExpiresTs||'';
+  trackQ('R5_cta_click');
+  ga4Event('cta_click',{discount_code:code,destination:'pdp',quiz_version:QUIZ_CONFIG.version});
+  metaStandard('CompleteRegistration',{content_name:'quit_smoking_quiz',status:true});
+  metaCustom('QuizCTAClick',{discount_code:code,gender:ans.gender,motivation:ans.motivation});
+  const existingParams=new URLSearchParams(window.location.search);
+  existingParams.set('quiz_version', QUIZ_CONFIG.version);
+  existingParams.delete('utm_content');
+  existingParams.set('discount',code);
+  existingParams.set('expires_ts',expiresTs);
+  window.location.href=QUIZ_CONFIG.redirectUrl+'?'+existingParams.toString();
+}
+
+// ── INIT ──────────────────────────────────────────────
+qsUpdateHeader();
+setTimeout(()=>{
+  ga4Event('quiz_start',{screen_name:'splash_gender'});
+  metaStandard('ViewContent',{content_name:'quit_smoking_quiz'});
+},1000);
+</script>
+</body>
+</html>
