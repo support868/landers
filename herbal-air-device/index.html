@@ -146,6 +146,7 @@ button { cursor: pointer; font-family: inherit; }
 .ob-device-name { font-family: var(--font-garamond); font-size: 20px; font-weight: 400; color: var(--text-dark); line-height: 1.2; }
 .ob-device-desc { font-family: var(--font-inter); font-size: 14px; color: var(--text-muted); margin-top: 2px; }
 .ob-device-price { font-family: var(--font-inter); font-size: 16px; font-weight: 700; color: var(--text-dark); flex: 0 0 auto; }
+.ob-device-was { font-family: var(--font-inter); font-size: 16px; font-weight: 700; color: var(--text-muted); text-decoration: line-through; flex: 0 0 auto; }
 .ob-inner-divider { height: 1px; background: var(--border-light); margin: 0 12px; }
 .ob-flavor-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px 6px; flex-wrap: wrap; box-sizing: border-box; }
 .ob-flavor-label { font-family: var(--font-inter); font-size: 17px; font-weight: 700; color: var(--text-dark); }
@@ -597,7 +598,10 @@ fbq('track','PageView');
               </div>
               <img src="images/device-laying.webp" alt="Herbal Air Device" style="height:clamp(12px,4vw,23px);width:auto;object-fit:contain;display:block;flex-shrink:1;">
             </div>
-            <div class="ob-device-price">$49.00</div>
+            <div style="display:flex;align-items:baseline;gap:8px;flex:0 0 auto;">
+              <span class="ob-device-price">$49.00</span>
+              <span class="ob-device-was">$70.00</span>
+            </div>
           </div>
 
           <div class="ob-inner-divider"></div>
